@@ -1,0 +1,10 @@
+<tr>
+	<td class="ids"><%= promotion.id %></td>
+	<td><%= promotion.name %></td>
+	<td><%= link_to truncate(promotion.url,{:length => 100}), promotion.url, { :target => "_blank" } %></td>
+	<td><%= raw td_active?(promotion) %></td>
+	<td><%= promotion.opened? ? "公開" : "非公開" %></td>
+	<td><span class="details"><%= link_to t("詳細"), client_promotion_path(promotion) %></span></td>
+	<td><span class="edit"><%= link_to t("編集"), edit_client_promotion_path(promotion) %></span></td>
+	<td><span class="del"><%= link_to t("削除"), delete_client_promotion_path(promotion) %></span></td>
+</tr>

@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css">
+<link rel="stylesheet" href="/javascripts/multiselect/demos/jquery-ui.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	$("#search_id_in").multiselect({
+		selectedList: 1,
+		click: function(e, ui){
+			var clicked_value = $('#search_id_in').val();
+			var now_click_value = ui.value;
+			var last_value = new Array();
+			var url_value = null;
+			//セレクトされている値がある場合
+			if(clicked_value != null){
+				var len = clicked_value.length;
+				for(var i = 0; i < len; i = i + 1){
+					if(now_click_value != clicked_value[i]){
+						last_value.push(clicked_value[i]);
+					}
+				}
+				if(now_click_value != null){
+					//チェックをつけたのか外したのか判断
+					if(ui.checked){
+						last_value.push(now_click_value);
+					}
+				}
+			}else{
+				//新規にセレクトされた場合
+				last_value.push(now_click_value);
+			}
+	
+			if(last_value != null){
+				url_value = last_value.join(':');
+			}
+			
+		}
+	});
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-search_id_in-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-search_id_in-option]:checked").addClass('bigCol');
+    });
+});
+</script>
+<div class="headline">
+	<h2>プロモーション一覧</h2>
+</div>
+
+<%= simple_form_for [:client, @search] do |f| %>
+<div class="multi" id="promotion_search_multi">
+<div class="input text optional">
+	<ul>
+		<li>プロモーション名
+		<%= select("search", "id_in",
+		options_from_collection_for_select(@promotions_for_select, :id, :name,:selected => @selected_promotions),
+			{},
+			{:class => "publishList", :multiple => true}
+		) %>
+		</li>
+		<li><%= f.submit "検索" ,:onclick => "document.getElementById('promotion_search_multi').action = 'promotions'" %></li>
+	</ul>
+</div>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('promotion_search').action = 'promotions/csv'",:id => "csv_download" %>
+<% end %>
+<p class="tit new"><%= link_to "新規作成", new_client_promotion_path %></p>
+<%= paginate @promotions %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :url %></th>
+		<th><%= sort_link @search, :active %></th>
+		<th><%= sort_link @search, :opened %></th>
+		<th class="thDel" colspan="3">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+<%= render :partial => @promotions %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @promotions %>
+</div>

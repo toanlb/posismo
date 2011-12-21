@@ -1,0 +1,14 @@
+<h2>提携アップロード</h2>
+<canvas id="canvas"><!-- 携帯アップロード --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+</div>
+<%= simple_form_for([:client, @order], :url =>{:action => :uploaded}, :html => {:multipart => true}) do |f| %>
+	<div id="attributes">
+		<%= f.file_field :file %>
+		<%= f.submit :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+</div>

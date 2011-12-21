@@ -1,0 +1,9 @@
+<h1>成果地点編集</h1>
+<canvas id="canvas"><!-- 成果地点編集 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", client_promotion_reward_points_path(@promotion) %></span>
+</div>
+<%= render 'form' %>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", client_promotion_reward_points_path(@promotion) %></span>
+</div>

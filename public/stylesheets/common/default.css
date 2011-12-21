@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/* CSS Document
+10px = 77%
+11px = 85%
+12px = 93%
+13px = 100%
+14px = 108%
+15px = 116%
+16px = 123.1%
+17px = 131%
+18px = 138.5%
+19px = 146.5%
+20px = 153.9%
+21px = 161.6%
+22px = 167%
+23px = 174%
+24px = 182%
+25px = 189%
+26px = 197%
+/CSS Document */
+
+html {
+	height: 100%;
+}
+body {
+	text-align: center;
+	font:13px/1.231 ＭＳ Ｐゴシック,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,sans-serif,Osaka;
+	color:#3C3C3C;
+	/* for IE6/7 */
+	*font-size:small;
+	/* for IE Quirks Mode */
+	*font:x-small;
+}
+body,div,p,pre,h1,h2,h3,h4,h5,h6,table,tr,td,th,
+caption,ul,li,dl,dt,dd,img {
+	margin: 0;
+	padding: 0;
+	/*font-size: 100%;*/
+	border: 0;
+	word-spacing:0;
+}
+img {line-height:0;}
+form,input,select,textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font:99%;
+}
+ul { list-style:none; }
+
+h1,h2,h3,h4,h5,h6,strong,em {
+	font-weight:bold;
+}
+table {
+	border-collapse:collapse;
+	border-spacing: 0;
+	font-size:inherit;
+	font:100%;
+}
+th,td {vertical-align:top;}
+input,button,textarea,select,optgroup,option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+div.btnArea input,dd input,button,select,optgroup.option {
+	cursor:pointer;
+	cursor:hand;
+}
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,button,textarea,select {
+	*font-size: 100%;
+	margin:0;
+	padding:2px;
+}
+h1,h2,h3 {
+	font-size:108%;
+}
+a {
+	color:#000;
+	text-decoration:none;
+	overflow: hidden;
+	/*font-weight:bold;*/
+}
+a:hover {
+	color:#E80000;
+	outline:none;
+	text-decoration:underline;
+	/*font-weight:bold;*/
+}
+address { font-style: normal;/* text-indent: 10px;*/}
+/* clearfix */
+div:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	height: 0.1px;
+	font-size: 0.1em;
+	line-height: 0;
+	overflow: hidden;
+	clear: both;
+}
+article, aside, figure, figcaption, footer, header,
+hgroup, nav, section, summary ,canvas {display: block;}

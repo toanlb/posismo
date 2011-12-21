@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      reward: "成果報酬"
+    attributes:
+      reward:
+        reward_type: "報酬種類"
+        price_type: "価格種類"
+        gross_price: "グロス価格"
+        net_price: "ネット価格"
+        gross_rate: "グロス料率"
+        net_rate: "ネット料率"
+        starts_at: "開始時刻"
+        ends_at: "終了時刻"

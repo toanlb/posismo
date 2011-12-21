@@ -1,0 +1,14 @@
+<h2><%= t :create %></h2>
+<canvas id="canvas"><!-- 新規登録 --></canvas>
+<div id="attributes">
+	<dl>
+		<dt><%= label_tag :admin, :email %></dl><dd><%= @admin.email %></dt>
+		<dd><%= label_tag :admin, :name %></dl><dd><%= @admin.name %></dd>
+	</dl>
+</div>
+<div class="actions">
+	<%= button_to "登録", { :action => :create }, 
+	{ :method => :post, :disable_with => "処理中..." } do %>
+	<%= hidden_tag :confirmed, :value => true  %>
+	<% end %>
+</div>

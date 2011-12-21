@@ -1,0 +1,17 @@
+<%= content_tag_for :tr, partner do %>
+	<td class="sel"><%= check_box_tag "check_ids[#{partner.id}]", partner.id %></td>
+	<td class="ids"><%= partner.id %></td>
+	<td><%= partner.login_id %></td>
+	<td><%= partner.email %></td>
+	<td><%= Partner::CONTRACT_TYPES[partner.contract_type] %></td>
+	<td><%= partner.company_name %></td>
+	<td><%= partner.manager_name %></td>
+	<td><%= Partner::REGISTRATION_STATUSES[partner.registration_status] %></td>
+	<% if current_admin.super_user? -%>
+	<td><%= partner.deleted? ? "はい" : "いいえ" %></td>
+	<% end -%>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:admin, partner]) %></span></td>
+	<td><span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, partner]) %></span></td>
+	<td><span class="del"><%= link_to "削除", polymorphic_path([:admin, partner], :action => :delete) %></span></td>
+</tr>
+<% end %>

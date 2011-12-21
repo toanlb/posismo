@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models
+END
+category.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/category.rb
+END
+client.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/client.rb
+END
+parameter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/parameter.rb
+END
+convert.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/convert.rb
+END
+notice.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/notice.rb
+END
+asp.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/asp.rb
+END
+reward.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/reward.rb
+END
+partner_monthly.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/partner_monthly.rb
+END
+click.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/click.rb
+END
+promotion.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/promotion.rb
+END
+account_management.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/account_management.rb
+END
+admin.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/admin.rb
+END
+client_monthly.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/client_monthly.rb
+END
+impression.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/impression.rb
+END
+reward_validator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/reward_validator.rb
+END
+click_reward.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/click_reward.rb
+END
+categories_promotion.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/categories_promotion.rb
+END
+reward_point.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/reward_point.rb
+END
+daily.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/daily.rb
+END
+site.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/site.rb
+END
+banner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/banner.rb
+END
+publish.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/publish.rb
+END
+image_banner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/image_banner.rb
+END
+statistic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/statistic.rb
+END
+categories_site.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/categories_site.rb
+END
+text_banner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/text_banner.rb
+END
+order.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/order.rb
+END
+partner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/posismo-2pm/!svn/ver/1/2pm/app/models/partner.rb
+END

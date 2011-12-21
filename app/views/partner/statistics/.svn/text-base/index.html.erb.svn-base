@@ -1,0 +1,385 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css">
+<link rel="stylesheet" href="/stylesheets/contents/formbox.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script src="/javascripts/formbox.js"></script>
+<script>
+$(function(){
+	$("#publish_promotion_id").multiselect({
+		selectedList: 1,
+		click: function(e, ui){
+			var clicked_value = $('#publish_promotion_id').val();
+			var now_click_value = ui.value;
+			var last_value = new Array();
+			var url_value = null;
+			//セレクトされている値がある場合
+			if(clicked_value != null){
+				var len = clicked_value.length;
+				for(var i = 0; i < len; i = i + 1){
+					if(now_click_value != clicked_value[i]){
+						last_value.push(clicked_value[i]);
+					}
+				}
+				if(now_click_value != null){
+					//チェックをつけたのか外したのか判断
+					if(ui.checked){
+						last_value.push(now_click_value);
+					}
+				}
+			}else{
+				//新規にセレクトされた場合
+				last_value.push(now_click_value);
+			}
+
+			if(last_value != null){
+				url_value = last_value.join(':');
+			}
+			if(url_value != null){
+				$.getJSON(
+				'<%= url_for(:action => :index) %>/promotion_publishes_sites/'+url_value,
+				function(json){
+				$("#publish_site_id").html('');
+				$.each(json, function(){
+					value = this[1];
+					text = this[0];
+					$("#publish_site_id").append($('<option value="' + value + '">' + text + '</option>'));
+				});
+
+				$("#publish_site_id").multiselect("refresh");
+				});
+			}
+		}
+	});
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-publishList_promotion_id-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-publishList_site_id-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-publishList_promotion_id-option]:checked").addClass('bigCol');
+        $("input[id^=ui-multiselect-publishList_site_id-option]:checked").addClass('bigCol');
+    });
+});
+</script>
+<script src="/javascripts/jquery.flickable.js"></script>
+<script>
+var afterCheckSubmit = function(){
+	var week = document.getElementById('date_week');
+	var month = document.getElementById('date_month');
+
+	var form = document.getElementById('statistic_search');
+	if(week.checked){
+		form.action = 'statistics';
+	}else if(month.checked){
+		form.action = 'statistics_month';
+	}
+	form.submit();
+}
+var afterCheckCsvSubmit = function(){
+	var week = document.getElementById('date_week');
+	var month = document.getElementById('date_month');
+
+	var form = document.getElementById('statistic_search');
+	if(week.checked){
+		form.action = 'statistics/csv';
+	}else if(month.checked){
+		form.action = 'statistics_month/csv';
+	}
+	form.submit();
+}
+var valueClear = function(){
+	var search_created_on_gt = document.getElementById('search_created_on_gt');
+	search_created_on_gt.value = "";
+	var search_created_on_lt = document.getElementById('search_created_on_lt');
+	search_created_on_lt.value = "";
+	var search_impression_count_gt = document.getElementById('search_impression_count_gt');
+	search_impression_count_gt.value = "";
+	var search_impression_count_lt = document.getElementById('search_impression_count_lt');
+	search_impression_count_lt.value = "";
+	var search_click_count_gt = document.getElementById('search_click_count_gt');
+	search_click_count_gt.value = "";
+	var search_click_count_lt = document.getElementById('search_click_count_lt');
+	search_click_count_lt.value = "";
+	var search_click_valid_count_gt = document.getElementById('search_click_valid_count_gt');
+	search_click_valid_count_gt.value = "";
+	var search_click_valid_count_lt = document.getElementById('search_click_valid_count_lt');
+	search_click_valid_count_lt.value = "";
+	var search_click_rate_gt = document.getElementById('search_click_rate_gt');
+	search_click_rate_gt.value = "";
+	var search_click_rate_lt = document.getElementById('search_click_rate_lt');
+	search_click_rate_lt.value = "";
+	var search_final_click_reward_gt = document.getElementById('search_final_click_reward_gt');
+	search_final_click_reward_gt.value = "";
+	var search_final_click_reward_lt = document.getElementById('search_final_click_reward_lt');
+	search_final_click_reward_lt.value = "";
+	var search_conversion_rate_gt = document.getElementById('search_conversion_rate_gt');
+	search_conversion_rate_gt.value = "";
+	var search_conversion_rate_lt = document.getElementById('search_conversion_rate_lt');
+	search_conversion_rate_lt.value = "";
+	var search_plan_order_count_gt = document.getElementById('search_plan_order_count_gt');
+	search_plan_order_count_gt.value = "";
+	var search_plan_order_count_lt = document.getElementById('search_plan_order_count_lt');
+	search_plan_order_count_lt.value = "";
+	var search_final_order_count_gt = document.getElementById('search_final_order_count_gt');
+	search_final_order_count_gt.value = "";
+	var search_final_order_count_lt = document.getElementById('search_final_order_count_lt');
+	search_final_order_count_lt.value = "";
+	var search_cancel_order_count_gt = document.getElementById('search_cancel_order_count_gt');
+	search_cancel_order_count_gt.value = "";
+	var search_cancel_order_count_lt = document.getElementById('search_cancel_order_count_lt');
+	search_cancel_order_count_lt.value = "";
+	var search_plan_order_reward_gt = document.getElementById('search_plan_order_reward_gt');
+	search_plan_order_reward_gt.value = "";
+	var search_plan_order_reward_lt = document.getElementById('search_plan_order_reward_lt');
+	search_plan_order_reward_lt.value = "";
+	var search_plan_order_net_reward_gt = document.getElementById('search_plan_order_net_reward_gt');
+	search_plan_order_net_reward_gt.value = "";
+	var search_plan_order_net_reward_lt = document.getElementById('search_plan_order_net_reward_lt');
+	search_plan_order_net_reward_lt.value = "";
+	var search_final_order_reward_gt = document.getElementById('search_final_order_reward_gt');
+	search_final_order_reward_gt.value = "";
+	var search_final_order_reward_lt = document.getElementById('search_final_order_reward_lt');
+	search_final_order_reward_lt.value = "";
+	var search_final_order_net_reward_gt = document.getElementById('search_final_order_net_reward_gt');
+	search_final_order_net_reward_gt.value = "";
+	var search_final_order_net_reward_lt = document.getElementById('search_final_order_net_reward_lt');
+	search_final_order_net_reward_lt.value = "";
+	var search_final_all_reward_gt = document.getElementById('search_final_all_reward_gt');
+	search_final_all_reward_gt.value = "";
+	var search_final_all_reward_lt = document.getElementById('search_final_all_reward_lt');
+	search_final_all_reward_lt.value = "";
+	var search_final_all_net_reward_gt = document.getElementById('search_final_all_net_reward_gt');
+	search_final_all_net_reward_gt.value = "";
+	var search_final_all_net_reward_lt = document.getElementById('search_final_all_net_reward_lt');
+	search_final_all_net_reward_lt.value = "";
+}
+</script>
+<div class="headline">
+<h2>統計一覧</h2>
+</div>
+<script>
+$(function() {
+$('#search_created_on_gt').datetime({
+americanMode: true,
+});
+$('#search_created_on_lt').datetime({
+americanMode: true,
+});
+});
+</script>
+<%= form_for [:partner, @search], :html => {:class => "simple_form search" , :method => "post" } do |f| %>
+<div class="multi" id="daily_search_multi">
+	<div class="input text optional">
+		<ul>
+			<li>プロモーション名
+			<%= select("publishList", "promotion_id",
+			options_from_collection_for_select(@promotions, :id, :name,:selected => @selected_promotions),
+				{},
+				{:class => "publishList", :multiple => true}
+			) %>
+			</li>
+			<li>サイト名
+			<%= select("publishList", "site_id", 
+				@sites.nil? ? [] : options_from_collection_for_select(@sites, :id, :name, :selected => @selected_sites),
+				{},
+				{:class => "publishList", :multiple => true}
+			) %>
+			</li>
+			<li><%= f.submit "検索",:onclick => "document.getElementById('statistic_search').action = 'statistics'" %></li>
+		</ul>	
+	</div>
+</div>
+<div id="statistic_search">
+		<%= f.label :created_on, "日時" %>
+		<%= f.text_field :created_on_gt %>
+		<%= f.text_field :created_on_lt %>
+		<%= f.submit "検索", :onclick => "afterCheckSubmit()" %>
+</div>	
+<div class="multi" id="statistic_search_box">
+	<div class="input text optional">
+		<div id="tabs">
+			<ul id="tabMenu">
+				<li class="dropdown"><a href="#tabContents">条件で検索する</a></li>
+			</ul>
+		</div>
+		<div id="tabContainer">
+			<ul id="tabPanes">
+				<li id="tabContents">
+					<div class="formcontainer">
+						<div class="text">
+							<%= f.label :impression_count, "表示回数" %>
+							<%= f.text_field :impression_count_gt %><span>～</span>
+							<%= f.text_field :impression_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :click_count, "クリック数" %>
+							<%= f.text_field :click_count_gt %><span>～</span>
+							<%= f.text_field :click_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :click_valid_count, "有効クリック数" %>
+							<%= f.text_field :click_valid_count_gt %><span>～</span>
+							<%= f.text_field :click_valid_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :click_rate, "クリック率" %>
+							<%= f.text_field :click_rate_gt %><span>～</span>
+							<%= f.text_field :click_rate_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :final_click_reward, "クリック報酬" %>
+							<%= f.text_field :final_click_reward_gt %><span>～</span>
+							<%= f.text_field :final_click_reward_lt %>
+						</div>
+						<div class="text" id="con">
+							<%= f.label :conversion_rate, "コンバージョン率" %>
+							<%= f.text_field :conversion_rate_gt %><span>～</span>
+							<%= f.text_field :conversion_rate_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :plan_order_count, "注文数" %>
+							<%= f.text_field :plan_order_count_gt %><span>～</span>
+							<%= f.text_field :plan_order_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :final_order_count, "注文確定数" %>
+							<%= f.text_field :final_order_count_gt %><span>～</span>
+							<%= f.text_field :final_order_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :cancel_order_count, "注文キャンセル数" %>
+							<%= f.text_field :cancel_order_count_gt %><span>～</span>
+							<%= f.text_field :cancel_order_count_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :plan_order_reward, "予定報酬" %>
+							<%= f.text_field :plan_order_reward_gt %><span>～</span>
+							<%= f.text_field :plan_order_reward_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :final_order_reward, "確定報酬" %>
+							<%= f.text_field :final_order_reward_gt %><span>～</span>
+							<%= f.text_field :final_order_reward_lt %>
+						</div>
+						<div class="text">
+							<%= f.label :final_all_reward, "全確定報酬" %>
+							<%= f.text_field :final_all_reward_gt %><span>～</span>
+							<%= f.text_field :final_all_reward_lt %>
+						</div>
+						<div class="text" id="date">
+							<dl>
+								<dt><label>集計単位</label></dt>
+								<dd><label>週</label>&nbsp;<% if @radio_daily == "week" %><%= radio_button_tag 'date', 'week', true %>
+								<% else %>
+								<%= radio_button_tag 'date', 'week' %></dd>
+								<% end %>
+								<dd><label>月</label></dt>&nbsp;<% if @radio_daily == "month" %><%= radio_button_tag 'date', 'month', true %>
+								<% else %>
+								<%= radio_button_tag 'date', 'month' %></dd>
+								<% end %>
+							</dl>
+						</div>
+						<div class="text" id="bt">
+							<%= f.submit "検索" ,:onclick => "afterCheckSubmit()" %>
+							<input type="button" value="クリア" onclick="valueClear()"/>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "afterCheckCsvSubmit()",:id => "csv_download" %>
+<% end %>
+	<div id="promoName">
+	<ul>
+	<% @display_promotions.each do |display_promotion| %>
+		<li><%= display_promotion %></li>
+	<% end %>
+	</ul>
+</div>
+<div id="siteName">
+	<ul>
+	<% @display_sites.each do |display_site| %>
+		<li><%= display_site %></li>
+	<% end %>
+	</ul>
+</div>
+</div>
+
+<%= paginate @statistics %>
+<script>
+	$(function() {
+	$('#flickable1').flickable();
+	});
+</script>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<div id="flickable1">
+	<table class="autopagerize_page_element tablesorter top" id="myTable">
+	<thead>
+		<tr>
+			<th><%= sort_link @search, :created_on %></th>
+			<th class="ids"><%= sort_link @search, :sum_impression_count %></th>
+			<th><%= sort_link @search, :sum_click_count %></th>
+			<th><%= sort_link @search, :sum_click_valid_count %></th>
+			<th><%= sort_link @search, :sum_click_rate %></th>
+			<th><%= sort_link @search, :sum_final_click_reward %></th>
+			<th><%= sort_link @search, :sum_conversion_rate %></th>
+			<th><%= sort_link @search, :sum_plan_order_count %></th>
+			<th><%= sort_link @search, :sum_final_order_count %></th>
+			<th><%= sort_link @search, :sum_cancel_order_count %></th>
+			<th><%= sort_link @search, :sum_plan_order_reward %></th>
+			<th><%= sort_link @search, :sum_final_order_reward %></th>
+			<th id="lastTh"><%= sort_link @search, :sum_final_all_reward %></th>
+			<th class="dammy"><a href="#">&nbsp;</a></th>
+		</tr>
+	</thead>
+	<tfoot>
+	<tr>
+		<% @sum_statistic.each do |statistic| %>
+		<th class="summary"><%= "総計" %></th>
+		<th><%= statistic.sum_impression_count.to_i %></th>
+		<th><%= statistic.sum_click_count.to_i %></th>
+		<th><%= statistic.sum_click_valid_count.to_i %></th>
+		<th><%= statistic.sum_click_rate*100 %>%</th>
+		<th><%= statistic.sum_final_click_reward.to_i %>円</th>
+		<th><%= statistic.sum_conversion_rate*100 %>%</th>
+		<th><%= statistic.sum_plan_order_count.to_i %></th>
+		<th><%= statistic.sum_final_order_count.to_i %></th>
+		<th><%= statistic.sum_cancel_order_count.to_i %></th>
+		<th><%= statistic.sum_plan_order_reward.to_i %>円</th>
+		<th><%= statistic.sum_final_order_reward.to_i %>円</th>
+		<th><%= statistic.sum_final_all_reward.to_i %>円</th>
+		<% end %>
+	</tr>
+	<tr>
+		<% @sum_statistic.each do |statistic| %>
+		<th class"=summary"><%= "総平均" %></th>
+		<th><%= statistic.sum_impression_count.nil? ? 0 : number_with_precision(statistic.sum_impression_count / @statistics.count, :precision => 2) %></th>
+		<th><%= statistic.sum_click_count.nil? ? 0 : number_with_precision(statistic.sum_click_count / @statistics.count, :precision => 2) %></th>
+		<th><%= statistic.sum_click_valid_count.nil? ? 0 : number_with_precision(statistic.sum_click_valid_count / @statistics.count, :precision => 2) %></th>
+		<th><%= number_with_precision(statistic.sum_click_rate*100, :precision => 2) %>%</th>
+		<th><%= statistic.sum_final_click_reward.nil? ? 0 : number_with_precision(statistic.sum_final_click_reward / @statistics.count, :precision => 2) %>円</th>
+		<th><%= number_with_precision(statistic.sum_conversion_rate*100, :precision => 2) %>%</th>
+		<th><%= statistic.sum_plan_order_count.nil? ? 0 : number_with_precision(statistic.sum_plan_order_count / @statistics.count, :precision => 2) %></th>
+		<th><%= statistic.sum_final_order_count.nil? ? 0 : number_with_precision(statistic.sum_final_order_count / @statistics.count, :precision => 2) %></th>
+		<th><%= statistic.sum_cancel_order_count.nil? ? 0 : number_with_precision(statistic.sum_cancel_order_count / @statistics.count, :precision => 2) %></th>
+		<th><%= statistic.sum_plan_order_reward.nil? ? 0 : number_with_precision(statistic.sum_plan_order_reward / @statistics.count, :precision => 2) %>円</th>
+		<th><%= statistic.sum_final_order_reward.nil? ? 0 : number_with_precision(statistic.sum_final_order_reward / @statistics.count, :precision => 2) %>円</th>
+		<th><%= statistic.sum_final_all_reward.nil? ? 0 : number_with_precision(statistic.sum_final_all_reward / @statistics.count, :precision => 2) %>円</th>
+		<% end %>
+	</tr>
+	</tfoot>
+	<tbody>
+	<%= render :partial => "statistic", :collection => @statistics %>
+	</tbody>
+	</table>
+</div>
+<div class="paginationFot">
+	<%= paginate @statistics %>
+</div>

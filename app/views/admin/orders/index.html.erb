@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-publishList_promotion_id_in-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-publishList_promotion_id_in-option]:checked").addClass('bigCol');
+    });
+});
+</script>
+<div class="headline">
+	<h2>注文一覧</h2>
+</div>
+<p class="tit new"><%= link_to "新規作成", :action => :new%></p>
+<%= simple_form_for [:admin, :client, @search] do |f| %>
+<div class="multi" id="promotion_search_multi">
+<div class="input text optional">
+	<ul>
+		<li>プロモーション名
+		<%= select("publishList", "promotion_id_in",
+		options_from_collection_for_select(@promotions_for_select, :id, :name,:selected => @selected_promotions),
+			{},
+			{:class => "publishList", :multiple => true}
+		) %>
+		</li>
+		<li><%= f.submit "検索" ,:onclick => "document.getElementById('order_search').action = 'orders'" %></li>
+	</ul>
+</div>
+</div>
+<script>
+		$(function() {
+			$('#search_created_on_gteq').datetime({
+				americanMode: true,
+			});
+			$('#search_created_on_lteq').datetime({
+				americanMode: true,
+		});
+});
+</script>
+<link href="/javascripts/jqselectable/skin/selectable/style.css" media="screen" rel="stylesheet">
+<script src="/javascripts/jQselectable.js"></script>
+<script>
+	jQuery(function($){	
+		$("select#search_status_flag_eq").jQselectable({
+			out: "fadeOut",
+			outDuration: 150,
+			height: 150,
+		});	
+	});
+</script>
+<div id="order_search">
+	<%= f.label :created_on, "日時" %>
+	<%= f.text_field :created_on_gteq %>
+	<%= f.text_field :created_on_lteq %>
+	<%= f.label :approval_status, "承認状態" %>
+	<%= f.select :status_flag_eq, Order::STATUS_FLAGS.collect.with_index{|s,i|[s,i]}, :include_blank => "全て" %>
+	<%= f.submit "検索" ,:onclick => "document.getElementById('order_search').action = 'orders'" %>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('order_search').action = 'orders/csv'",:id => "csv_download_test" %>
+<%= f.submit "csvアップロード",:onclick => "document.getElementById('order_search').action = 'orders/upload'",:id => "csv_upload_test" %>
+<% end %>
+<%= form_tag({:action => :index}, :id => 'form') do %>
+	<p class="tit mix head">選択した注文を
+	<span class="acc"><%= submit_tag "承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :approve) + "'" %></span>
+	<span class="facc"><%= submit_tag "非承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :reject) + "'" %></span>
+	<span class="pause"><%= submit_tag "保留", :onclick => "document.getElementById('form').action = '" + url_for(:action => :defer) + "'" %></span>
+	</p>
+	<%= paginate @orders %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$('input[type="checkbox"]').addClass('checks');
+	$("#myTable").tablesorter();
+});
+</script>
+<script>
+function toggle_check(className, button){
+	if(button.value=="選択"){
+		var flag = 1;
+		button.value = "解除";
+	}else{
+		var flag = 0;
+		button.value = "選択";
+	}
+	var chks = document.getElementsByTagName("input");
+	var retArr = [];
+	for (var i=0;i < chks.length;i++) {
+	if (/checkbox/.test(chks[i].type) &&
+	chks[i].className.indexOf(className) > -1)
+		retArr.push(chks[i]);
+	}
+	for(i=0; i<retArr.length; i++){
+		retArr[i].checked = flag;
+	}
+}
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="sel"><input type="checkbox" name="all"  id="all" value="全て選択" onclick="toggle_check('checks',this);"></th>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :promotion_name %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :banner_name %></th>
+		<th class="clickT"><%= sort_link @search, :click_updated_at %></th>
+		<th class="createT"><%= sort_link @search, :created_at %></th>
+		<th><%= sort_link @search, :decide_date %></th>
+		<th><%= sort_link @search, :status_flag %></th>
+		<th><%= sort_link @search, :price %></th>
+		<th><%= sort_link @search, :gross_price %></th>
+		<th><%= sort_link @search, :net_price %></th>
+		<th><%= sort_link @search, :gross_rate %></th>
+		<th><%= sort_link @search, :net_rate %></th>
+		<th><%= sort_link @search, :remote_address %></th>
+		<th><%= sort_link @search, :referer %></th>
+		<th><%= sort_link @search, :metadata %></th>
+		<th colspan="4"><%= sort_link @search, :add_data %></th>
+	</tr>
+</thead>
+<tbody>
+<%= render :partial => @orders %>
+</tbody>
+</table>
+<p class="tit new fot"><%= link_to "新規作成", :action => :new%></p>
+<div class="paginationFot">
+	<%= paginate @orders %>
+</div>
+<p class="tit mix fot">選択した注文を
+	<span class="acc"><%= submit_tag "承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :approve) + "'" %></span>
+	<span class="facc"><%= submit_tag "非承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :reject) + "'" %></span>
+	<span class="pause"><%= submit_tag "保留", :onclick => "document.getElementById('form').action = '" + url_for(:action => :defer) + "'" %></span>
+<%=  %>
+</p>
+<% end %>

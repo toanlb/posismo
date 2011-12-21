@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      promotion: "プロモーション"
+    attributes: 
+      promotion:
+        name: "プロモーション名"
+        url: "遷移先URL"
+        description: "プロモーション詳細"
+        active: "有効"
+        starts_at: "開始日時"
+        ends_at: "終了日時"
+        opened: "公開/非公開"
+        tieup_type: "パートナー本人の申し込みを"
+        listing_type: "リスティング条件"
+        enable_add: "提携対象サイト"
+        click_reward: 
+          one: "クリック報酬"
+          other: "クリック報酬"
+        reward: 
+          price: "成果報酬"
+          one: 
+            price: "成果報酬"
+          other: 
+            price: "成果報酬"
+        client_company_name: "会社名"
+        click_reward_price: "クリック報酬"
+        category_name: "カテゴリー名"

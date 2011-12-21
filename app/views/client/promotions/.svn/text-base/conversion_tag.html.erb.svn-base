@@ -1,0 +1,17 @@
+<h2>コンバージョンタグ</h2>
+<canvas id="canvas"><!-- コンバージョンタグ --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:client, @promotion]) %></span>
+</div>
+<div id="tag_attributes" class="cv">
+	<div>
+		&lt;script type="text/javascript" src="https://<%= BACKEND_HOST %>/order?clid=<%= @client.id %>"&gt;&lt;/script&gt;<br />
+		&lt;script type="text/javascript"&gt;<br />
+		var asp = new getAspUrl<%= @client.id %>();<br />
+		document.write(asp.tag);<br />
+		&lt;/script&gt;<br />
+	</div>
+</div>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:client, @promotion]) %></span>
+</div>

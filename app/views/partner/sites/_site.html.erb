@@ -1,0 +1,10 @@
+<%= content_tag_for :tr, site do %>
+	<td class="ids"><%= site.id %></td>
+	<td><%= link_to site.name, polymorphic_path([:partner, site]) %></td>
+	<td><%= link_to site.url, site.url, { :target => "_blank" } %></td>
+	<td><%= truncate site.description %></td>
+	<td><%= truncate site.keywords %></td>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:partner, site]) %></span></td>
+	<td><span class="edit"><%= link_to "編集", edit_polymorphic_path([:partner, site]) %></span></td>
+	<td><span class="del"><%= link_to "削除", polymorphic_path([:partner, site], :action => :delete) %></span></td>
+	<% end %>

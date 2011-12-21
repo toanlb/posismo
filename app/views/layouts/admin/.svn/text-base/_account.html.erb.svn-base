@@ -1,0 +1,7 @@
+<% unless ["/admin/login","/admin/unlock/new"].include? request.fullpath || !admin_signed_in? -%>
+	<ul class="account">
+		<li class="accountName"><span>ようこそ<%= current_admin.name %></span></li>
+		<li class="accountLink"><%= link_to admin_account_path do %>アカウント情報<% end %></li>
+		<li class="status"><%= link_to destroy_admin_session_path do %>ログアウト<% end %></li>
+	</ul>
+<% end -%>

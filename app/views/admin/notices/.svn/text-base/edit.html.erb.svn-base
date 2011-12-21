@@ -1,0 +1,10 @@
+<h2>お知らせ情報編集</h2>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+	<%= link_to "詳細", admin_client_path(@notice) %>
+</div>
+<%= render 'form' %>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+	<%= link_to "詳細", admin_client_path(@notice) %>
+</div>

@@ -1,0 +1,15 @@
+<h2>注文アップロード</h2>
+<canvas id="canvas"><!-- 注文アップロード --></canvas>
+<%= simple_form_for([:admin, @client, @order], :url =>{:action => :uploaded}, :html => {:multipart => true}) do |f| %>
+	<div id="attributes">
+		<div class="input string optional">
+			<dl class="aspName">
+				<dd><%= f.file_field :file %></dd>
+			</dl>
+		</div>
+			<%= f.submit "登録",:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", admin_client_orders_path %></span>
+</div>

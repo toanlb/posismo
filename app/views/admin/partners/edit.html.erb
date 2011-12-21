@@ -1,0 +1,12 @@
+<h1>パートナー編集</h1>
+<canvas id="canvas"><!-- パートナー編集 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", admin_partners_path %></span>
+	<span class="todetail"><%= link_to "詳細", admin_partner_path(@partner) %></span>
+</div>
+
+<%= render 'edit_form' %>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", admin_partners_path %></span>
+	<span class="todetail"><%= link_to "詳細", admin_partner_path(@partner) %></span>
+</div>

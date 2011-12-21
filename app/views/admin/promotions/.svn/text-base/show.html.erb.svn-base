@@ -1,0 +1,113 @@
+<h2>プロモーション情報詳細</h2>
+<canvas id="canvas"><!-- プロモーション情報詳細 --></canvas>
+<script>
+	// <![CDATA[
+	jQuery(function($) {
+	$("#jQTabs").tabs({
+		fx : {
+		opacity : 'toggle',
+		duration : 'fast'
+		}
+	});
+	});
+	// ]]>
+</script>
+<div class="board">
+	<div id="jQTabs">
+	<ul>
+		<li><a href="#tabPromotion"><span>プロモーション詳細</span></a></li>
+		<li><a href="#tabReward"><span>報酬額詳細</span></a></li>
+		<li><a href="#tabBanner"><span>バナー一覧</span></a></li>
+	</ul>
+	<!-- #tab -->
+	<div id="tabPromotion">
+		<h3><a href="#section1">プロモーション名</a></h3>
+		<div class="actions forButtonIcon">
+		<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :promotions]) %></span>
+		<span class="one_tag"><%= link_to "ワンタグ", polymorphic_path([:admin, @client, @promotion, :one_tags]) %></span>
+		<span class="toggle"><%= link_to (@promotion.active? ? "無効" : "有効") + "にする", polymorphic_path([:admin, @client, @promotion], :action => :toggle_active) %></span>
+		<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client, @promotion]) %></span>
+		</div>
+		<!-- #attributes -->
+		<div id="attributes">
+		<dl>
+			<dt><%= label :promotion, :name %></dt>
+			<dd><%= @promotion.name %></dd>
+			<dt><%= label :promotion,	:url %></dt>
+			<dd><%= @promotion.url %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :promotion, :description %></dt>
+			<dd><%= @promotion.description %></dd>
+		</dl>
+		<dl>
+			<dt><%= label :promotion, :opened %></dt>
+			<dd><%= @promotion.opened? ? "公開" : "非公開" %></dd>
+			<% if @promotion.click_reward -%>
+			<dt><%= label :click_reward, :price %></dt>
+			<dd><%= @promotion.click_reward.price %>円</dd>
+			<% end %>
+			<dt><%= label :promotion, :active %></dt>
+			<dd><%= @promotion.active ? "有効" : "無効" %></dd>
+			<dt><%= label :promotion, :tieup_type %></dt>
+			<dd><%= Promotion::TIEUP_TYPES[@promotion.tieup_type] %></dd>
+			<dt><%= label :promotion, :listing_type %></dt>
+			<dd><%= Promotion::LISTING_TYPES[@promotion.listing_type] %>	</dd>
+			<dt><%= label :promotion, :enable_add %></dt>
+			<dd><%= Promotion::ENABLE_ADDS[@promotion.enable_add] %></dd>
+			<dt><%= label :category, :category_name %></dt>
+			<% @categories.each do |cat| %>
+			<dd><%= cat.category.category_name %></dd>
+			<% end %>
+		</dl>
+		</div>
+		<!-- /#attributes -->
+		<h3>提携ASP</h3>
+		<script>
+		$(document).ready(function() {
+			$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+			$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+			$("#myTablePromotion").tablesorter();
+		});
+		</script>
+		<table class="autopagerize_page_element tablesorter inTab" id="myTablePromotion">
+		<thead>
+			<tr>
+			<th><%= sort_link @search_asps, :name %></th>
+			<th><%= sort_link @search_asps, :click_url %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @search_asps.each do |item| %>
+			<tr>
+			<td><%= item.name %></td>
+			<td><%= publish_click_url(item.associated_promotion(@promotion.id).first) %></td>
+			</tr><% end %>
+		</tbody>
+		</table>
+	</div>
+	<!-- /#tab -->
+	<!-- #tab -->
+	<div id="tabReward">
+		<div class="tab_contents">
+		<%= render :partial => "rewards" %>
+		</div>
+		<div class="actions one">
+			<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :promotions]) %></span>
+		</div>
+	</div>
+	<!-- /#tab -->
+	<!-- #tab -->
+	<div id="tabBanner">
+		<div class="tab_contents">
+		<%= render :partial => "banners" %>
+		</div>
+		<div class="actions one">
+			<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :promotions]) %></span>
+		</div>
+	</div>
+	<!-- /#tab -->
+	</div>
+	<!-- /#jQTabs -->
+</div>
+<!-- /.board -->

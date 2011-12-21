@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      click_reward: "クリック報酬"
+    attributes:
+      click_reward:
+        price : "クリック報酬額"

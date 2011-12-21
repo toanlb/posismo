@@ -1,0 +1,31 @@
+<% if params[:action] == "new" || params[:action] == "create" %>
+	<% actiontext = "登録" %>
+	<% else %>
+	<% actiontext = "更新" %>
+<% end %>
+<%= simple_form_for [:admin, @notice] do |f| %>
+	<% if @notice.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @notice.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<div class="input string optional">
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+		</div>
+		<div class="input string optional">
+			<%= f.label :description %>
+			<%= f.text_area :description %>
+		</div>
+		<div class="input string optional">
+			<%= f.label :target %>
+			<%= f.select :target, Notice::TARGETS %>
+		</div>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

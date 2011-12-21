@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      partner: "パートナー"
+    attributes:
+      site:
+        name: "サイト名"
+  partner:
+    sessions:
+      new:
+        sign_in: "ログイン"

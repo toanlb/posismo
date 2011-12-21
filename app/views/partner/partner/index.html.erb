@@ -1,0 +1,21 @@
+<div class="headline">
+	<h2>パートナー管理画面</h2>
+</div>
+<ul class="tit line top">
+	<li><%= link_to "サイト管理", partner_sites_path %></li>
+	<li><%= link_to "プロモ-ション検索", partner_promotions_path %></li>
+	<li><%= link_to "提携管理", partner_publishes_path %></li>
+	<li><%= link_to "注文管理", partner_orders_path %></li>
+	<li><%= link_to "請求管理", partner_payments_path %></li>
+	<li><%= link_to "統計情報", partner_statistics_path %></li>
+</ul>
+<div class="topics">
+	<marquee direction="up" scrollamount="30" scrolldelay="1500" behavior="scroll">
+	<% unless @notices.nil? %>
+	  <% @notices.each do |notice| %>
+	  <%=link_to notice.created_at.strftime("%Y/%m") + ": " + notice.title, client_notice_path(notice) %><br /><br />
+	  <% end %>
+	<% end %>
+	</marquee>
+</div>
+<p class="tit topics"><%= link_to "お知らせ一覧", partner_notices_path %></p>

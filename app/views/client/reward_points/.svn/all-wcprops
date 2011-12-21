@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points/new.html.erb
+END
+_reward_point.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points/_reward_point.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/reward_points/_form.html.erb
+END

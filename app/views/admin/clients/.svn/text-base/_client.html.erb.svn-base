@@ -1,0 +1,22 @@
+<%= content_tag_for :tr, client do %>
+	<td class="ids"><%= client.id %></td>
+	<td><%= client.login_id %></td>
+	<td><%= client.email %></td>
+	<td><%= link_to client.company_name, polymorphic_path([:admin, client])  %></td>
+	<td><%= client.site_name %></td>
+	<td><%= link_to truncate(client.site_url,{:length => 50}), client.site_url, { :target => "_blank" } %></td>
+	<td><%= client.consigned ? "はい" : "いいえ" %></td>
+	<td><%= Client::REGISTRATION_STATUSES[client.registration_status] %></td>
+	<% if current_admin.super_user? -%>
+	  <td>
+	  	<% client.admins.order('login_id').each do |admin| %>
+	  	  <%= admin.login_id %>(<%= admin.name %>)&nbsp;
+	  	<% end %>
+	  </td>
+	  <td><%= client.deleted? ? "はい" : "いいえ" %></td>
+	<% end -%>
+	<td><span class="clientMenu"><%= link_to "広告主業務", polymorphic_path([:top, :admin, client]) %></span></td>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:admin, client]) %></span></td>
+	<td><span class="edit"><%= link_to "変更", edit_polymorphic_path([:admin, client]) %></span></td>
+	<td><span class="del"><%= link_to "削除", polymorphic_path([:admin, client], :action => :delete) %></span></td>
+<% end %>	

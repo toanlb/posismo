@@ -1,0 +1,26 @@
+<h2>ASP詳細</h2>
+<canvas id="canvas"><!-- ASP情報詳細 --></canvas>
+<div class="actions cvTag head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client, @asp]) %></span>
+	<span class="delete"><%= link_to "削除", :action => "delete", :id => @asp[:id] %></span>
+</div>
+<div id="attributes">
+	<dl class="aspName">
+		<dt>名称</dt>
+		<dd><%= @asp[:name] %>&nbsp;</dd>
+	</dl>
+	<dl>
+		<dt>常に出力</dt>
+		<dd><%= @asp.always_extract? ? "する" : "しない" %></dd>
+	</dl>
+	<dl class="conversionTag">
+		<dt>コンバージョンタグ</dt>
+		<dd><%= raw h(@asp[:tag]).gsub(/\{([a-zA-Z0-9]+?)\}/){|matched| text_field_tag($1, matched, :disabled => true, :size => matched.length)}.gsub("\n", "<br />") %>&nbsp;</dd>
+	</dl>
+</div>
+<div class="actions cvTag">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client, @asp]) %></span>
+	<span class="delete"><%= link_to "削除", :action => "delete", :id => @asp[:id] %></span>
+</div>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/requests
+END
+admins_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/requests/admins_spec.rb
+END
+partners_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/requests/partners_spec.rb
+END
+publishes_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/requests/publishes_spec.rb
+END
+clients_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/requests/clients_spec.rb
+END

@@ -1,0 +1,5 @@
+<tr>
+	<td><%= reward_point.name %></td>
+	<td><span class="edit"><%= link_to "編集", edit_client_promotion_reward_point_path(@promotion, reward_point) %></span></td>
+	<td><span class="del"><%= link_to "削除", delete_client_promotion_reward_point_path(@promotion, reward_point) %></span></td>
+</tr>

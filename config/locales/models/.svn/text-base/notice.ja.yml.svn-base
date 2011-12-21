@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      notice: "お知らせ"
+    attributes:
+      notice:
+        title: "タイトル"
+        target: "対象"

@@ -1,0 +1,11 @@
+<p id="consigned_client">広告主 <span class="current_client_name"><%= link_to @client.company_name, polymorphic_path([:admin, @client]) %></span> 様の業務</p>
+<div id="subNavi">
+	<ul class="tit line">
+		<li class="current_tit"><%= link_to "広告主業務", polymorphic_path([:admin, @client], :action => :top) %></li>
+		<li id="line1"><%= link_to "プロモーション管理", polymorphic_path([:admin, @client, :promotions]) %></li>
+		<li id="line2"><%= link_to "提携管理", polymorphic_path([:admin, @client, :publishes]) %></li>
+		<li id="line3"><%= link_to "注文管理", polymorphic_path([:admin, @client, :orders]) %></li>
+		<li id="line4"><%= link_to "統計情報", polymorphic_path([:admin, @client, :statistics]) %></li>
+		<li id="line5"><%= link_to "ASP管理", polymorphic_path([:admin, @client, :asps]) %></li>
+	</ul>
+</div>

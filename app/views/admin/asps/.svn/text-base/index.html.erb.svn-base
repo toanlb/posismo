@@ -1,0 +1,29 @@
+<div class="headline">
+	<h2>asp一覧</h2>
+</div>
+<p class="tit new"><%= link_to "新規登録", new_polymorphic_path([:admin, @client, :asp]) %></p>
+<%= paginate @asps %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :tag %></th>
+		<th class="always"><%= sort_link @search, :always_extract %></th>
+		<th colspan="3"></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial =>  @asps %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @asps %>
+</div>

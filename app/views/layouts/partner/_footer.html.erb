@@ -1,0 +1,27 @@
+<!-- footer -->
+<footer id="footer">
+	<ul class="pageLink">
+		<li class="newWindow"><a href="http://www.itokuro.jp/documents/pp.html" target="_blank">個人情報保護方針</a></li>
+		<!-- <li><a href="recommended/index.html">推奨環境</a></li> -->
+		<!-- <li><a href="inquiry/index.html">お問い合わせ</a></li> -->
+	</ul>
+	<ul class="copy">
+		<li>Copyright&copy; 2PM All Rights Reserved</li>
+	</ul>
+	<% if partner_signed_in? -%><p class="last_login">前回のログイン
+		<span class="last_login_at"><%= current_partner.last_sign_in_at %></span>
+		@<span class="last_login_ip"><%= current_partner.last_sign_in_ip %></span>
+	</p><% end -%>
+</footer>
+<!--
+  ############################################################
+  ##########    ####  ############         ###             ###
+  ########   #######  ##########  #######  ###  #########  ###
+  ##        ########      ###############  ###  #########  ###
+  ########  ########  ###    ############  ###  #########  ###
+  ########  ########  ##################  ####  #########  ###
+  ########  ########  #################  #####  #########  ###
+  ########  ########  ###############  #######             ###
+  ############################################################
+-->
+<!-- /footer -->

@@ -1,0 +1,28 @@
+<h2>ワンタグ</h2>
+<canvas id="canvas"><!-- ワンタグ情報 --></canvas>
+<p class="<%= @client.asps.count > 0 ? "actions head" : "actions one head" %>">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, @promotion]) %></span>
+	<% if @client.asps.count > 0 %>
+	<span class="edit"><%= link_to "提携ASP編集", edit_polymorphic_path([:admin, @client, @promotion, :one_tags]) %></span>
+	<% end %>
+</p>
+<div id="attributes">
+	<dl>
+		<dt><%= label_tag "提携ASP" %></dt>
+		<dd id="conversionTag">
+			<ul>
+				<% if @asps.size < 1 %><li><span>選択されていません。</span></li>
+				<% end %>
+				<% @asps.each do |item| %>
+				<li><%= item.name %></li>
+				<% end %>
+			</ul>
+		</dd>
+	</dl>
+</div>
+<p class="<%= @client.asps.count > 0 ? "actions fot" : "actions one fot" %>">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, @promotion]) %></span>
+	<% if @client.asps.count > 0 %>
+	<span class="edit"><%= link_to "提携ASP編集", edit_polymorphic_path([:admin, @client, @promotion, :one_tags]) %></span>
+	<% end %>
+</p>

@@ -1,0 +1,25 @@
+<% case banner.type -%>
+<% when 'TextBanner' -%>
+<div class="banner attributes">
+	<p class="banner name"><%= banner.name %></p>
+	<p class="banner description"><%= simple_format(banner.description) %></p>
+	<p>
+		<%= raw banner_click_tag(@publish, banner.becomes(TextBanner)) %>
+	</p>
+	<pre>
+		<%= banner_click_tag(@publish, banner.becomes(TextBanner)) %>
+	</pre>
+</div>
+<% when 'ImageBanner' -%>
+<div class="banner attributes">
+	<p class="banner name"><%= banner.name %></p>
+	<p class="banner description"><%= simple_format(banner.description) %></p>
+	<p>	 
+		<a href=<%= banner.image.url %>><%= image_tag banner.becomes(ImageBanner).image.url, :size => banner.resize_image, :alt => "画像を見つけません。" %></a>
+	</p>
+	<p><%= banner.image_size %></p>
+	<pre>
+		<%= banner_click_tag(@publish, banner.becomes(ImageBanner)) %>
+	</pre>
+</div>
+<% end -%>

@@ -1,0 +1,7 @@
+<h2>注文情報編集</h2>
+<%= render 'form' %>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, @promotion]) %></span>
+	<span class="edit"><%= link_to "詳細", polymorphic_path([:admin, @client, @promotion]) %></span>
+</div>
+

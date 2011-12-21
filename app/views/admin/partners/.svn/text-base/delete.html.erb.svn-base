@@ -1,0 +1,29 @@
+<h2>パートナー削除確認</h2>
+<canvas id="canvas"><!-- パートナー削除確認 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :partners]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @partner]), :method => :delete %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :partner, :id %></dt>
+		<dd><%= @partner.id %></dd>
+		<dt><%= label :partner, :email %></dt>
+		<dd><%= @partner.email %></dd>
+		<dt><%= label :partner, :contract_type %></dt>
+		<dd><%= Partner::CONTRACT_TYPES[@partner.contract_type] %></dd>
+		<% if @partner.contract_type == Partner::CONTRACT_TYPES.index("法人") %>
+		<dt><%= label :partner, :company_name %></dt>
+		<dd><%= @partner.company_name %>(<%= @partner.company_name_kana %>)</dd>
+		<% end %>
+		<dt><%= label :partner, :manager_name %></dt>
+		<dd><%= @partner.manager_name %>(<%= @partner.manager_name_kana %>)</dd>
+		<dt><%= label :partner, :registration_status %></dt>
+		<dd><%= @partner.registration_status %></dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :partners]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @partner]), :method => :delete %></span>
+</div>

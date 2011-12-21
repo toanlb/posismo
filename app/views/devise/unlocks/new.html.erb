@@ -1,0 +1,11 @@
+<h2><%= t(".resend_instructions") %></h2>
+<canvas id="canvas"><!-- unlocks --></canvas>
+<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+	<%= devise_error_messages! %>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<%= f.submit t(".resend_instructions") %>
+<% end %>
+<div class="actions one">
+	<span class="back"><%= link_to '戻る', new_session_path(resource_name) %></span>
+</div>

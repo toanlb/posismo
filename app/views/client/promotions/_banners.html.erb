@@ -1,0 +1,83 @@
+<h3><%= @promotion.name %></h3>
+<p class="tit new"><%= link_to "バナー登録", new_polymorphic_path([:client, @promotion, :banner]) %></p>
+<% content_for :banners_table do %>
+	<script>	
+		$(document).ready(function(){
+		$("#myTableBanner").tablesorter();
+		});
+	</script>
+<script>
+function delete_confirm(){
+	return　confirm("本当に削除してもよろしいですか？");
+}
+</script>
+	<table class="autopagerize_page_element tablesorter inTab" id="myTableBanner">
+		<thead>
+			<tr>
+				<th class="ids"><%= sort_link @search_banners, :id, {:anchor => "tabBanner"}  %></th>
+				<th><%= sort_link @search_banners, :type, {:anchor => "tabBanner"}  %></th>
+				<th><%= sort_link @search_banners, :name, "バナー", {:anchor => "tabBanner"} %></th>
+				<th><%= sort_link @search_banners, :click_rate, {:anchor => "tabBanner"}  %></th>
+				<th><%= sort_link @search_banners, :cv_rate, {:anchor => "tabBanner"}  %></a></th>
+				<th colspan="2" class="thDel">&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @search_banners.each do |banner| %>
+				<tr>
+					<td class="ids"><%= banner.id %></td>
+					<td>
+						<% case banner.type	-%>
+						<% when 'ImageBanner' -%>
+						<%= "画像" %>
+						<% when 'TextBanner' -%>
+						<%= "テキスト" %>
+						<% end -%>
+					</td>
+					<td>
+						<div class="attributes">
+							<dl>
+								<dt class="banner name">バナー名</dt>
+								<dd><%= banner.name %></dd>
+							</dl>
+							<dl>
+								<dt class="banner description">バナー詳細</dt>
+								<p><%= simple_format(banner.description) %></p>
+								</dd>
+							</dl>
+							<% case banner.type -%>
+							<% when 'ImageBanner' -%>
+							<dl class="thumbnail">
+								<dt></dt>
+								<dd><a href=<%= banner.image.url %>><%= image_tag banner.image.url, :size => banner.resize_image, :alt => "画像が見つかりません。" %></a></dd>
+							</dl>
+							<dl>
+								<dt>画像サイズ</dt>
+								<dd><%= banner.image_size %></dd>
+							</dl>
+							<% when 'TextBanner' -%>
+							<dl>
+								<dt></dt>
+								<dd><p><%= banner.text %></p></dd>
+							</dl>
+							<% end -%>
+						</div> 
+					</td>
+					<td class="banner click_rate"> </td>
+					<td class="banner cv_rate"> </td>
+					<td>
+						<span class="edit">
+							<%= link_to "編集", edit_polymorphic_path([:client, @promotion, banner.becomes(Banner)]) %>
+						</span>
+					</td>
+					<td>
+						<span class="del">
+							<%= link_to "削除", polymorphic_path([:client, @promotion, banner.becomes(Banner)], :action => :delete), {:onclick => 'return delete_confirm();'} %>
+						</span>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end -%>
+<%= yield :banners_table %>

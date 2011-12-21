@@ -1,0 +1,19 @@
+<%= simple_form_for [:admin, current_admin],
+	:url => [:admin, :account], 
+	:html => { :method => :post,
+	:id => "edit_admin_account" } do |f| %>
+<% if @admin.errors.any? -%>
+<div id="error_explanation">
+	<ul><% @admin.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li><% end %>
+	</ul>
+</div><% end -%>
+<div id="attributes">
+    <%= f.input :name %>
+	<%= f.input :email %>
+    <%= f.input :password %>
+	<%= f.input :password_confirmation %>
+	<%= f.submit "更新" %>
+</div>
+<div class="actions one">
+</div><% end %>

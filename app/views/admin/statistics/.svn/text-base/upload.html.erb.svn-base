@@ -1,0 +1,11 @@
+<h2>統計アップロード</h2>
+<canvas id="canvas"><!-- 統計アップロード --></canvas>
+<%= simple_form_for([:admin, @client, @statistic], :url =>{:action => :uploaded}, :html => {:multipart => true}) do |f| %>
+<div id="attributes">
+	<%= f.file_field :file %>
+	<%= f.submit :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+</div>
+<% end %>
+<div class="actions one">
+	<%= link_to "戻る", admin_clients_path %>
+</div>

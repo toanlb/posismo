@@ -1,0 +1,26 @@
+<div class="headline">
+	<h2>お知らせ一覧</h2>
+</div>
+<%= paginate @notices %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th><%= sort_link @search, :title %></th>
+		<th><%= sort_link @search, :description %></th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @notices %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @notices %>
+</div>

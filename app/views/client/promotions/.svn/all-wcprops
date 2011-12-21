@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions
+END
+_promotion.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/_promotion.html.erb
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/edit.html.erb
+END
+_rewards.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/_rewards.html.erb
+END
+_banners.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/_banners.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/new.html.erb
+END
+uploaded.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/uploaded.html.erb
+END
+conversion_tag.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/conversion_tag.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/_form.html.erb
+END
+delete.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/delete.html.erb
+END
+_banner.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/_banner.html.erb
+END
+upload.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/promotions/upload.html.erb
+END

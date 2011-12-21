@@ -1,0 +1,20 @@
+<h2>パスワードをお忘れですか？</h2>
+<canvas id="canvas"><!-- パスワードをお忘れですか？ --></canvas>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+<div id="passBox">
+	<%= devise_error_messages! %>
+	<div class="input string required">
+		<%= f.label :login_id %>
+		<%= f.text_field :login_id %>
+	</div>
+	<div class="input string password optional">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+</div>
+	<%= f.submit "送信して下さい" %>
+<% end %>
+<div class="actions one">
+	<span class="back"><%= link_to '戻る', new_session_path(resource_name) %></span>
+</div>
+<%= render :partial => "devise/shared/links" %>

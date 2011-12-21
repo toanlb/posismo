@@ -1,0 +1,9 @@
+<h1>クライアント編集画面</h1>
+<canvas id="canvas"><!-- クライアント編集画面 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", client_account_path %></span>
+</div>
+<%= render 'form' %>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", client_account_path %></span>
+</div>

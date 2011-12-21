@@ -1,0 +1,17 @@
+<div id="session_link">
+	<ul id="session_links">
+		<%- if controller_name != 'sessions' %>
+		<li id="session_link_signin"><%= link_to t(".sign_in"), new_session_path(resource_name) %></li><% end -%>
+		<%- if controller_name != 'registrations' %>
+		<% if ["/partner/login","/partner/password/new","/partner/unlock/new"].include? request.fullpath %><%# パートナーだけ新規作成できます。%>
+		<li id="session_link_signup"><%= link_to t(".sign_up"), new_registration_path(resource_name) %></li><% end %><% end -%>
+		<%- unless flash[:alert].nil? && controller_name == 'sessions'%>
+		<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+		<li id="session_link_signin"><%= link_to t(".forgot_password"), new_password_path(resource_name) %></li><% end -%>
+		<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+		<li id="session_link_confirmation"><%= link_to t(".confirmation"), new_confirmation_path(resource_name) %></li><% end -%>
+		<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+		<li id="session_link_unlock"><%= link_to t(".unlock"), new_unlock_path(resource_name) %></li><% end -%>
+		<% end -%>
+	</ul>
+</div>

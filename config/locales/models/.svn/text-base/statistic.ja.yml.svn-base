@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      statistic: "集計"
+    attributes:
+      statistic:
+        sum_impression_count: "表示回数"
+        sum_click_count: "クリック数"
+        sum_click_valid_count: "有効クリック数"
+        sum_click_rate: "クリック率"
+        sum_final_click_reward: "クリック報酬"
+        sum_conversion_rate: "コンバージョン率"
+        sum_plan_order_count: "注文数"
+        sum_final_order_count: "注文確定数"
+        sum_cancel_order_count: "注文キャンセル数"
+        sum_plan_order_reward: "予定報酬"
+        sum_plan_order_net_reward: "NET予定報酬"
+        sum_final_order_reward: "確定報酬"
+        sum_final_order_net_reward: "NET確定報酬"
+        sum_final_all_reward: "全確定報酬"
+        sum_final_all_net_reward: "NET全確定報酬"

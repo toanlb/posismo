@@ -1,0 +1,33 @@
+<div class="headline">
+	<h2>サイト一覧</h2>
+</div>
+<%= simple_form_for [:partner, @search], :html => {:method => :get } do |f| %>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('site_search').action = 'sites/csv'",:id => "csv_download" %>
+<% end %>
+<p class="tit new"><%= link_to "新規作成", new_polymorphic_path([:partner, :site]) %></p>
+<%= paginate @sites %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :url %></th>
+		<th><%= sort_link @search, :description %></th>
+		<th><%= sort_link @search, :keywords %></th>
+		<th class="delTh" colspan="3">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+<%= render :partial => @sites %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @sites %>
+</div>

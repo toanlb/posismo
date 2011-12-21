@@ -1,0 +1,11 @@
+<h1>プロモーション情報編集</h1>
+<canvas id="canvas"><!-- プロモーション情報編集 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:client, :promotions]) %></span>
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:client, @promotion]) %></span>
+</div>
+<%= render 'form' %>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:client, :promotions]) %></span>
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:client, @promotion]) %></span>
+</div>

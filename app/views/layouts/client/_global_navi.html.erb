@@ -1,0 +1,23 @@
+<% if client_signed_in? -%><%= content_for :global_navi do -%><!-- nav -->
+<nav id="globalnavigation">
+	<ul id="navigationmenu">
+		<% unless ["/client/login","/client/unlock/new","/client/password/new"].include? request.fullpath %>
+			<li id="top"><%= link_to client_root_path, :id => "navi1" do -%><% current = current_page?(:controller => "client/client", :action => :index) ? "here" : "off" -%>TOP<% end -%></li>
+			<% unless current_client.consigned %>
+			<li><%= link_to client_promotions_path, :id => "navi2" do -%><% current = current_page?(:controller => "client/promotions") ? "here" : "off" -%>プロモ-ション管理<% end -%>
+			<% end %>
+				<ul><!--
+					<li><%= link_to client_promotions_path do -%>広告を管理する<% end -%></li -->
+					<li><%= link_to new_client_promotion_path do -%>広告を登録する<% end -%></li>
+				</ul>
+			</li>
+			<li><%= link_to client_publishes_path, :id => "navi4" do -%><% current = current_page?(:controller => "client/publishes") ? "here" : "off" -%>提携管理<% end -%></li>
+			<li><%= link_to client_orders_path, :id => "navi3" do -%><% current = current_page?(:controller => "client/orders") ? "here" : "off" -%>注文管理<% end -%></li>
+			<% unless current_client.consigned %>
+			<li><%= link_to client_payments_path, :id => "navi7" do -%><% current = current_page?(:controller => "client/payments") ? "here" : "off" -%>請求管理<% end -%></li>
+			<% end %>
+			<li><%= link_to client_statistics_path, :id => "navi5" do -%><% current = current_page?(:controller => "client/client", :actions => [:statistics]) ? "here" : "off" -%>統計情報<% end -%></li>
+		<% end %>
+	</ul>
+</nav>
+<!-- /nav --><% end -%><% end -%>

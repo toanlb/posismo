@@ -1,0 +1,30 @@
+<div class="headline">
+	<h2>管理者一覧</h2>
+</div>
+<p class="tit new"><%= link_to "新規登録", new_polymorphic_path([:admin, :admin]) %></p>
+<%= paginate @admins %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :login_id %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :email %></th>
+		<th><%= sort_link @search, :super_user %></th>
+		<th class="thDel" colspan="4"><%= sort_link @search, :deleted %></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @admins %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @admins %>
+</div>

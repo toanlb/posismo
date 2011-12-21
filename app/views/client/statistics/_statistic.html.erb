@@ -1,0 +1,24 @@
+<%= content_tag_for :tr, statistic do %>
+	<% if statistic.has_attribute?(:created_on) %>
+	<td><%= statistic.created_on.strftime("%Y年%m月%d日") %></td>
+	<% else %>
+	<td><%= statistic.year_created_on %>年
+		<%= statistic.month_created_on %>月
+	</td>
+	<% end %>
+	<td><%= statistic.sum_impression_count %></td>
+	<td><%= statistic.sum_click_count %></td>
+	<td><%= statistic.sum_click_valid_count %></td>
+	<td><%= statistic.sum_click_rate*100 %>%</td>
+	<td><%= statistic.sum_final_click_reward %></td>
+	<td><%= statistic.sum_conversion_rate*100 %>%</td>
+	<td><%= statistic.sum_plan_order_count %></td>
+	<td><%= statistic.sum_final_order_count %></td>
+	<td><%= statistic.sum_cancel_order_count %></td>
+	<% unless current_client.consigned %>
+	<td><%= statistic.sum_plan_order_reward %></td>
+	<td><%= statistic.sum_final_order_reward %></td>
+	<td><%= statistic.sum_final_all_reward %></td>
+	<% end %>
+	<td>&nbsp;</td>
+<% end %>

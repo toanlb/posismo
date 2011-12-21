@@ -1,0 +1,93 @@
+	<% if params[:action] == "new" || params[:action] == "create" %>
+		<% actiontext = "登録" %>
+		<% else %>
+		<% actiontext = "更新" %>
+	<% end %>
+	<%= simple_form_for [:client, @promotion, @banner.becomes(Banner)], :html => { :multipart => true } do |f| -%>
+		<%= f.input :type, :collection => Banner::TYPES, :as =>
+		:radio, :required => true , :default => 'TextBanner' %>
+
+		<script type="text/javascript">
+			function toggleBannerFields(event) {
+				switch($("input[name='banner[type]']:checked").attr('value')) {
+				case "TextBanner":
+					$("#text_banner_fields :input").attr("required", "required");
+					$("#image_banner_fields :input").removeAttr("required");
+					$("#image_banner_fields").hide();
+					$("#text_banner_fields").show();
+					break;
+				case "ImageBanner":
+					$("#image_banner_fields :input").attr("required", "required");
+					$("#text_banner_fields :input").removeAttr("required");
+					$("#text_banner_fields").hide();
+					$("#image_banner_fields").show();
+					break;
+				}
+			}
+			$("input[name='banner[type]']").change(toggleBannerFields);
+			$(document).ready(toggleBannerFields);
+		</script>
+		<%= f.input :name, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='登録する'"} %>
+		<%= f.input :description, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='登録する'"} %>
+
+		
+	<fieldset id="text_banner_fields">
+		<legend>テキストバナー</legend>
+		<%= f.input :text, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='登録する'"} %>
+	</fieldset>
+
+	<fieldset id="image_banner_fields">
+		<legend>画像バナー</legend>
+		<%= f.input :image, :required => true, :as => :file, :input_html => {:onclick => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='登録する'"} %>
+	</fieldset>
+	<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit()"%>
+<% end -%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#banner_image").uploadify!!({
+			"uploader": "/uploadify/uploadify.swf",
+			"script": "<%= polymorphic_path([:admin, @client, @promotion, :banners]) %>",
+			"fileDataName": "banner[image]",
+			"multi": true,
+			"cancelImg": "/uploadify/cancel.png",
+			"auto": true,
+			"onComplete": onUploadComplete
+		});
+	});
+
+	function onUploadComplete(e, id, obj, response, data) {
+	//$("img").replace(response);
+		alert(response);
+	}
+</script>
+
+<!--
+<script type="text/javascript">
+	var postData = {
+		//'_session_id': '<%= cookies[:_session_id] %>',
+	};
+	var uploadTo = '<%= polymorphic_path([:admin, @client, @promotion, :banners]) %>'
+	$('#banner_image').uploadify({
+	'swf'				: '/uploadify/uploadify.swf',
+	'uploader'			: uploadTo,
+	'auto'				: true,
+	//
+	'debug'				: true,
+	'buttonText'		: 'Select Files',
+	'width'				: 120,
+	'height'			: 30, 
+	'cancelImage'		: '/uploadify/uploadify-cancel.png', 
+	'checkExisting'		: null, 
+	'fileSizeLimit'		: 5*1024*1024, // 5M Bytes
+	'fileTypeDesc'		: '画像ファイル', 
+	'fileTypeExts'		: '*.gif;*.jpg;*.png:*.jpeg', 
+	'method'			: 'post', 
+	'multi'				: true, 
+	'queueID'			: false, 
+	'queueSizeLimit'	: 999, 
+	'removeCompleted'	: false, 
+	'postData'			: postData, 
+	'progressData'		: 'all'
+	});
+</script>
+-->

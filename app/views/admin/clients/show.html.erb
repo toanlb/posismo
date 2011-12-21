@@ -1,0 +1,79 @@
+<h2>広告主詳細情報</h2>
+<canvas id="canvas"><!-- 広告主詳細情報 --></canvas>
+<div class="actions forOnetag head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :clients]) %></span>
+		<span class="account_management"><%= link_to "担当者設定", edit_admin_client_account_managements_path(@client)  %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client]) %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :client, :id %></dt>
+		<dd><%= @client.id %></dd>
+		<dt><%= label :client, :login_id %></dt>
+		<dd><%= @client.login_id %></dd>
+		<dt><%= label :client, :email %></dt>
+		<dd><%= @client.email %></dd>
+		<dt><%= label :client,  :company_name %></dt>
+		<dd><%= @client.company_name %></dd>
+		<dt><%= label :client, :site_name %></dt>
+		<dd><%= @client.site_name %></dd>
+		<dt><%= label :client, :site_url %></dt>
+		<dd><%= @client.site_url %></dd>
+		<dt><%= label :client, :company_name %></dt>
+		<dd><%= @client.company_name %> (<%= @client.company_name_kana %>)</dd>
+		<dt><%= label :client, :contractor_department %></dt>
+		<dd><%= @client.contractor_department %></dd>
+		<dt><%= label :client, :contractor_position %></dt>
+		<dd><%= @client.contractor_position %></dd>
+		<dt><%= label :client, :contractor_name %></dt>
+		<dd><%= @client.contractor_name %> (<%= @client.contractor_name_kana %>) </dd>
+		<dt><%= label :client, :manager_department %></dt>
+		<dd><%= @client.manager_department %></dd>
+		<dt><%= label :client, :manager_position %></dt>
+		<dd><%= @client.manager_position %></dd>
+		<dt><%= label :client, :manager_name %></dt>
+		<dd><%= @client.manager_name %> (<%= @client.manager_name_kana %>)</dd>
+		<dt><%= label :client, :postal_code %></dt>
+		<dd><%= @client.postal_code %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :client, :address %></dt>
+		<dd><%= @client.address %>&nbsp;</dd>
+	</dl>
+	<dl>
+		<dt><%= label :client, :tel %></dt>
+		<dd><%= @client.tel %></dd>
+		<dt><%= label :client, :consigned %></dt>
+		<dd><%= @client.consigned? ? "はい" : "いいえ" %></dd>
+		<dt><%= label :client, :registration_status  %></dt>
+		<dd><%= Client::REGISTRATION_STATUSES[@client.registration_status] %></dd>
+		<% if current_admin.super_user? -%>
+		<dt><%= label :client, :deleted  %></dt>
+		<dd><%= @client.deleted? ? "はい" : "いいえ" %></dd>
+		<% end %>
+	</dl>
+	<dl class="aspName"><dt><label>担当管理者</label>
+		<% if @client.admins.nil? %>
+		<dd><%= "なし" %></dd>
+		<% else %>
+		<dd><% @client.admins.order(:login_id).each do |admin| %>
+		<%= admin.login_id %>(<%= admin.name %>);
+		<% end %>&nbsp;</dd>
+	   <% end -%>
+	</dl>
+	<dl class="conversionTag">
+		<dt>コンバージョンタグ<br><span>※右のHTMLコードを<br>コンバージョン・ページにある<br>&lt;body&gt;タグと&lt;/body&gt;タグの間<br>に挿入してください。</span></dt>
+		<dd>
+			&lt;script type="text/javascript" src="http://<%= BACKEND_HOST %>/order?clid=<%= @client.id %>"&gt;&lt;/script&gt;<br />
+			&lt;script type="text/javascript"&gt;<br />
+			var asp = new getAspUrl<%= @client.id %>();<br />
+			document.write(asp.tag);<br />
+			&lt;/script&gt;<br />&nbsp;
+		</dd>
+	</dl>
+</div>
+<div class="actions forOnetag">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :clients]) %></span>
+	<span class="account_management"><%= link_to "担当者設定", edit_admin_client_account_managements_path(@client) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client]) %></span>
+</div>

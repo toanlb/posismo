@@ -1,0 +1,58 @@
+<h2>プロモーションアップロード</h2>
+<canvas id="canvas"><!-- プロモーションアップロード --></canvas>
+<% if @error_promotions.any? %>
+<span>下記データは正しく保存されませんでした。</span>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids">ID</th>
+		<th>プロモーション名</th>
+		<th>遷移先URL</th>
+	</tr>
+</thead>
+<tbody>
+	<% @error_promotions.each do |promotion| %>
+		<% if promotion.errors.any? %>
+			<% promotion.errors.full_messages.each do |msg| %>
+				<tr>
+					<td colspan="3"><%= msg %></td>
+				</tr>
+			<% end %>
+		<% end %>
+		<tr>
+			<td class="ids" <%= raw('style="background-color:#cc0000; font-weight: bold"') if promotion.errors.has_key?(:id) %>>
+				<%= promotion.id %>
+			</td>
+			<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if promotion.errors.has_key?(:name) %>>
+				<%= promotion.name %>
+			</td>
+			<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if promotion.errors.has_key?(:url) %>>
+				<%= promotion.url %>
+			</td>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+<% end %>
+<% if @promotions.any? %>
+<span>下記データは正しく保存されました</span>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+	<thead>
+		<tr>
+			<th class="ids">ID</th>
+			<th>プロモーション名</th>
+			<th>サイト名</th>
+			<th>承認状態</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @promotions.each do |promotion| %>
+			<tr>
+				<td class="ids"><%= promotion.id %></td>
+				<td><%= promotion.name %></td>
+				<td><%= promotion.url %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>

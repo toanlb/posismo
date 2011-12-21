@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments
+END
+test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments/test.rb
+END
+development.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments/development.rb
+END
+production.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments/production.rb
+END
+design.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments/design.rb
+END
+staging.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environments/staging.rb
+END

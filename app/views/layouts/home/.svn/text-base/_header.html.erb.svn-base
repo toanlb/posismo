@@ -1,0 +1,5 @@
+<!-- header -->
+<header id="header">
+	<h1><%= link_to root_path do %><%= image_tag 'common/logo.gif', :size => "130x42", :alt => '2PM Premier Media Pertners' %><% end %></h1>
+</header>
+<!-- /header -->

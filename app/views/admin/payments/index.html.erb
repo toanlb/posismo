@@ -1,0 +1,57 @@
+<script src="/javascripts/jquery.flickable.js"></script>
+<div class="headline">
+	<h2>請求管理</h2>
+</div>
+<script>
+$(function() {
+	$('#search_created_on_gteq').datetime({
+		americanMode: true,
+	});
+	$('#search_created_on_lteq').datetime({
+		americanMode: true,
+	});
+});
+</script>
+
+<div id="daily_search">
+	<%= simple_form_for [:admin, @search],:url => admin_payments_path do |f| %>
+		<% unless @clients.nil?  %>
+		<%= f.label :login_id, "クライアントID" %>
+		<%= f.select :client_id_eq, @clients.collect{|p| [p.login_id, p.id]}, :include_blank => true %>
+		<% end %>
+		<%= f.label :created_on, "日時" %>
+		<%= f.text_field :created_on_eq %>
+		<%= f.submit "検索" %>
+	<% end %>
+</div>
+<%= paginate @payments %>
+<script>
+	$(function() {
+	$('#flickable1').flickable();
+	});
+</script>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th><%= sort_link @search, :client_id %></th>
+		<th><%= sort_link @search, :company_name %></th>
+		<th><%= sort_link @search, :manager_name %></th>
+		<th><%= sort_link @search, :sum_final_all_reward %></th>
+		<th>パートナー合計数</th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => "payment", :collection => @payments %>
+</tbody>
+</table>
+
+<div class="pagination fot">
+	<%= paginate @payments %>
+</div>

@@ -1,0 +1,16 @@
+<h2>提携解除確認</h2>
+<canvas id="canvas"><!-- 提携解除確認 --></canvas>
+<div class="actions head">
+	<span class="delete"><%= button_to "提携解除", polymorphic_path([:partner, @publish]), :method => :delete %></span>
+</div>
+
+<div id="attributes" class="tieUpDetails">
+	<dl>
+		<dt><%= label :publish, :approval_status %></dt>
+		<dd><%= @publish.approval_status %></dd>
+	</dl>
+</div>
+<p class="naviBar">本当に提携解除してもよろしいですか？</p>
+<div class="actions">
+	<span class="delete"><%= button_to "提携解除", polymorphic_path([:partner, @publish]), :method => :delete %></span>
+</div>

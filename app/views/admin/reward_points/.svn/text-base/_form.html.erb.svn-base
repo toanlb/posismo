@@ -1,0 +1,15 @@
+<%= simple_form_for [:admin, @client, @promotion, @reward_point] do |f| %>
+	<% if @reward_point.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @reward_point.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :name, :label => "成果地点名" %>
+		<%= f.submit :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

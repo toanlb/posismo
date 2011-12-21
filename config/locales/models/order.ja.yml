@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      order: "注文"
+    attributes:
+      order:
+        id: "注文ID"
+        promotion_name: "プロモーション名"
+        name: "サイト名/ASP名"
+        banner_name: "バナー名"
+        publish_id: "pid"
+        banner_id: "bid"
+        remote_address: "リモートアドレス"
+        referer: "成果発生元URL"
+        metadata: "備考"
+        price: "価格"
+        gross_price: "グロス価格"
+        net_price: "ネット価格"
+        gross_rate: "グロス料率"
+        net_rate: "ネット料率"
+        add_data: "ptサイトデータ"
+        created_at: "注文時刻"
+        updated_at: "確定日"
+        starts_at: "開始時刻"
+        ends_at: "終了時刻"
+        click_updated_at: "クリック時刻"
+        decide_date: "確定日"

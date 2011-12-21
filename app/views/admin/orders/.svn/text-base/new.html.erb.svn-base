@@ -1,0 +1,8 @@
+<h2>注文新規作成</h2>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", admin_client_orders_path %></span>
+</div>
+<%= render 'form' %>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", admin_client_orders_path %></span>
+</div>

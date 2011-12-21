@@ -1,0 +1,57 @@
+<h2>アカウント情報</h2>
+<canvas id="canvas"><!-- アカウント情報 --></canvas>
+<div id="attributes">
+	<dl>
+		<dt><%= label :partner, :login_id %></dt>
+		<dd><%= @partner.login_id %></dd>
+		<dt><%= label :partner, :email %></dt>
+		<dd><%= @partner.email %></dd>
+		<dt><%= label :partner, :contract_type %></dt>
+		<dd><%= Partner::CONTRACT_TYPES[@partner.contract_type] %></dd>
+		<% if @partner.contract_type == Partner::CONTRACT_TYPES.index("法人") %>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :partner, :company_name %></dt>
+		<dd><%= @partner.company_name %>(<%= @partner.company_name_kana %>)</dd>
+	</dl>
+	<% end %>
+	<dl class="aspName">
+		<dt><%= label :partner, :manager_name %></dt>
+		<dd><%= @partner.manager_name %>(<%= @partner.manager_name_kana %>)</dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :partner, :address %></dt>
+		<dd><%= @partner.postal_code %> <%= @partner.address %></dd>
+	</dl>
+	<dl>
+		<dt><%= label :partner, :tel %></dt>
+		<dd><%= @partner.tel %></dd>
+		<dt><%= label :partner, :payment_type %></dt>
+		<dd><%= Partner::PAYMENT_TYPES[@partner.payment_type] %></dd>
+		<dt><%= label :partner, :bank_name %></dt>
+		<dd><%= @partner.bank_name %></dd>
+		<dt><%= label :partner, :bank_code %></dt>
+		<dd><%= @partner.bank_code %></dd>
+		<dt><%= label :partner, :branch_name %></dt>
+		<dd><%= @partner.branch_name %></dd>
+		<dt><%= label :partner, :branch_code %></dt>
+		<dd><%= @partner.branch_code %></dd>
+		<dt><%= label :partner, :account_type %></dt>	
+		<dd><%= @partner.account_type %></dd>
+		<dt><%= label :partner, :account_name %></dt>
+		<dd><%= @partner.account_name %></dd>
+		<dt><%= label :partner, :jpbank_account_number %></dt>
+		<dd><%= @partner.jpbank_account_number %></dd>
+		<dt><%= label :partner, :jpbank_account_name %></dt>
+		<dd><%= @partner.jpbank_account_name %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :partner, :memo %></dt>    
+		<dd><%= @partner.memo %>&nbsp;</dd>
+	</dl>
+</div>
+<div class="actions forOnetag">
+	<span class="back"><%= link_to '戻る', partner_root_path %></span>
+	<span class="retire"><%= link_to "退会画面", partner_account_preresign_path %></span>
+    <span class="edit"><%= link_to "編集", partner_account_edit_path %></span>
+</div>

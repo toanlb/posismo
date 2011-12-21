@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/statistics
+END
+_statistic.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/statistics/_statistic.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/statistics/index.html.erb
+END

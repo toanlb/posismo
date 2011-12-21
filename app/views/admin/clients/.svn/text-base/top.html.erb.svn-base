@@ -1,0 +1,10 @@
+	<div class="headline">
+		<h2>広告主業務</h2>
+	</div>
+	<ul class="tit line top">
+		<li id="toAdmin"><%= link_to "プロモ-ション", polymorphic_path([:admin, @client, :promotions]) %></li>
+		<li><%= link_to "提携管理", polymorphic_path([:admin, @client, :publishes]) %></li>
+		<li><%= link_to "注文管理", polymorphic_path([:admin, @client, :orders]) %></li>
+		<li><%= link_to "統計情報", polymorphic_path([:admin, @client, :statistics]) %></li>
+		<li><%= link_to "ASP管理", polymorphic_path([:admin, @client, :asps]) %></li>
+	</ul>

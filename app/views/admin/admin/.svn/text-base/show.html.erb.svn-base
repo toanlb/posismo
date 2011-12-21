@@ -1,0 +1,21 @@
+<h2>アカウント情報</h2>
+<canvas id="canvas"><!-- アカウント情報 --></canvas>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", admin_root_path %></span>
+	<span class="edit"><%= link_to "編集", admin_account_edit_path %></span>
+</div>
+<div id="attributes">
+<%= div_for @admin do |a| %>
+	<dl>
+		<dt><%= label :admin, :login_id %></dt>
+		<dd><%= @admin.login_id %></dd>
+		<dt><%= label :admin, :name %></dt>
+		<dd><%= @admin.name %></dd>
+		<dt><%= label :admin, :email %></dt>
+		<dd><%= @admin.email %></dd>
+	</dl><%end %>
+</div>
+<div class="actions fot">
+	<span class="back"><%= link_to "戻る", admin_root_path %></span>
+	<span class="edit"><%= link_to "編集", admin_account_edit_path %></span>
+</div>

@@ -1,0 +1,15 @@
+<h2>退会処理</h2>
+<canvas id="canvas"><!-- 退会処理 --></canvas>
+<%= form_tag({:controller => 'partner', :action => 'resign'}) do %>
+	<div id="attributes">
+		<div class="input string password optional">
+			<%= label :partner, :password %>
+			<%= password_field :partner, :password %>
+		</div>
+		<%= submit_tag '退会' %>
+		<p class="notice">パスワードを入力して、退会を押下すると退会処理が行われます。<br>
+		退会処理が終わりますと、登録しているアドレスにメールが送信<br>
+		されますので、ご確認下さい。なお、退会された場合には、管理画面の<br>
+		ログイン権限はなくなり、支払われていないパートナー報酬は全て無効となります。</p>
+	</div>
+<%end%>

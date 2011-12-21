@@ -1,0 +1,34 @@
+<h2>注文削除確認</h2>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :orders]) %></span>
+	<%= button_to "削除", polymorphic_path([:admin, @client, @order]), :method => :delete %>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :order, :metadata %></dt>
+		<dd><%= @order.metadata %></dd>
+		<dt><%= label :order,  :status_flag %></dt>
+		<dd><%= @order.status_flag %></dd>
+		<dt><%= label :order, :price %></dt>
+		<dd><%= @order.price %></dd>
+		<dt><%= label :order, :gross_price  %></dt>
+		<dd><%= @order.gross_price %></dd>
+		<dt><%= label :order, :net_price %></dt>
+		<dd><%= @order.net_price %></dd>
+		<dt><%= label :order, :gross_rate  %></dt>
+		<dd><%= @order.gross_rate %></dd>
+		<dt><%= label :order, :net_rate %></dt>
+		<dd><%= @order.net_rate %></dd>
+		<dt><%= label :order, :add  %></dt>
+		<dd><%= @order.add %></dd>
+		<dt><%= label :order, :publish_promotion_name  %></dt>
+		<dd><%= @order.publish.promotion.name %></dd>
+		<dt><%= label :order, :publish_site_name %></dt>
+		<dd><%= @order.publish.site.name %></dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :orders]) %></span>
+	<%= button_to "削除", polymorphic_path([:admin, @client, @order]), :method => :delete %>
+</div>

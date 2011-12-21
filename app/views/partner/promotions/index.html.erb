@@ -1,0 +1,39 @@
+<div class="headline">
+	<h2>プロモーション検索</h2>
+</div>
+<%= simple_form_for [:partner, @search] do |f| %>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('promotion_search').action = 'promotions/csv'",:id => "csv_download" %>
+<% end %>
+<div id="promotion_search">
+	<%= form_for [:partner, @search] do |f| %>
+	<%= f.label :name, "プロモーション名" %>
+	<%= f.text_field :name_contains %>
+	<%= f.submit "検索" %>
+	<% end %>
+</div>
+<%= paginate @promotions %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :url %></th>
+		<th><%= sort_link @search, :description %></th>
+		<th><%= sort_link @search, "click_reward_price" %></th>
+		<th><%= sort_link @search, "client_company_name" %></th>
+		<th class="space">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+<%= render :partial => @promotions %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @promotions %>
+</div>

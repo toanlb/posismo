@@ -1,0 +1,54 @@
+<h2>広告主削除確認</h2>
+<canvas id="canvas"><!-- 広告主削除確認 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :clients]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client]), :method => :delete %></span>
+</div>
+
+<div id="attributes">
+	<dl>
+		<dt><%= label :client, :id %></dt>
+		<dd><%= @client.id %></dd>
+		<dt><%= label :client, :email %></dt>
+		<dd><%= @client.email %></dd>
+		<dt><%= label :client,  :company_name %></dt>
+		<dd><%= @client.company_name %></dd>
+		<dt><%= label :client, :site_name %></dt>
+		<dd><%= @client.site_name %></dd>
+		<dt><%= label :client, :site_url %></dt>
+		<dd><%= @client.site_url %></dd>
+		<dt><%= label :client, :company_name %></dt>
+		<dd><%= @client.company_name %> (<%= @client.company_name_kana %>)</dd>
+		<dt><%= label :client, :contractor_department %></dt>
+		<dd><%= @client.contractor_department %></dd>
+		<dt><%= label :client, :contractor_position %></dt>
+		<dd><%= @client.contractor_position %></dd>
+		<dt><%= label :client, :contractor_name %></dt>
+		<dd><%= @client.contractor_name %> (<%= @client.contractor_name_kana %>) </dd>
+		<dt><%= label :client, :manager_department %></dt>
+		<dd><%= @client.manager_department %></dd>
+		<dt><%= label :client, :manager_position %></dt>
+		<dd><%= @client.manager_position %></dd>
+		<dt><%= label :client, :manager_name %></dt>
+		<dd><%= @client.manager_name %> (<%= @client.manager_name_kana %>)</dd>
+		<dt><%= label :client, :postal_code %></dt>
+		<dd><%= @client.postal_code %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :client, :address %></dt>
+		<dd><%= @client.address %>&nbsp;</dd>
+	</dl>
+	<dl>
+		<dt><%= label :client, :tel %></dt>
+		<dd><%= @client.tel %></dd>
+		<dt><%= label :client, :consigned %></dt>
+		<dd><%= @client.consigned ? "はい" : "いいえ" %></dd>
+		<dt><%= label :client, :registration_status  %></dt>
+		<dd><%= Client::REGISTRATION_STATUSES[@client.registration_status] %></dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :clients]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client]), :method => :delete %></span>
+</div>

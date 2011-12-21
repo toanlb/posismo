@@ -1,0 +1,30 @@
+<%= content_for :head do -%>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="icon" href="">
+<link rel="Shortcut Icon" href="">
+<title><%= "2PM 管理画面 - Premier Media Pertners" %></title>
+<% end -%>
+<%= content_for :body do -%>
+<body class="<%= body_class %>Cl<% if consigned_work? -%> subNavi<% end -%>">
+<%= render :partial => 'layouts/admin/header' %>
+<%= render :partial => "layouts/admin/global_navi" %>
+<!-- subNavi -->
+<% if consigned_work? -%><%= render "layouts/admin/sub_navi" %><% end -%>
+<!-- subNavi -->
+<!-- flash -->
+<div id="flash">
+	<%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+	<%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+	<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+</div>
+<!-- /flash -->
+<!-- contentsLayout -->
+<section id="contentsLayout">
+<%= yield %>
+</section>
+<!-- /contentsLayout -->
+<p class="toTop"><a href="#header">PageTop</a></p>
+<%= render :partial => "layouts/admin/footer" %>
+<script src="/javascripts/scrollsmoothly.js"></script>
+</body><% end -%><%= render :template => 'layouts/application' -%>

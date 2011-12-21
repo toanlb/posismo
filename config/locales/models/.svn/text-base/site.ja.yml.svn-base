@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      site: "サイト"
+    attributes:
+      site:
+        name: "サイト名"
+        url: "URL"
+        description: "備考"
+        keywords: "キーワード"
+        category_name: "カテゴリー名"

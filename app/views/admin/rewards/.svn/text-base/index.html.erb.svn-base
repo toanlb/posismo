@@ -1,0 +1,48 @@
+<div class="headline">
+	<h2>管理者一覧</h2>
+</div>
+<h2><%= @promotion.name %></h2>
+<p class="tit new"><%= link_to "報酬額登録", new_polymorphic_path([:admin, @client, :promotion, :reward]) %></p>
+<p class="tit new list"><%= link_to "成果地点一覧", polymorphic_path([:admin, @client, :promotion, :reward_points]) %></p>
+<% if false %>
+<%= paginate @rewards %>
+<% end %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th>成果地点</th>
+		<th>価格</th>
+		<th>開始日</th>
+		<th>終了日</th>
+		<th>報酬種類</th>
+		<th colspan="2">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+<% @reward_points.each do |reward_point| %>
+	<% reward_point.rewards.each do |reward| %>
+	<tr>
+		<td><%= reward_point.name %></td>
+		<td><%= reward.price %></td>
+		<td><%= reward.starts_at %></td>
+		<td><%= reward.ends_at %></td>
+		<td><%= reward.basic_status %></td>
+		<td><span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @client, @promotion, reward]) %></span></td>
+		<td><span class="del"><%= link_to "削除", polymorphic_path([:admin, @client, @promotion, reward], :action => :delete)%></span></td>
+	</tr>
+	<% end %>
+	<% end %>
+</tbody>
+</table>
+<% if false %>
+<div class="paginationFot">
+	<%= paginate @rewards %>
+</div>
+<% end %>

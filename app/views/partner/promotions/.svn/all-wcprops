@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions
+END
+_promotion.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/_promotion.html.erb
+END
+_rewards.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/_rewards.html.erb
+END
+_banners.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/_banners.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/index.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/show.html.erb
+END
+affiliate.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/promotions/affiliate.html.erb
+END

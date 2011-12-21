@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/client
+END
+reward_points_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/client/reward_points_controller_spec.rb
+END
+statistics_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/client/statistics_controller_spec.rb
+END
+client_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/client/client_controller_spec.rb
+END
+orders_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/client/orders_controller_spec.rb
+END

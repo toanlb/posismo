@@ -1,0 +1,52 @@
+<h2>提携申込</h2>
+<canvas id="canvas"><!-- 提携申込 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :promotions]) %></span>
+</div>
+<div class="board">
+	<h3>プロモーション詳細</h3>
+	<div id="attributes">
+		<dl class="balance">
+			<dt><%= label :promotion, :name %></dt>
+			<dd><%= @promotion.name %></dd>
+		</dl>
+		<dl>
+			<dt><%= label :promotion,  :url %></dt>
+			<dd><%= @promotion.url %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :promotion, :description %></dt>
+			<dd><%= @promotion.description %>&nbsp;</dd>
+		</dl>
+		<dl>
+			<% if @promotion.click_reward %>
+			<dt><%= label :promotion, :click_reward %></dt>
+			<dd><%= @promotion.click_reward.price %>円</dd>
+			<% end %>
+		</dl>
+	</div>
+	<link href="/javascripts/jqselectable/skin/selectable/style.css" media="screen" rel="stylesheet">
+	<script src="/javascripts/jQselectable.js"></script>
+	<script>
+		jQuery(function($){	
+			$("select").jQselectable({
+				out: "fadeOut",
+				outDuration: 150,
+				height: 150,
+			});	
+		});
+	</script>
+	<h3>提携サイトを選んで申込</h3>
+	<div id="site">
+		<%= simple_form_for @publish, :url => { :action => :affiliate }, :html => {:method => :post} do |f| %>
+			<%= f.association :site, 
+				:collection => @sites,
+				:include_blank => false,
+				:label => "提携サイト" %>
+			<%= f.submit "提携申込" %>
+		<% end %>
+	</div>
+</div>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :promotions]) %></span>
+</div>

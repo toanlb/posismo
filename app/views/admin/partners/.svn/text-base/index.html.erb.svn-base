@@ -1,0 +1,74 @@
+<div class="headline">
+	<h2>パートナー一覧</h2>
+</div>
+<%= simple_form_for [:admin, @partner, @search] ,:html => { :method => :get} do |f| %>
+<div id="admin_search">
+	<%= f.label :login_id, "ログインID" %>
+	<%= f.text_field :login_id_contains %>
+	<%= f.label :company_name, "会社名" %>
+	<%= f.text_field :company_name_contains %>
+	<%= f.submit "検索" ,:onclick => "document.getElementById('partner_search').action = '/admin/partners'" %>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('partner_search').action = '/admin/partners/csv'",:id => "csv_download" %>
+<% end %>
+<p class="tit new"><%= link_to "新規登録", new_polymorphic_path([:admin, :partner]) %></p>
+<%= form_tag({:action => :index}, :id => 'form') do %>
+	<p class="tit mix head">選択したパートナーを
+	<span class="acc"><%= submit_tag "承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :approve) + "'" %></span>
+	<span class="facc"><%= submit_tag "非承認", :onclick => "document.getElementById('form').action = '" + url_for(:action => :reject) + "'" %></span>
+	<span class="reg"><%= submit_tag "仮登録", :onclick => "document.getElementById('form').action = '" + url_for(:action => :interim) + "'" %></span>
+	</p>
+<%= paginate @partners %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$('input[type="checkbox"]').addClass('checks');
+	$("#myTable").tablesorter();
+});
+</script>
+<script>
+function toggle_check(className, button){
+	if(button.value=="選択"){
+		var flag = 1;
+		button.value = "解除";
+	}else{
+		var flag = 0;
+		button.value = "選択";
+	}
+	var chks = document.getElementsByTagName("input");
+	var retArr = [];
+	for (var i=0;i < chks.length;i++) {
+	if (/checkbox/.test(chks[i].type) &&
+	chks[i].className.indexOf(className) > -1)
+		retArr.push(chks[i]);
+	}
+	for(i=0; i<retArr.length; i++){
+		retArr[i].checked = flag;
+	}
+}
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="sel"><input type="checkbox" name="all"  id="all" value="全て選択" onclick="toggle_check('checks',this);"></th>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :login_id %></th>
+		<th><%= sort_link @search, :email %></th>
+		<th><%= sort_link @search, :contract_type %></th>
+		<th><%= sort_link @search, :company_name %></th>
+		<th><%= sort_link @search, :manager_name %></th>
+		<th><%= sort_link @search, :registration_status %></th>
+		<% if current_admin.super_user? -%>
+		<th class="thDel" colspan="4"><%= sort_link @search, :deleted %></th><% else -%>
+		<th class="thDel" colspan="4">&nbsp;</th><% end -%>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @partners %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @partners %>
+</div>
+<% end %>

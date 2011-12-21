@@ -1,0 +1,40 @@
+<h1>管理者詳細</h1>
+<canvas id="canvas"><!-- 管理者詳細 --></canvas>
+<div class="actions head">
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @admin]) %></span>
+	<span class="list"><%= link_to "一覧", :action => :index %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :admin, :login_id %></dt>
+		<dd><%= @admin.login_id %></dd>
+		<dt><%= label :admin,  :name %></dt>
+		<dd><%= @admin.name %></dd>
+		<dt><%= label :admin,  :email %></dt>
+		<dd><%= @admin.email %></dd>
+		<dt><%= label :admin,  :sign_in_count %></dt>
+		<dd><%= @admin.sign_in_count %></dd>
+		<dt><%= label :admin,  :current_sign_in_at %></dt>
+		<dd><%= @admin.current_sign_in_at %></dd>
+		<dt><%= label :admin,  :last_sign_in_at %></dt>
+		<dd><%= @admin.last_sign_in_at %></dd>
+		<dt><%= label :admin,  :current_sign_in_ip %></dt>
+		<dd><%= @admin.current_sign_in_ip %></dd>
+		<dt><%= label :admin,  :last_sign_in_ip %></dt>
+		<dd><%= @admin.last_sign_in_ip %></dd>
+		<dt><%= label :admin,  :confirmed_at %></dt>
+		<dd><%= @admin.confirmed_at %></dd>
+		<dt><%= label :admin,  :failed_attempts %></dt>
+		<dd><%= @admin.failed_attempts %></dd>
+		<dt><%= label :admin,  :locked_at %></dt>
+		<dd><%= @admin.locked_at %></dd>
+		<dt><%= label :admin,  :super_user %></dt>
+		<dd><%= @admin.super_user? ? "はい" : "いいえ" %></dd>
+		<dt><%= label :admin,  :deleted %></dt>
+		<dd><%= @admin.deleted? ? "はい" : "いいえ" %></dd>
+	</dl>
+</div>
+<div class="actions">
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @admin]) %></span>
+	<span class="list"><%= link_to "一覧", :action => :index %></span>
+</div>

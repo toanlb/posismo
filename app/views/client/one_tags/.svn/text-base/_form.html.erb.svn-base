@@ -1,0 +1,28 @@
+<%= form_tag polymorphic_path([:client, @promotion, :one_tags]), :method => :put do %>
+		<%# if @conversiontag.errors.any? %>
+<!--
+		<div id="error_explanation">
+			<h2><#%= pluralize(@conversiontag.errors.count, "error") %> prohibited this ad from being saved:</h2>
+			<ul>
+			<#% @conversiontag.errors.full_messages.each do |msg| %>
+				<li><%#= msg %></li>
+			<%# end %>
+			</ul>
+		</div>
+-->
+	<%# end %>
+	<div id="attributes">
+		<div class="input string required">
+			<%= label_tag "提携ASP選択" %>
+			<div id="aspArea">
+				<ul>
+					<li><% @asps.each do |item| %><%= check_box_tag "asp_ids[]", item.id, item.associated_promotion?(params[:promotion_id].to_i) %><%= item.name %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	    <div class="actions">
+		    <span class="save"><%= submit_tag "登録" %></span>
+        </div>
+	</div>
+<% end %>

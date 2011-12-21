@@ -1,0 +1,62 @@
+<h2>提携アップロード</h2>
+<canvas id="canvas"><!-- 提携アップロード  --></canvas>
+<% if @error_publishes.any? %>
+<span>下記データは正しく保存されませんでした。</span>
+<table class="autopagerize_page_element tablesorter">
+<thead>
+	<tr>
+		<th class="ids">ID</th>
+		<th>プロモーション名</th>
+		<th>遷移先URL</th>
+	</tr>
+</thead>
+<tbody>
+	<% @error_publishes.each do |publish| %>
+		<% if publish.errors.any? %>
+			<% publish.errors.full_messages.each do |msg| %>
+				<tr>
+					<td colspan="3"><%= msg %></td>
+				</tr>
+			<% end %>
+		<% end %>
+		<tr>
+			<td class="ids" <%= raw('style="background-color:#cc0000; font-weight: bold"') if publish.errors.has_key?(:id) %>>
+				<%= publish.id %>
+			</td>
+			<td>
+				<%= publish.promotion.try(:name) %>
+			</td>
+			<td>
+				<%= publish.site.try(:name) %>
+			</td>
+			<td class="ids" <%= raw('style="background-color:#cc0000; font-weight: bold"') if publish.errors.has_key?(:approval_status) %>>
+				<%= publish.approval_status %>
+			</td>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+<% end %>
+
+<% if @publishes.any? %>
+<span>下記データは正しく保存されました</span>
+<table class="autopagerize_page_element tablesorter">
+<thead>
+	<tr>
+		<th class="ids">ID</th>
+		<th>プロモーション名</th>
+		<th>遷移先URL</th>
+	</tr>
+</thead>
+<tbody>
+	<% @publishes.each do |publish| %>
+		<tr>
+			<td class="ids"><%= publish.id %></td>
+			<td><%= publish.promotion.try(:name) %></td>
+			<td><%= publish.site.try(:name) %></td>
+			<td><%= publish.approval_status %></td>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+<% end %>

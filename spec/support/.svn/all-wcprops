@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/support
+END
+devise.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/support/devise.rb
+END
+blueprints.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/support/blueprints.rb
+END
+controller_macros.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/support/controller_macros.rb
+END
+routing.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/support/routing.rb
+END

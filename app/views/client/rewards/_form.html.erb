@@ -1,0 +1,87 @@
+<script type="text/javascript">
+/* <![CDATA[ */
+$( function() {
+	$('#reward_starts_at').datetime({
+		americanMode: true,
+	});
+	$('#reward_ends_at').datetime({
+		americanMode: true,
+	});
+});
+/* ]]> */
+</script>
+<% if params[:action] == "new" || params[:action] == "create" %>
+<% actiontext = "登録" %>
+<% else actiontext = "更新" %>
+<% end %>
+<%= simple_form_for [:client, @promotion, @reward] do |f| %>
+	<% if @reward.errors.any? %>
+		<div id="error_explanation">
+			<ul>
+			<% @reward.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div id="attributes">
+		<div>
+			<label>報酬種類</label>
+			<label class="collection_radio"><%= Reward::TYPES[@reward.reward_type] %></label>
+		</div>
+		<div class="demo input datetime required">
+			<%= f.input :starts_at, :as => :string, :required => true, :input_html => { :readonly => "readonly" } %>
+			<% unless @reward.basic? -%>
+			<%= f.input :ends_at, :as => :string, :required => @reward.campaign?, :input_html => { :readonly => "readonly", :onclick => "document.getElementById('reward_submit').disabled=false;document.getElementById('reward_submit').value='"+actiontext+"'" } %>
+			<% end %>
+		</div>
+		<div class="demoDescription">
+			<p>期間を選んでください。</p>
+		</div>
+		
+		<%= f.input :price_type, 
+								:collection => Reward::PRICE_TYPES.collect.with_index{|s,i|[s,i]},
+								:as => :radio, :required => true %>
+		<script charset="utf-8">
+	/* <![CDATA[ */
+		function togglePriceInputs() {
+			switch($("input[name='reward[price_type]']:checked").attr('value')) {
+			case "0":
+				$("#reward_gross_price").attr("required", "required");
+				$("#reward_gross_rate").removeAttr("required");
+				<% if @promotion.belongs_to_consigned_client? %>
+				$("#reward_net_price").attr("required", "required");
+				$("#reward_net_rate").removeAttr("required");
+				<% end %>
+				$("#fixed_price").show(); $("#rate_price").hide(); break;
+			case "1":
+				$("#reward_gross_price").removeAttr("required");
+				$("#reward_gross_rate").attr("required", "required");
+				<% if @promotion.belongs_to_consigned_client? %>
+				$("#reward_net_price").removeAttr("required");
+				$("#reward_net_rate").attr("required", "required");
+				<% end %>
+				$("#fixed_price").hide(); $("#rate_price").show(); break;
+			}
+		}
+		$(document).ready(togglePriceInputs);
+		$("input[name='reward[price_type]']").change(togglePriceInputs);
+	/* ]]> */ 
+		</script>
+		<fieldset id="fixed_price">
+			<legend>固定報酬</legend>
+			<%= f.input :gross_price, :required => true, :input_html => {:onkeyup => "document.getElementById('reward_submit').disabled=false;document.getElementById('reward_submit').value='"+actiontext+"'"}%><span class="en">円</span>
+			<% if @promotion.belongs_to_consigned_client? -%>
+			<%= f.input :net_price, :required => true, :input_html => {:onkeyup => "document.getElementById('reward_submit').disabled=false;document.getElementById('reward_submit').value='"+actiontext+"'"} %><span class="en">円</span>
+			<% end -%>
+	</fieldset>
+	<fieldset id="rate_price">
+			<legend>料率報酬</legend>
+			<%= f.input :gross_rate, :required => true, :input_html => {:onkeyup => "document.getElementById('reward_submit').disabled=false;document.getElementById('reward_submit').value='"+actiontext+"'"} %><span class="en">%</span>
+			<% if @promotion.belongs_to_consigned_client? -%>
+			<%= f.input :net_rate, :required => true, :input_html => {:onkeyup => "document.getElementById('reward_submit').disabled=false;document.getElementById('reward_submit').value='"+actiontext+"'"} %><span class="en">%</span>
+			<% end -%>
+		</fieldset>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

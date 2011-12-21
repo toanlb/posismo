@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner
+END
+statistics_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/statistics_controller.rb
+END
+partner_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/partner_controller.rb
+END
+registrations_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/registrations_controller.rb
+END
+orders_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/orders_controller.rb
+END
+publishes_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/publishes_controller.rb
+END
+payments_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/payments_controller.rb
+END
+notices_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/notices_controller.rb
+END
+sites_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/sites_controller.rb
+END
+promotions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/partner/promotions_controller.rb
+END

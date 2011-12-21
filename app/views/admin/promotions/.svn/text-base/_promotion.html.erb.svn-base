@@ -1,0 +1,9 @@
+<%= content_tag_for :tr, promotion do %>
+		<td><%= link_to promotion.name, polymorphic_path([:admin, @client, promotion]) %></td>
+		<td><%= link_to truncate(promotion.url,{:length => 100}), promotion.url, { :target => "_blank" } %></td>
+		<td><%= raw td_active?(promotion) %></td>
+		<td><%= promotion.opened? ? "公開" : "非公開" %></td>
+		<td><span class="details"><%= link_to "詳細", polymorphic_path([:admin, @client, promotion]) %></span></td>
+		<td><span class="edit"><%= link_to "変更", edit_polymorphic_path([:admin, @client, promotion]) %></span></td>
+		<td><span class="del"><%= link_to "削除", polymorphic_path([:admin, @client, promotion], :action => :delete) %></span></td>
+<% end %>

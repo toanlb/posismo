@@ -1,0 +1,24 @@
+ja:
+  flash:
+    notice: 
+      created: "作成されました。"
+      deleted: "削除されました。"
+      saved: "保存されました。"
+      activated: "有効になりました。"
+      deactivated: "無効になりました。"
+      affiliate_applied: "提携申込をしました。"
+      publish_approved: "提携申込を承認しました。"
+      publish_rejected: "提携申込を非承認にしました。"
+      partner_deleted: "退会しました。"
+      no_data: "データがありません。"
+      partner_registered: "ご登録ありがとうございます。承認後にご利用いただけます。"
+      cannot_assign: "クライアントを削除しました、担当者を設定できません。"
+    error: 
+      create_failed: "作成できませんでした。"
+      save_failed: "保存できませんでした。"
+      delete_failed: "削除できませんでした。"
+      affiliate_apply_failed: "提携申込できませんでした。"
+      publish_approval_failed: "提携申込を承認できませんでした。"
+      publish_rejecttion_failed: "提携申込を非承認にできませんでした。"
+      mail_failed: "メールの送信に失敗しました。"
+      reward_delete_failed: "基本報酬を削除する前に、プロモーしョンを無効にしてください。"

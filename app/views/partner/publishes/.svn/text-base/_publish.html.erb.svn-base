@@ -1,0 +1,15 @@
+<%= content_tag_for :tr, publish do %>
+	<td>
+		<% unless publish.promotion.nil? %>
+		<%= link_to publish.promotion.name, polymorphic_path([:partner, publish.promotion]) %>
+		<% end %>
+	</td>
+	<td>
+	<% unless publish.site.nil? %>
+		<%= link_to publish.site.name, polymorphic_path([:partner, publish.site]) %>
+		<% end %>
+	</td>
+	<td><%= publish.approval_status %></td>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:partner, publish]) %></span></td>
+	<td><span class="removal"><%= link_to "提携解除", polymorphic_path([:partner, publish], :action => :delete) %></span></td>
+<% end %>

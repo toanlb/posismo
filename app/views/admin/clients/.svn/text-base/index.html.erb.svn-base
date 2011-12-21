@@ -1,0 +1,48 @@
+<div class="headline">
+	<h2>広告主一覧</h2>
+</div>
+<%= simple_form_for [:admin, @search] do |f| %>
+<div id="client_search">
+	<%= f.label :login_id, "ログインID" %>
+	<%= f.text_field :login_id_contains %>
+	<%= f.label :company_name, "会社名" %>
+	<%= f.text_field :company_name_contains %>
+	<%= f.submit "検索" ,:onclick => "document.getElementById('client_search').action = '/admin/clients'" %>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('client_search').action = '/admin/clients/csv'",:id => "csv_download" %>
+<% end %>
+<p class="tit new"><%= link_to "新規登録", new_polymorphic_path([:admin, :client]) %></p>
+<p class="tit account"><%= link_to "担当者設定", new_polymorphic_path([:admin, :account_managements]) %></p>
+<%= paginate @clients %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :login_id %></th>
+		<th><%= sort_link @search, :email %></th>
+		<th class="companyName"><%= sort_link @search, :company_name %></th>
+		<th class="siteName"><%= sort_link @search, :site_name %></th>
+		<th><%= sort_link @search, :site_url %></th>
+		<th class="yesNo"><%= sort_link @search, :consigned %></th>
+		<th class="status"><%= sort_link @search, :registration_status %></th>
+		<% if current_admin.super_user? -%>
+		<th class="accountManagement"><%= link_to t("activerecord.attributes.client.admin_login_id"), new_admin_account_managements_path, :class => 'sort_link' %></th>
+		<th class="thDel"><%= sort_link @search, :deleted %></th>
+		<% end -%>
+		<th class="thDel" colspan="6">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @clients %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @clients %>
+</div>

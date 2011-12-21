@@ -1,0 +1,12 @@
+<%= content_tag_for :tr, publish do %>
+	<% if publish.promotion.present? %>
+	  <% if current_client.consigned %>
+		<td><%= publish.promotion.name %></td>
+	  <% else %>
+		<td><%= link_to publish.promotion.name, polymorphic_path([:client, publish.promotion]) %></td>
+	  <% end %>
+		<td><% unless publish.site.nil? %><%= publish.site.name %><% end %></td>
+		<td><%= publish.approval_status %></td>
+		<td><span class="details"><%= link_to "詳細", polymorphic_path([:client, publish]) %></span></td>
+	<% end %>
+<% end %>

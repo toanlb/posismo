@@ -1,0 +1,49 @@
+<h3><%= @promotion.name %></h3>
+<script>
+$(document).ready(function(){
+	$("#myTableRewards").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter inTab" id="myTableRewards">
+<thead>
+	<tr>
+		<th><%= sort_link @search_rewards, :reward_type, {:anchor => "tabReward"} %></th>
+		<th><%= sort_link @search_rewards, :price_type, {:anchor => "tabReward"} %></th>
+		<% if @promotion.belongs_to_consigned_client? -%>
+		<th class="price"><%= sort_link @search_rewards, :net_price, "価格" , {:anchor => "tabReward"} %></th>
+		<% else %>
+		<th class="price"><%= sort_link @search_rewards, :gross_price,"価格" , {:anchor => "tabReward"} %></th>
+		<% end %>
+		<th><%= sort_link @search_rewards, :starts_at, {:anchor => "tabReward"} %></th>
+		<th><%= sort_link @search_rewards, :ends_at, {:anchor => "tabReward"} %></th>
+		<th colspan="2" class="thDel">&nbsp;</th>
+	</tr>
+</thead>
+<script>
+function delete_confirm(){
+	return　confirm("本当に削除してもよろしいですか？");
+}
+</script>
+<tbody>
+	<% @search_rewards.each do |reward| %>
+	<tr>
+		<td><%= Reward::TYPES[reward.reward_type] %></td>
+		<td><%= Reward::PRICE_TYPES[reward.price_type] %></td>
+		<% if reward.fixed_price? -%>
+		
+		<% if @promotion.belongs_to_consigned_client? -%>
+		<td><%= reward.net_price %>円</td>
+		<% else %>
+		<td><%= reward.gross_price %>円</td>
+		<% end %>
+		<% else -%>
+		<td><%= reward.gross_rate %>%</td>
+		<% if @promotion.belongs_to_consigned_client? -%>
+		<td><%= reward.net_rate %>%</td>
+		<% end %>
+		<% end -%>
+		<td><%= reward.starts_at.strftime("%Y年%m月%d日:%X") %></td>
+		<td><%= reward.ends_at? ? reward.ends_at.strftime("%Y年%m月%d日:%X") : "なし" %></td>
+	</tr><% end %>
+</tbody>
+</table>

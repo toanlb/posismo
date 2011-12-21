@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/assets/style.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/assets/prettify.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/jquery-ui.css"> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script> 
+<script>
+$(function(){
+	$("#publishList_promotion_id").multiselect({
+		multiple: false,
+		click: function(e, ui){
+
+			if(ui.checked){
+			$.getJSON('<%= url_for(:action => :index) %>/promotion_publishes_sites/' + ui.value,
+			function(json){
+			$("#publishList_site_id").html('');
+
+			$.each(json, function(){
+				value = this[1];
+				text = this[0];
+				$("#publishList_site_id").append($('<option value="' + value + '">' + text + '</option>'));
+			});
+
+				$("#publishList_site_id").multiselect("refresh");
+			});
+		}
+		else{
+			$("#publishList_site_id").html('');
+			$("#publishList_site_id").multiselect("refresh");
+			}
+		}
+	});
+
+$(".publishList").multiselect({
+	multiple: false,
+	header: "一つだけ選んでください。",
+	noneSelectedText: "一つだけ選んでください。",
+	selectedList: 1
+});
+});
+</script>
+<script>
+	function afterCheckSubmit(){
+		var button_value = $("button:last").text();
+		if (button_value == "一つだけ選んでください。"){
+			document.getElementById('order_submit').disabled=false;
+			document.getElementById('order_submit').value='登録する';
+			$("#flash").text("保存できませんでした、サイトを選択してお願い致します。");
+			window.scrollTo(0,0);
+			return false;
+		}
+		else
+		{
+			document.getElementById('new_order').submit();
+			return true;
+		}
+	}
+</script>
+<% if params[:action] == "new" || params[:action] == "create" %>
+	<% actiontext = "登録する" %>
+	<% else %>
+	<% actiontext = "更新する" %>
+<% end %>
+<%= simple_form_for [:admin, @client, @order] do |f| %>
+	<% if @order.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @order.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+	<link rel="stylesheet" media="screen" href="/javascripts/jqselectable/skin/selectable/style.css">
+	<script src="/javascripts/jQselectable.js"></script>
+	<script>
+	jQuery(function($){	
+		$("select#order_status_flag").jQselectable({
+			out: "fadeOut",
+			outDuration: 150,
+			height: 150,
+		});	
+	});
+	</script>
+		<%= f.input :metadata %>
+		<%= f.input :price %>
+		<%= f.input :gross_price %>
+		<%= f.input :net_price %>
+		<%= f.input :gross_rate %>
+		<%= f.input :net_rate %>
+		<%= f.input :add_data %>
+		<div class="input text optional category">
+		<label for="promotion_id">提携</label>
+			<ul class="promotionLi">
+				<li><span>プロモーション名&nbsp;</span>
+				<%= select("publishList", "promotion_id",
+				options_from_collection_for_select(@promotions, :id, :name, :selected => @order.try(:publish).try(:promotion_id)),
+					{},
+					{:class => "publishList", :multiple => false}
+				) %></li>
+				<li><span>サイト名&nbsp;</span>
+				<%= select("publishList", "site_id", 
+					@sites.nil? ? [] : options_from_collection_for_select(@sites, :id, :name, :selected => @order.try(:publish).try(:site_id)),
+					{},
+					{:class => "publishList", :multiple => true}
+				) %>
+				</li>
+			</ul>
+		</div>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';return afterCheckSubmit();"%>
+	</div>
+<% end %>

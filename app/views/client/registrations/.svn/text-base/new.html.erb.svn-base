@@ -1,0 +1,35 @@
+<h2>クライアント新規作成</h2>
+<canvas id="canvas"><!-- クライアント新規作成 --></canvas>
+<%= simple_form_for [:admin, @client] do |f| %>
+<% if @client.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @client.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div id="attributes">
+	<%= f.input :login_id, :input_html => {:autocomplete => "off" } %>
+	<%= f.input :email, :as => :email, :required => true, :placeholder => "example@example.com", :input_html => {:autocomplete => "off" } %>
+	<%= f.input :password, :required => false, :input_html => {:autocomplete => "off" } %>
+	<%= f.input :password_confirmation, :required => false %>
+	<%= f.input :site_name %>
+	<%= f.input :site_url %>
+	<%= f.input :company_name %>
+	<%= f.input :company_name_kana %>
+	<%= f.input :contractor_department %>
+	<%= f.input :contractor_position %>
+	<%= f.input :contractor_name %>
+	<%= f.input :contractor_name_kana %>
+	<%= f.input :manager_department %>
+	<%= f.input :manager_position %>
+	<%= f.input :manager_name %>
+	<%= f.input :manager_name_kana %>
+	<%= f.input :postal_code %>
+	<%= f.input :address %>
+	<%= f.input :tel, :as => :tel %>
+	<%= f.submit %>
+</div>
+<% end %>

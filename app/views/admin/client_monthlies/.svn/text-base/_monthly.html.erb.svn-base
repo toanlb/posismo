@@ -1,0 +1,9 @@
+<%= content_tag :tr do %>
+	<td class="ids"><%= monthly.id %></td>
+	<td><%= monthly.login_id %></td>
+	<td><%= monthly.company_name %></td>
+	<td><%= monthly.manager_name %></td>
+	<td><%= monthly.charge %></td>
+	<td><%= monthly.count_partner %></td>
+	<td><%= monthly.month %></td><% end %>
+	

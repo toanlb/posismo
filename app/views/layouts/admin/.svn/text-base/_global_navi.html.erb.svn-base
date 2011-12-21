@@ -1,0 +1,33 @@
+<% if admin_signed_in? -%>
+<!-- nav -->
+<nav id="globalNavigation">
+<% if consigned_work? -%><div class="side" title="Top"><% end -%>
+	<ul id="navigationMenu">
+		<li id="top"><%= link_to admin_root_path, :id => "navi1" do %>TOP<% end %></li>
+		<li><a id="navi2" href="#">管理業務</a>
+			<ul>
+				<li><%= link_to admin_notices_path, :id => "navi6" do %>お知らせ一覧<% end %></li>
+			</ul>
+		</li>
+		<li><%= link_to admin_clients_path, :id => "navi3" do %>広告主管理<% end %></li>
+		<li><%= link_to admin_partners_path, :id => "navi4" do %>パートナー管理<% end %></li>
+		<% if current_admin.super_user? -%>
+		<li><%= link_to admin_admins_path, :id => "navi5" do %>管理者設定<% end %></li><% end -%>
+	</ul>
+<% if consigned_work? -%>
+</div>
+<script src="/javascripts/jquery.sidecontent.js"></script>
+<script>
+$(document) .ready(function(){
+		$(".side").sidecontent({
+		speed: "fast",
+		classmodifier: "sidecontent",
+		ttachto: "leftside",
+		pulloutpadding: "1px",
+		textdirection: "vertical"
+	});
+});
+</script>
+<% end -%>
+</nav>
+<!-- /nav --><% end -%>

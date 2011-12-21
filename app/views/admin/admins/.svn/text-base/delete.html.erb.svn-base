@@ -1,0 +1,19 @@
+<h2>管理者削除確認</h2>
+<canvas id="canvas"><!-- 管理者削除確認はこちら --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :admins]) %></span>
+	<%= button_to "削除", admin_admin_path(@admin), :method => :delete, :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :admin, :email %></dt>
+		<dd><%= @admin.email %></dd>
+		<dt><%= label :admin, :name %></dt>
+		<dd><%= @admin.name %></dd>
+	</dl>
+</div>
+<p class="notice">本当にこの管理者を削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :admins]) %></span>
+	<%= button_to "削除", admin_admin_path(@admin), :method => :delete, :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+</div>

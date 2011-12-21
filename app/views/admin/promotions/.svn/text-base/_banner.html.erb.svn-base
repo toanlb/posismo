@@ -1,0 +1,13 @@
+<div id="banner<%= banner.id %>" class="banner">
+	<dl id="">
+		<dt>バナー名</dt>
+		<dd><%= banner.name %></dd>
+	</dl>
+	<span class="banner_name"><%= banner.name %></span>
+	<span class="banner_image_size"><%= banner.image_size %></span>
+	<%= image_tag banner.image_url %>
+	<%= banner.description %>
+<pre>
+	ここに広告タグ
+</pre>
+</div>

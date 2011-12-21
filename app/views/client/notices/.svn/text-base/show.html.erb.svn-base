@@ -1,0 +1,20 @@
+<h2>お知らせ詳細情報</h2>
+<canvas id="canvas"><!-- お知らせ詳細情報 --></canvas>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", client_root_path %></span>
+	<span class="edit"><%= link_to "お知らせ一覧", client_notices_path %></span>
+</div>
+<div id="attributes">
+	<dl class="aspName">
+		<dt><%= label :notice, :title %></dt>
+		<dd><%= @notice.title %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :notice,  :description %></dt>
+		<dd><%= @notice.description %></dd>
+	</dl>
+</div>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", client_root_path %></span>
+	<span class="edit"><%= link_to "お知らせ一覧", client_notices_path %></span>
+</div>

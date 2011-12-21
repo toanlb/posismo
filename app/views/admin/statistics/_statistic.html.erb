@@ -1,0 +1,24 @@
+<%= content_tag_for :tr, statistic do %>
+	<% if statistic.has_attribute?(:created_on) %>
+	<td><%= statistic.created_on.strftime("%Y年%m月%d日") %></td>
+	<% else %>
+	<td><%= statistic.year_created_on %>年
+		<%= statistic.month_created_on %>月
+	</td>
+	<% end %>
+	<td><%= number_with_precision(statistic.sum_impression_count, :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_click_count, :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_click_valid_count , :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_click_rate*100, :precision => 2) %>%</td>
+	<td><%= number_to_currency(statistic.sum_final_click_reward, :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_conversion_rate*100, :precision => 2) %>%</td>
+	<td><%= number_with_precision(statistic.sum_plan_order_count, :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_final_order_count, :precision => 0) %></td>
+	<td><%= number_with_precision(statistic.sum_cancel_order_count, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_plan_order_reward, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_plan_order_net_reward, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_final_order_reward, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_final_order_net_reward, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_final_all_reward, :precision => 0) %></td>
+	<td><%= number_to_currency(statistic.sum_final_all_net_reward, :precision => 0) %></td>
+<% end %>

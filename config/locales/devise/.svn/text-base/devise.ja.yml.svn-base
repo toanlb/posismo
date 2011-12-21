@@ -1,0 +1,62 @@
+# encoding: utf-8
+ja:
+  errors:
+    messages:
+      not_found: "が見つかりません。"
+      already_confirmed: "すでに確認済みです。"
+      not_locked: "ロックされていません。"
+      not_saved: "登録されていません。"
+  devise:
+    failure:
+      unauthenticated: "ログインが必要です。"
+      unconfirmed: "メールアドレスの確認が必要です。メールをご確認ください。"
+      locked: "アカウントがロック中です。"
+      invalid: "ログイン名またはパスワードが正しくありません。"
+      invalid_token: "認証キーが正しくありません。"
+      timeout: "セッションがタイムアウトしました。再びログインしてください。"
+      inactive: "アカウントがまだ承認されていません。"
+    sessions:
+      signed_in: "正常にログインしました。"
+      signed_out: "正常にログアウトしました。"
+      new:
+        sign_in: "ログイン"
+    passwords:
+      send_instructions: "パスワード再設定の案内メールが送信されました。"
+      updated: "パスワードが変更されました。ログイン中になりました。"
+      new:
+      edit:
+
+    confirmations:
+      send_instructions: "メールアドレス確認の案内メールが送信されました。"
+      confirmed: "メールアドレスが確認されました。ログイン中になりました。"
+      new:
+        resend_instructions: "確認メールを再送信"
+
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報が変更されました。"
+      destroyed: "アカウントが削除されました。またのご利用お待ちしております。"
+      new:
+        sign_up: "新規登録"
+      edit:
+        edit: "登録情報変更"
+        update: "変更"
+    unlocks:
+      send_instructions: "アカウントのロック解除のご案内メールが送信されます。"
+      unlocked: "アカウントのロックが解除されました。ログイン中になりました。"
+      new:
+        resend_instructions: "ロック解除メールを再送信"
+    mailer:
+      confirmation_instructions:
+        subject: "メール確認のご案内"
+      reset_password_instructions:
+        subject: "パスワード再設定のご案内"
+      unlock_instructions:
+        subject: "ロック解除のご案内"
+    shared:
+      links:
+        sign_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_password: "パスワードをお忘れですか？"
+        confirmation: "確認メールを受信していませんか？"
+        unlock: "ロック解除メールを受信していませんか？"

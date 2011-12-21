@@ -1,0 +1,89 @@
+<link href="/javascripts/jqselectable/skin/selectable/style.css" media="screen" rel="stylesheet">
+<script src="/javascripts/jqselectable/js/jQselectable.js"></script>
+<script>
+jQuery(function($){
+	instances = $(".categories_sites").jQselectable({
+	callback: function(){
+	<%# 親カテゴリが選択されてた場合のみ、子カテゴリselectを書き換える %>
+	matches = $(this).attr("id").match(/^categories\_sites\_([0-9]+)\_parent\_category\_id$/);
+	if(matches == null) return;
+		var i = matches[1];
+
+	if($(this).val() < 1){
+		$("#categories_sites_" + i + "_category_id").html('<option value=""></option>')
+		$.each(instances, function(){
+		this.rebuild();
+		});
+		return;
+		}
+
+    <%# 子カテゴリselectを書き換え %>
+	$.getJSON('<%= url_for(:controller => "partner/sites") %>/child_categories/' + $(this).val(),
+		function(json){
+		$("#categories_sites_" + i + "_category_id").html('<option value="">無し</option>')
+		$.each(json, function(){
+		value = this[1];
+		text = this[0];
+		$("#categories_sites_" + i + "_category_id").append($('<option value="' + value + '">' + text + '</option>'));
+		});
+		$.each(instances, function(){
+		this.rebuild();
+		});
+		}
+		)
+		}
+	});
+});
+</script>
+<% if params[:action] == "new" || params[:action] == "create" %>
+<% actiontext = "登録" %>
+<% else actiontext = "更新" %>
+<% end %>
+<%= simple_form_for [:partner, @site] do |f| %>
+	<% if @site.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @site.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :name, :input_html => {:onkeyup => "document.getElementById('site_submit').disabled=false;document.getElementById('site_submit').value='"+actiontext+"'"} %>
+		<%= f.input :url, :input_html => {:onkeyup => "document.getElementById('site_submit').disabled=false;document.getElementById('site_submit').value='"+actiontext+"'"} %>
+		<%= f.input :description, :input_html => {:onkeyup => "document.getElementById('site_submit').disabled=false;document.getElementById('site_submit').value='"+actiontext+"'"} %>
+		<%= f.input :keywords, :input_html => {:onkeyup => "document.getElementById('site_submit').disabled=false;document.getElementById('site_submit').value='"+actiontext+"'"} %>
+		<div class="input text optional category">
+			<label for="categories_sites_category_id">カテゴリ</label>
+			<% CategoriesSite::LIMIT_PER_SITE.times do |i| %>
+			<ul>
+				<li class="categoryMaster">
+				<%= select("categories_sites[#{i}]", "parent_category_id", 
+				options_for_select(@parent_options,
+				# パラメータに値が入っていればその値をselected.なかったら登録された親カテゴリIDをselected.親カテゴリIDがnilだったらカテゴリIDをselected
+				:selected => params.has_key?(:categories_sites) ? params[:categories_sites][i.to_s][:parent_category_id] : nil ||
+				@categories_sites.try(:at, i).try(:category).try(:parent_id) ||
+				@categories_sites.try(:at, i).try(:category_id)
+				),
+				{:include_blank => "無し"},
+				{:class => "categories_sites"}
+				) %>
+				</li>
+				<li class="subCategory">
+				<%= select("categories_sites[#{i}]", "category_id", 
+				options_for_select(@child_options.try(:[], i).to_a,
+				# パラメータに値が入っていればその値をselected.なかったら登録された子カテゴリIDをselected.
+				:selected => params.has_key?(:categories_sites) ? params[:categories_sites][i.to_s][:category_id] : nil ||
+				@categories_sites.try(:at, i).try(:category_id)
+				),
+				{:include_blank => @child_options.try(:[], i).try(:size).to_i > 0 ? "無し" : true},
+				{:class => "categories_sites"}
+				) %>
+				</li>
+			</ul>
+			<% end %>
+		</div>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

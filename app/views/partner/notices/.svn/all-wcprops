@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/notices
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/notices/index.html.erb
+END
+_notice.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/notices/_notice.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/partner/notices/show.html.erb
+END

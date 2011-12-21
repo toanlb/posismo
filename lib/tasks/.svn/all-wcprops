@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/posismo-2pm/!svn/ver/1/2pm/lib/tasks
+END
+.gitkeep
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/posismo-2pm/!svn/ver/1/2pm/lib/tasks/.gitkeep
+END
+cucumber.rake
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/lib/tasks/cucumber.rake
+END
+create_categories.rake
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/posismo-2pm/!svn/ver/1/2pm/lib/tasks/create_categories.rake
+END

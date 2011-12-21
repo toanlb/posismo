@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<meta charset="utf-8">
+<title>2pm マルチセレクト Demo</title>
+<link rel="stylesheet" href="../jquery.multiselect.css">
+<link rel="stylesheet" href="../jquery.multiselect.filter.css">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/prettify.css">
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="../../javascripts/jquery.min.js"></script>
+<script src="../../javascripts/jquery-ui.custom.min.js"></script>
+<script src="../src/jquery.multiselect.js"></script>
+<script src="../src/jquery.multiselect.filter.js"></script>
+<script src="assets/prettify.js"></script>
+<script>
+$(function(){
+	$("select").multiselect({
+			selectedList: 4
+	});
+});
+</script>
+</head>
+<body onload="prettyPrint();">
+<h2>マルチセレクト</h2>
+<form>
+	<select multiple="multiple" size="5" style="width:370px">
+	<optgroup label="タグ">
+		<option value="赤い車">赤い車</option>
+		<option value="緑のボート">緑のボート</option>
+		<option value="青い稲妻">青い稲妻</option>
+	</optgroup>
+	<optgroup label="プロモーション名">
+		<option value="オレンジ">オレンジ</option>
+		<option value="紫">紫</option>
+		<option value="黄色">黄色</option>
+		<option value="ブラウン">ブラウン</option>
+		<option value="黒い奴">黒い奴</option>
+		<option value="オレンジ色の憎い奴">オレンジ色の憎い奴</option>
+		<option value="紫の炎">紫の炎</option>
+		<option value="黄色のハンカチ">黄色のハンカチ</option>
+		<option value="チャーリー・ブラウン">チャーリー・ブラウン</option>
+		<option value="黒い雨">黒い雨</option>
+	</optgroup>
+	<optgroup label="サイト名">
+		<option value="オレンジweb">オレンジweb</option>
+		<option value="紫web">紫web</option>
+		<option value="黄色web">黄色web</option>
+		<option value="ブラウンweb">ブラウンweb</option>
+		<option value="黒い奴web">黒い奴web</option>
+		<option value="オレンジ色の憎い奴web">オレンジ色の憎い奴web</option>
+		<option value="紫の炎web">紫の炎web</option>
+		<option value="黄色のハンカチweb">黄色のハンカチweb</option>
+		<option value="チャーリー・ブラウンweb">チャーリー・ブラウンweb</option>
+		<option value="黒い雨web">黒い雨web</option>
+		</optgroup>
+	</select>
+</form>
+<script>
+	$("select").multiselect().multiselectfilter();
+</script>
+
+
+<h3>Options:</h3>
+<p>絞り込み選択可能</p>
+
+
+</body>
+</html>

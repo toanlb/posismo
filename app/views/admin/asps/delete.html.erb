@@ -1,0 +1,25 @@
+<h2>ASP削除確認</h2>
+<canvas id="canvas"><!-- ASP削除確認 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client, @asp]), :method => :delete %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt>ID</dt>
+		<dd><%= @asp[:id] %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt>名称</dt>
+		<dd><%= @asp[:name] %></dd>
+	</dl>
+	<dl class="conversionTag">
+		<dt>コンバージョンタグ</dt>
+		<dd><%= @asp[:tag] %>&nbsp;</dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client, @asp]), :method => :delete %></span>
+</div>

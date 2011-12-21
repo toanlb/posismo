@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin
+END
+reward_points_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/reward_points_controller_spec.rb
+END
+clients_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/clients_controller_spec.rb
+END
+rewards_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/rewards_controller_spec.rb
+END
+admin_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/admin_controller_spec.rb
+END
+admins_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/admins_controller_spec.rb
+END
+orders_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/orders_controller_spec.rb
+END
+partners_controller_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/controllers/admin/partners_controller_spec.rb
+END

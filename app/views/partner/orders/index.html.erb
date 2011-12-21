@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-publishList_promotion_id_in-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-publishList_promotion_id_in-option]:checked").addClass('bigCol');
+    });
+});
+</script>
+<div class="headline">
+	<h2>注文一覧</h2>
+</div>
+<%= simple_form_for [:partner, @search] do |f| %>
+<div class="multi" id="publish_search_multi">
+	<div class="input text optional">
+		<ul id="multiInner">
+			<li>プロモーション名
+				<%= select("publishList", "promotion_id_in",
+				options_from_collection_for_select(@promotions_for_select, :id, :name,:selected => @selected_promotions),
+					{},
+					{:class => "publishList", :multiple => true}
+				) %>
+			</li>
+			<li><%= f.submit "検索",:onclick => "document.getElementById('order_search').action = 'orders'" %></li>
+		</ul>
+	</div>
+	</div>
+<div id="order_search">
+<script>
+	$(function() {
+		$('#search_created_on_gteq').datetime({
+			americanMode: true,
+		});
+		$('#search_created_on_lteq').datetime({
+			americanMode: true,
+	});
+});
+</script>
+	<%= f.label :created_on, "日時" %>
+	<%= f.text_field :created_on_gteq %>
+	<%= f.text_field :created_on_lteq %>
+	<%= f.submit "検索" ,:onclick => "document.getElementById('order_search').action = 'orders'" %>
+</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('order_search').action = 'orders/csv'",:id => "csv_download" %>
+<% end %>
+<%= paginate @orders %>
+<script>
+	$(document).ready(function(){
+		$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+		$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+		$("#myTable").tablesorter();
+	});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :promotion_name %></th>
+		<th><%= sort_link @search, :name %></th>
+		<th><%= sort_link @search, :add_data %></th>
+		<th><%= sort_link @search, :reward_price %></th>
+		<th><%= sort_link @search, :click_updated_at %></th>
+		<th><%= sort_link @search, :created_on %></th>
+		<th><%= sort_link @search, :decide_date %></th>
+		<th><%= sort_link @search, :status_flag %></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @orders %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @orders %>
+</div>

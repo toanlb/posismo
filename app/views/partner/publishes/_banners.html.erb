@@ -1,0 +1,40 @@
+<h3><%= @promotion.name %></h3>
+<%= paginate @banners, :params => {:anchor => "tabReward"} %>
+<script>
+	$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+	});
+</script>
+<table class="autopagerize_page_element tablesorter inTab" id="myTable">
+	<thead>
+		<tr>
+			<th><%= sort_link @banners_search, :id, {:anchor => "tabReward"} %></th>
+			<th><%= sort_link @banners_search, :type, {:anchor => "tabReward"} %></th>
+			<th><%= sort_link @banners_search, :name, {:anchor => "tabReward"} %></th>
+			<th><%= sort_link @banners_search, :click_rate, {:anchor => "tabReward"} %></th>
+			<th><%= sort_link @banners_search, :cv_rate, {:anchor => "tabReward"} %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @banners.each do |banner| %>
+			<tr>
+				<td class="ids"><%= banner.id %></td>
+				<td>
+					<%= "画像" if banner.type == 'ImageBanner' -%>
+					<%= "テキスト" if	banner.type == 'TextBanner' -%>
+				</td>
+				<td>
+					<%= render :partial => 'banner', :locals => { :banner => banner } %>
+				</td>
+				<td class="banner click_rate"> </td>
+				<td class="banner cv_rate"> </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @banners, :params => {:anchor => "tabReward"} %>
+</div>
+	

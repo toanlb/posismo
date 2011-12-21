@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/new.html.erb
+END
+_order.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/_order.html.erb
+END
+uploaded.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/uploaded.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/_form.html.erb
+END
+upload.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/client/orders/upload.html.erb
+END

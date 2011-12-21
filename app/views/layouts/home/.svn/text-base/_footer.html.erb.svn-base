@@ -1,0 +1,25 @@
+<p class="toTop"><a href="#header">ページトップへ</a></p>
+<!-- footer -->
+<footer id="footer">
+	<ul class="pageLink">
+		<li class="newWindow"><a href="http://www.itokuro.jp/documents/pp.html" target="_blank">個人情報保護方針</a></li>
+		<!-- <li><a href="recommended/index.html">推奨環境</a></li> -->
+		<!-- <li><a href="inquiry/index.html">お問い合わせ</a></li> -->
+	</ul>
+	<ul class="copy">
+		<li>Copyright&copy; 2PM All Rights Reserved</li>
+	</ul>
+</footer>
+<!--
+  ############################################################
+  ##########    ####  ############         ###             ###
+  ########   #######  ##########  #######  ###  #########  ###
+  ##        ########      ###############  ###  #########  ###
+  ########  ########  ###    ############  ###  #########  ###
+  ########  ########  ##################  ####  #########  ###
+  ########  ########  #################  #####  #########  ###
+  ########  ########  ###############  #######             ###
+  ############################################################
+-->
+<!-- /footer -->
+<script src="/javascripts/scrollsmoothly.js"></script>

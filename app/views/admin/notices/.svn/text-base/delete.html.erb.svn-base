@@ -1,0 +1,22 @@
+<h2>お知らせ削除確認</h2>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :notices]) %></span>
+	<%= button_to "削除", polymorphic_path([:admin, @notice]), :method => :delete %>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :notice, :id %></dt>
+		<dd><%= @notice.id %></dd>
+		<dt><%= label :notice, :title %></dt>
+		<dd><%= @notice.title %></dd>
+		<dt><%= label :notice,  :description %></dt>
+		<dd><%= @notice.description %></dd>
+		<dt><%= label :notice, :target %></dt>
+		<dd><%= @notice.target %></dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :notices]) %></span>
+	<%= button_to "削除", polymorphic_path([:admin, @notice]), :method => :delete %>
+</div>

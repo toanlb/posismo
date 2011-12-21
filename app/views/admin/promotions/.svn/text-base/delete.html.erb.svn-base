@@ -1,0 +1,27 @@
+<h2>プロモーション削除確認</h2>
+<canvas id="canvas"><!-- プロモーション削除確認 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :promotions]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client, @promotion]), :method => :delete %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :promotion, :name %></dt>
+		<dd><%= @promotion.name %></dd>
+		<dt><%= label :promotion,  :url %></dt>
+		<dd><%= @promotion.url %></dd>
+		<dt><%= label :promotion, :description %></dt>
+		<dd><%= @promotion.description %></dd>
+		<dt><%= label :promotion, :starts_at  %></dt>
+		<dd><%= @promotion.starts_at %></dd>
+		<dt><%= label :promotion, :ends_at %></dt>
+		<dd><%= @promotion.ends_at %></dd>
+		<dt><%= label :promotion, :active %></dt>
+		<dd><%= @promotion.active %></dd>
+	</dl>
+</div>
+<p class="notice">本当に削除してもよろしいですか？</p>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :promotions]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:admin, @client, @promotion]), :method => :delete %></span>
+</div>

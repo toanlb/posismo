@@ -1,0 +1,96 @@
+<link href="/javascripts/jqselectable/skin/selectable/style.css" media="screen" rel="stylesheet">
+<script src="/javascripts/jQselectable.js"></script>
+<script>
+jQuery(function($){
+	instances = $(".categories_promotions").jQselectable({
+	callback: function(){
+	matches = $(this).attr("id").match(/^categories\_promotions\_([0-9]+)\_parent\_category\_id$/);
+
+	if(matches == null) return;
+
+	var i = matches[1];
+
+	if($(this).val() < 1){
+		$("#categories_promotions_" + i + "_category_id").html('<option value=""></option>')
+			$.each(instances, function(){
+				this.rebuild();
+			});
+			return;
+		}
+
+	$.getJSON('<%= url_for(:controller => "promotions") %>/child_categories/' + $(this).val(),
+		function(json){
+			$("#categories_promotions_" + i + "_category_id").html('<option value="">無し</option>')
+			$.each(json, function(){
+				value = this[1];
+				text = this[0];
+			$("#categories_promotions_" + i + "_category_id").append($('<option value="' + value + '">' + text + '</option>'));
+			});
+			$.each(instances, function(){
+				this.rebuild();
+			});
+			}
+		)
+	}
+	});
+});
+</script>
+<% if params[:action] == 'new' || params[:action] == "create" %>
+<% actiontext = "登録" %>
+<% else actiontext = '更新' %>
+<% end %>
+
+<%= simple_form_for [:admin, @client, @promotion] do |f| %>
+	<% if @promotion.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @promotion.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :name, :input_html => {:onkeyup => "document.getElementById('promotion_submit').disabled=false;document.getElementById('promotion_submit').value='"+actiontext+"'"} %>
+		<%= f.input :url, :input_html => {:onkeyup => "document.getElementById('promotion_submit').disabled=false;document.getElementById('promotion_submit').value='"+actiontext+"'" }  %>
+		<%= f.input :description %>
+		<%= f.input :opened, :as => :radio, :collection => [["公開",true],["非公開",false]], :required => true %>
+		<%= f.input :tieup_type, :as => :radio, :collection => Promotion::TIEUP_TYPES.collect.with_index, :required => true %>
+		<%= f.input :listing_type, :as => :radio, :collection => Promotion::LISTING_TYPES.collect.with_index, :required => true %>
+		<%= f.input :enable_add, :as => :radio, :collection => Promotion::ENABLE_ADDS.collect.with_index, :required => true %>
+		<%= f.simple_fields_for :click_reward do |nf| %>
+		<div class="input string optional">
+			<%= nf.input :price, :label => "クリック報酬", :required => true, :wrapper => false %><span class="en">円</span>
+		</div>
+		<% end %>
+		<div class="input text optional category">
+		<label for="categories_promotion_category_id">カテゴリー<span>（右から選択）</span></label>
+		<% CategoriesPromotion::LIMIT_PER_PROMOTION.times do |i| %>
+			<ul>
+				<li class="categoryMaster">
+				<%= select("categories_promotions[#{i}]", "parent_category_id", 
+				options_for_select(@parent_options,
+				:selected => params.has_key?(:categories_promotions) ? params[:categories_promotions][i.to_s][:parent_category_id] : nil ||
+				@categories_promotions.try(:at, i).try(:category).try(:parent_id) ||
+				@categories_promotions.try(:at, i).try(:category_id)
+				),
+				{:include_blank => "無し"},
+				{:class => "categories_promotions"}
+				) %>
+				</li>
+				<li class="subCategory">
+				<%= select("categories_promotions[#{i}]", "category_id", 
+				options_for_select(@child_options.try(:[], i).to_a,
+				:selected => params.has_key?(:categories_promotions) ? params[:categories_promotions][i.to_s][:category_id] : nil ||
+				@categories_promotions.try(:at, i).try(:category_id)
+				),
+				{:include_blank => @child_options.try(:[], i).try(:size).to_i > 0 ? "無し" : true},
+				{:class => "categories_promotions"}
+				) %>
+				</li>
+			</ul>
+			<% end %>
+		</div>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

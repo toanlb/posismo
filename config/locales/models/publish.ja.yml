@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      publish: "提携"
+    attributes:
+      publish:
+        details: "詳細"

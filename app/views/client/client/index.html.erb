@@ -1,0 +1,29 @@
+<% content_for :topic_path do -%>
+<ul id="topicpath">
+	<li>ホーム</li>
+</ul>
+<% end -%>
+<div class="headline">
+	<h2>広告主管理</h2>
+</div>
+<ul class="tit line top">
+	<% unless current_client.consigned %>
+	<li class="ef"><%= link_to "プロモ-ション", client_promotions_path %></li>
+	<% end %>
+	<li><%= link_to "提携管理", client_publishes_path %></li>
+	<li><%= link_to "注文管理", client_orders_path %></li>
+	<% unless current_client.consigned %>
+	<li><%= link_to "請求管理", client_payments_path %></li>
+	<% end %>
+	<li><%= link_to "統計情報", client_statistics_path %></li>
+</ul>
+<div class="topics">
+	<marquee  direction="up" scrollamount="30" scrolldelay="1500" behavior="scroll" >
+	<% unless @notices.nil? %>
+	  <% @notices.each do |notice| %>
+	  <%=link_to notice.created_at.strftime("%Y/%m") + ": " + notice.title, client_notice_path(notice) %><br /><br />
+	  <% end %>
+	<% end %>
+	</marquee>
+</div>
+<p class="tit topics"><%= link_to "お知らせ一覧", client_notices_path %></p>

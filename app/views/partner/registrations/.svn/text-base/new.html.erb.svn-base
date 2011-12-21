@@ -1,0 +1,86 @@
+<h2>パートナー登録</h2>
+<div class="actions one head">
+	<span class="back"><%= link_to '戻る', new_session_path(resource_name) %></span>
+</div>
+<%= simple_form_for @partner, :url => partner_registration_path do |f| %>
+<% if @partner.errors.any? %>
+<div id="error_explanation">
+    <ul>
+	<% @partner.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+    </ul>
+</div>
+<% end %>
+<% if @site.errors.any? %>
+<div id="error_explanation">
+    <ul>
+	<% @site.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+    </ul>
+</div>
+<% end %>
+<div id="attributes">
+    <fieldset>
+	<legend>ログイン情報</legend>
+	<%= f.input :login_id, :required => true, :placeholder => t('hints.too_short', :count => 6), :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	<%= f.input :email, :as => :email, :required => true, :placeholder => "example@example.com", :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'" } %>
+	<% if params[:action] == "new" %>
+	<%= f.input :password, :required => true, :placeholder => t('hints.between', :small => 8, :big => 20), :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'" } %>
+	<%= f.input :password_confirmation, :required => true, :input_html => { :onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	<% else %>
+	<%= f.input :password, :required => false, :input_html => {:autocomplete => "off" } %>
+	<%= f.input :password_confirmation, :required => false %>
+	<% end %>
+    </fieldset>
+    <fieldset>
+	<legend>契約者情報</legend>
+	<%= f.input :contract_type, 
+	:collection => Partner::CONTRACT_TYPES.collect.with_index{|s,i|[s,i]},
+	:as => :radio, :required => true %>
+	<%= f.input :company_name %>
+	<%= f.input :company_name_kana %>
+	<%= f.input :contractor_department %>
+	<%= f.input :contractor_position %>
+	<%= f.input :contractor_name %>
+	<%= f.input :contractor_name_kana %>
+	<%= f.input :manager_department %>
+	<%= f.input :manager_position %>
+	<%= f.input :manager_name, :required => true, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	<%= f.input :manager_name_kana, :required => true, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	<%= f.input :postal_code, :placeholder => "例：100-0000（ハイフンを入力して下さい。）" %>
+	<%= f.input :address %>
+	<%= f.input :tel, :as => :tel, :placeholder => "例：080-0000-0000（ハイフンを入力して下さい。）" %>
+    </fieldset>
+    <fieldset>
+	<legend>口座情報</legend>
+	<%= f.input :payment_type, 
+	:collection => Partner::PAYMENT_TYPES.collect.with_index{|s,i|[s,i]},
+	:as => :radio, :required => true %>
+	<%= f.input :bank_name %>
+	<%= f.input :bank_code %>
+	<%= f.input :branch_name %>
+	<%= f.input :branch_code %>
+	<%= f.input :account_type %>
+	<%= f.input :account_number %>
+	<%= f.input :account_name %>
+	<%= f.input :jpbank_account_number %>
+	<%= f.input :jpbank_account_name %>
+    </fieldset>
+    <fieldset>
+	<legend>サイト情報</legend>
+	<%= simple_fields_for @site do |nf| -%>
+	<div id="input string optional">
+	    <%= nf.input :name, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	    <%= nf.input :url, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	    <%= nf.input :description, :as => :text, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	    <%= nf.input :keywords, :input_html => {:onkeyup => "document.getElementById('partner_submit').disabled=false;document.getElementById('partner_submit').value='登録する'"} %>
+	</div>
+	<% end %>
+    </fieldset>
+    <%= f.submit :onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+    </div><% end %>
+<div class="actions one">
+	<span class="back"><%= link_to '戻る', new_session_path(resource_name) %></span>
+</div>

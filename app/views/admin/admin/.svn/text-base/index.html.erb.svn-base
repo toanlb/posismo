@@ -1,0 +1,11 @@
+<div class="headline">
+	<h2>TOP</h2>
+</div>
+<ul class="tit line top">
+	<li><a id="navi2" href="#">管理業務</a></li>
+	<li><%= link_to admin_clients_path, :id => "navi3" do %>広告主管理<% end %></li>
+	<li><%= link_to admin_partners_path, :id => "navi4" do %>パートナー<br />管理<% end %></li>
+	<li><a id="navi5" href="#">統計情報</a></li>
+	<% if current_admin.super_user? -%>
+	<li><%= link_to admin_admins_path, :id => "navi6" do %>管理者設定<% end %></li>
+</ul><% end -%>

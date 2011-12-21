@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/inflections.rb
+END
+devise.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/devise.rb
+END
+machinist.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/machinist.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/session_store.rb
+END
+footnotes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/footnotes.rb
+END
+irbrc.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/irbrc.rb
+END
+ssl_requirement.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/ssl_requirement.rb
+END
+patch_metasearch_url_for.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/patch_metasearch_url_for.rb
+END
+secret_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/secret_token.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/backtrace_silencers.rb
+END
+patch_devise_validatable.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/patch_devise_validatable.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/mime_types.rb
+END
+simple_form.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/posismo-2pm/!svn/ver/1/2pm/config/initializers/simple_form.rb
+END

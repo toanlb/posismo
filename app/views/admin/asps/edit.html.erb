@@ -1,0 +1,11 @@
+<h2>ASP変更</h2>
+<canvas id="canvas"><!-- ASP情報変更 --></canvas>
+<div class="naviBar head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:admin, @client, @asp]) %></span>
+</div>
+<%= render 'form' %>
+<div class="naviBar">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :asps]) %></span>
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:admin, @client, @asp]) %></span>
+</div>

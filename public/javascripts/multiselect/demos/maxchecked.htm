@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<meta charset="utf-8">
+<title>選択限定検索 Demo</title>
+<link rel="stylesheet" href="/multiselect/jquery.multiselect.css">
+<link rel="stylesheet" href="/multiselect/jquery.multiselect.filter.css">
+<link rel="stylesheet" href="/multiselect/demos/assets/style.css">
+<link rel="stylesheet" href="/multiselect/demos/assets/prettify.css">
+<link rel="stylesheet" href="/multiselect/demos/jquery-ui.css">
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/jquery-ui.custom.min.js"></script>
+<script src="/multiselect/src/jquery.multiselect.filter.js"></script>
+<script src="/multiselect/demos/assets/prettify.js"></script>
+
+</head>
+<body onload="prettyPrint();">
+
+<script src="/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	var warning = $(".message");
+	$("select").multiselect({
+			selectedList: 1,
+		header: "一つだけ選んで下さい。",
+		click: function(e){
+		
+			if( $(this).multiselect("widget").find("input:checked").length > 1 ){
+				warning.addClass("error").removeClass("success").html("既に選択済みです。");
+				return false;
+			} else {
+				warning.addClass("success").removeClass("error").html("一つだけ選択して下さい。");
+			}
+			
+		}
+	});
+});
+</script>
+<h2>選択数限定セレクトボックス</h2>
+<p class="message success">一つだけ選んで下さい。</p>
+<form>
+	<select multiple="multiple">
+		<option value="オレンジ">オレンジ</option>
+		<option value="紫">紫</option>
+		<option value="黄色">黄色</option>
+		<option value="ブラウン">ブラウン</option>
+		<option value="黒い奴">黒い奴</option>
+		<option value="オレンジ色の憎い奴">オレンジ色の憎い奴</option>
+		<option value="紫の炎">紫の炎</option>
+		<option value="黄色のハンカチ">黄色のハンカチ</option>
+		<option value="チャーリー・ブラウン">チャーリー・ブラウン</option>
+		<option value="黒い雨">黒い雨</option>
+		<option value="オレンジ嵐">オレンジ嵐</option>
+		<option value="紫嵐">紫嵐</option>
+		<option value="黄色嵐">黄色嵐</option>
+		<option value="ブラウン嵐">ブラウン嵐</option>
+		<option value="黒い奴嵐">黒い奴嵐</option>
+		<option value="オレンジ色の憎い奴嵐">オレンジ色の憎い奴嵐</option>
+		<option value="紫の炎嵐">紫の炎嵐</option>
+		<option value="黄色のハンカチ嵐">黄色のハンカチ嵐</option>
+		<option value="チャーリー・ブラウン嵐">チャーリー・ブラウン嵐</option>
+		<option value="黒い雨嵐">黒い雨嵐</option>
+	</select>
+</form>
+<script>
+$("select").multiselect().multiselectfilter();
+$(document) .ready(function(){
+	$('div.ui-widget-header ul.ui-helper-reset') .css('display','none');
+	});
+</script>
+</body>
+</html>

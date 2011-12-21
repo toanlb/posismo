@@ -1,0 +1,58 @@
+<h2>統計アップロード</h2>
+<canvas id="canvas"><!-- 統計アップロード --></canvas>
+<% if @error_statistics.any? %>
+<span>下記データは正しく保存されませんでした。</span>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+	<thead>
+		<tr>
+			<th class="ids">ID</th>
+			<th>impression count</th>
+			<th>click count</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @error_statistics.each do |statistic| %>
+			<% if statistic.errors.any? %>
+				<% statistic.errors.full_messages.each do |msg| %>
+					<tr>
+						<td colspan="3"><%= msg %></td>
+					</tr>
+				<% end %>
+			<% end %>
+			<tr>
+				<td class="ids" <%= raw('style="background-color:#cc0000; font-weight: bold"') if statistic.errors.has_key?(:id) %>>
+					<%= statistic.id %>
+				</td>
+				<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if statistic.errors.has_key?(:impression_count) %>>
+					<%= statistic.impression_count %>
+					</td>
+				<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if statistic.errors.has_key?(:click_count) %>>
+					<%= statistic.click_count %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+
+<% if @statistics.any? %>
+	<span>下記データは正しく保存されました</span>
+	<table class="autopagerize_page_element tablesorter" id="myTable">
+		<thead>
+			<tr>
+				<th class="ids">ID</th>
+				<th>impression count</th>
+				<th>click count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @statistics.each do |statistic| %>
+				<tr>
+					<td class="ids"><%= statistic.id %></td>
+					<td><%= statistic.impression_count %></td>
+					<td><%= statistic.click_count %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

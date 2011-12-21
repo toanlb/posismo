@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      banner: "バナー"
+      text_banner: "テキスト・バナー"
+      ImageBanner: "画像バナー"
+    attributes:
+      banner: &banner_attributes
+        type: "種類"
+        name: "バナー名"
+        description: "説明"
+        text: "テキスト"
+        image: "画像"
+        image_size: "画像サイズ"
+        click_rate: "クリック率"
+        cv_rate: "CV率"
+      image_banner: 
+        <<: *banner_attributes

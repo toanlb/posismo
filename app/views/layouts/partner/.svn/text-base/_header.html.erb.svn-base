@@ -1,0 +1,6 @@
+<!-- header -->
+<header id="header">
+	<h1><%= link_to partner_root_path do %><%= image_tag 'common/logo.gif', :size => "120x40", :alt => '2PM Premier Media Pertners' %><% end %></h1>
+	<%= render :partial => 'layouts/partner/account' %>
+</header>
+<!-- /header -->

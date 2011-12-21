@@ -1,0 +1,7 @@
+
+* 川島さん引継ぎレビュー後TODOs
+** TODO order modelの#reject_update_daily! の場所について浦野さんに確認。
+** TODO paramerter model、reward_validator.rb など不要なモデルを削除。
+** TODO Partner::OrdersController#point_backの入力時刻をUTC＋9に変更。
+** TODO 調整用注文作成にデザインを適用する必要あり。
+

@@ -1,0 +1,97 @@
+<h2>バナー編集</h2>
+<canvas id="canvas"><!-- バナー編集 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", client_promotion_path(@client, @promotion, :anchor => :tabBanner) %></span>
+</div>
+<div id="attributes">
+	<% if params[:action] == 'new' || params[:action] == "create" %>
+<% actiontext = "登録" %>
+<% else actiontext = '更新' %>
+<% end %>
+	<%= simple_form_for [:client, @promotion, @banner.becomes(Banner)], :html => { :multipart => true } do |f| -%>
+		<%= f.input :type, :collection => Banner::TYPES, :as =>
+		:radio, :required => true , :default => 'TextBanner' %>
+		<% if @banner.type == 'TextBanner' %>
+			<script type="text/javascript">
+			  function toggleBannerFields(event) {
+				  switch($("input[name='banner[type]']:checked").attr('value')) {
+				  case "TextBanner":
+					  $("#text_banner_fields :input").attr("required", "required");
+					  $("#image_banner_fields :input").removeAttr("required");
+					  $("#image_banner_fields").hide();
+					  $("#text_banner_fields").show();
+					  break;
+				  case "ImageBanner":
+  					  $("#image_banner_fields :input").attr("required", "required");
+					  $("#text_banner_fields :input").removeAttr("required");
+					  $("#text_banner_fields").hide();
+					  $("#image_banner_fields").show();
+					  break;
+			     	}
+			  }
+			$("input[name='banner[type]']").change(toggleBannerFields);
+			$(document).ready(toggleBannerFields);
+		</script>
+		<% else %>
+		<script type="text/javascript">
+			  function toggleBannerFields(event) {
+				  switch($("input[name='banner[type]']:checked").attr('value')) {
+				  case "TextBanner":
+					  $("#text_banner_fields :input").attr("required", "required");
+					  $("#image_banner_fields :input").removeAttr("required");
+					  $("#image_banner_fields").hide();
+					  $("#text_banner_fields").show();
+					  break;
+				  case "ImageBanner":
+					  $("#text_banner_fields :input").removeAttr("required");
+					  $("#text_banner_fields").hide();
+					  $("#image_banner_fields").show();
+					  break;
+			     	}
+			  }
+			$("input[name='banner[type]']").change(toggleBannerFields);
+			$(document).ready(toggleBannerFields);
+	   </script>
+		<% end %>
+		<%= f.input :name, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='更新する'"} %>
+		<%= f.input :description, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='更新する'"} %>
+
+		
+	<fieldset id="text_banner_fields">
+		<legend>テキストバナー</legend>
+		<%= f.input :text, :required => true, :input_html => {:onkeyup => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='更新する'"} %>
+	</fieldset>
+
+	<fieldset id="image_banner_fields">
+		<legend>画像バナー</legend>
+		<% if @banner.type == 'TextBanner' %>
+		<%= f.input :image, :required => true, :as => :file, :input_html => {:onclick => "document.getElementById('banner_submit').disabled=false;document.getElementById('banner_submit').value='更新する'"} %>
+		<% else %>
+		<a href=<%= @banner.image.url %>><%= image_tag @banner.image.url, :size => @banner.resize_image, :alt => "画像を見つけません。" %></a>
+		<%= f.input :image, :required => false, :as => :file %>
+		<% end %>
+	</fieldset>
+	<%= f.submit :onclick => "this.disabled=true;this.value='処理中...';this.form.submit()"%>
+<% end -%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#banner_image").uploadify!!({
+			"uploader": "/uploadify/uploadify.swf",
+			"script": "<%= polymorphic_path([:admin, @client, @promotion, :banners]) %>",
+			"fileDataName": "banner[image]",
+			"multi": true,
+			"cancelImg": "/uploadify/cancel.png",
+			"auto": true,
+			"onComplete": onUploadComplete
+		});
+	});
+
+	function onUploadComplete(e, id, obj, response, data) {
+	//$("img").replace(response);
+		alert(response);
+	}
+</script>
+</div>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", client_promotion_path(@client, @promotion, :anchor => :tabBanner) %></span>
+</div>

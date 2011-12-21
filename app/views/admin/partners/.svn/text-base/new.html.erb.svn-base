@@ -1,0 +1,9 @@
+<h2>パートナー新規登録</h2>
+<canvas id="canvas"><!-- パートナー新規登録 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to '戻る', polymorphic_path([:admin, :partners]) %></span>
+</div>
+<%= render 'form' %>
+<div class="actions one">
+	<span class="back"><%= link_to '戻る', polymorphic_path([:admin, :partners]) %></span>
+</div>

@@ -1,0 +1,87 @@
+<h2>プロモーション詳細</h2>
+<canvas id="canvas"><!-- プロモーション詳細 --></canvas>
+<script>
+	// <![CDATA[
+	jQuery(function($) {
+	$("#jQTabs").tabs({
+		fx : {
+		opacity : 'toggle',
+		duration : 'fast'
+		}
+	});
+	});
+	// ]]>
+</script>
+<div class="board">
+	<div id="jQTabs">
+	<ul>
+		<li><a href="#tabPromotion"><span>プロモーション詳細</span></a></li>
+		<li><a href="#tabReward"><span>報酬額詳細</span></a></li>
+		<li><a href="#tabBanner"><span>バナー一覧</span></a></li>
+	</ul>
+	<!-- #tab -->
+	<div id="tabPromotion">
+		<h3><a href="#section1">プロモーション名</a></h3>
+		<div class="actions forButtonIcon">
+			<span class="back"><%= link_to "戻る", partner_promotions_path %></span>
+			<span class="tieUpOn"><%= link_to "提携申込", polymorphic_path([:partner, @promotion], :action => :affiliate) %></span>
+		</div>
+		<!-- #attributes -->
+		<div id="attributes">
+		<dl>
+			<dt><%= label :promotion, :name %></dt>
+			<dd><%= @promotion.name %></dd>
+			<dt><%= label :promotion, :client_company_name %></dt>
+			<dd><%= @promotion.client.company_name %></dd>
+			<dt><%= label :promotion,	:url %></dt>
+			<dd><%= @promotion.url %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :promotion, :description %></dt>
+			<dd><%= @promotion.description %></dd>
+		</dl>
+		<dl>
+			<% if @promotion.click_reward -%>
+			<dt><%= label :promotion, :click_reward_price %></dt>
+			<dd><%= @promotion.click_reward.price %>円</dd>
+			<% end %>
+			<dt><%= label :promotion, :category_name %></dt>
+			<% @categories.each do |cat| %>
+			<dd><%= cat.category.category_name %></dd>
+			<% end %>			
+		</dl>
+		</div>
+		<!-- /#attributes -->
+		<script>
+		$(document).ready(function() {
+			$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+			$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+			$("#myTablePromotion").tablesorter();
+		});
+		</script>
+	</div>
+	<!-- /#tab -->
+	<!-- #tab -->
+	<div id="tabReward">
+		<div class="tab_contents">
+		<%= render :partial => "rewards" %>
+		</div>
+		<div class="actions one">
+			<span class="back"><%= link_to "戻る", partner_promotions_path %></span>
+		</div>
+	</div>
+	<!-- /#tab -->
+	<!-- #tab -->
+	<div id="tabBanner">
+		<div class="tab_contents">
+		<%= render :partial => "banners" %>
+		</div>
+		<div class="actions one">
+			<span class="back"><%= link_to "戻る", partner_promotions_path %></span>
+		</div>
+	</div>
+	<!-- /#tab -->
+	</div>
+	<!-- /#jQTabs -->
+</div>
+<!-- /.board -->

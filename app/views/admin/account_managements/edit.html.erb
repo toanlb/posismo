@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/assets/style.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/assets/prettify.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/jquery-ui.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-account_management_admin_ids-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-account_management_admin_ids-option]:checked").addClass('bigCol');
+    });
+    $(".publishList").multiselect({
+	header: "選んでください。",
+	noneSelectedText: "選んでください。",
+	selectedList: 1
+	});
+});
+</script>
+<h2>クライアント担当者管理</h2>
+<canvas id="canvas"><!-- クライアント担当者管理 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client]) %></span>
+</div>
+<%= render 'form' %>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client]) %></span>
+</div>

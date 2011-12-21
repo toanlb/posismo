@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client
+END
+statistics_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/statistics_controller.rb
+END
+client_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/client_controller.rb
+END
+orders_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/orders_controller.rb
+END
+publishes_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/publishes_controller.rb
+END
+one_tags_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/one_tags_controller.rb
+END
+payments_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/payments_controller.rb
+END
+reward_points_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/reward_points_controller.rb
+END
+notices_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/notices_controller.rb
+END
+rewards_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/rewards_controller.rb
+END
+banners_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/banners_controller.rb
+END
+promotions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/posismo-2pm/!svn/ver/1/2pm/app/controllers/client/promotions_controller.rb
+END

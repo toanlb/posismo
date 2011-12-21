@@ -1,0 +1,23 @@
+<div class="headline">
+	<h2><%= @promotion.name %></h2>
+</div>
+<p class="tit new"><%= link_to "成果地点登録", new_client_promotion_reward_point_path %></p>
+</div>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th>成果地点</th>
+		<th colspan="2"></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render @reward_points %>
+</tbody>
+</table>

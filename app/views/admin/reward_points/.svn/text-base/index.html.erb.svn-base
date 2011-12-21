@@ -1,0 +1,14 @@
+<h2><%= @promotion.name %></h2>
+<canvas id="canvas"><!-- プロモーション --></canvas>
+<p class="tit new"><%= link_to "成果地点登録", new_polymorphic_path([:admin, @client, :promotion, :reward_point]) %></p>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th>成果地点</th>
+		<th colspan="2">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @reward_points %>
+</tbody>
+</table>

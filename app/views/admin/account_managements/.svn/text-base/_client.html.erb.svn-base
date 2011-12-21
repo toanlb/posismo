@@ -1,0 +1,10 @@
+	<dl>
+		<dt>広告主情報</dt>
+		<dd></dd>
+		<dt><%= label :client, :id %></dt>
+		<dd><%= @client.id %></dd>
+		<dt><%= label :client, :login_id %></dt>
+		<dd><%= @client.login_id %></dd>
+		<dt><%= label :client, :company_name %></dt>
+		<dd><%= @client.company_name %> (<%= @client.company_name_kana %>)</dd>
+	</dl>

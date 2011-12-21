@@ -1,0 +1,25 @@
+<h2>お知らせ詳細情報</h2>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :notices]) %></span>
+	<%= link_to "編集", edit_polymorphic_path([:admin, @notice]) %>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :notice, :id %></dt>
+		<dd><%= @notice.id %></dd>
+		<dt><%= label :notice, :target %></dt>
+		<dd><%= @notice.target %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :notice, :title %></dt>
+		<dd><%= @notice.title %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :notice,  :description %></dt>
+		<dd><%= @notice.description %></dd>
+	</dl>
+</div>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :notices]) %></span>
+	<%= link_to "編集", edit_polymorphic_path([:admin, @notice]) %>
+</div>

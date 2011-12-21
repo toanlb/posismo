@@ -1,0 +1,8 @@
+<%= content_tag_for :tr, payment do %>
+	<td><%= payment.login_id %></td>
+	<td><%= payment.company_name %></td>
+	<td><%= payment.manager_name %></td>
+	<td><%= payment.sum_final_all_reward %></td>
+	<td><%= @partners_count[payment.client_id] %></td>
+<% end %>
+

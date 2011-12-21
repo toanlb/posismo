@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/jquery.multiselect.filter.css"> 
+<link rel="stylesheet" href="/javascripts/multiselect/demos/jquery-ui.css">
+<script src="/javascripts/multiselect/src/jquery.multiselect.filter.js"></script> 
+<script src="/javascripts/multiselect/demos/assets/prettify.js"></script> 
+<script src="/javascripts/multiselect/src/jquery.multiselect.custom.js"></script>
+<script>
+$(function(){
+	$("#search_promotion_id_in").multiselect({
+		selectedList: 1,
+		click: function(e, ui){
+			var clicked_value = $('#search_promotion_id_in').val();
+			var now_click_value = ui.value;
+			var last_value = new Array();
+			var url_value = null;
+			//セレクトされている値がある場合
+			if(clicked_value != null){
+				var len = clicked_value.length;
+				for(var i = 0; i < len; i = i + 1){
+					if(now_click_value != clicked_value[i]){
+						last_value.push(clicked_value[i]);
+					}
+				}
+				if(now_click_value != null){
+					//チェックをつけたのか外したのか判断
+					if(ui.checked){
+						last_value.push(now_click_value);
+					}
+				}
+			}else{
+				//新規にセレクトされた場合
+				last_value.push(now_click_value);
+			}
+	
+			if(last_value != null){
+				url_value = last_value.join(':');
+			}
+			if(url_value != null){
+				$.getJSON(
+				'<%= url_for(:action => :index) %>/promotion_publishes_sites/'+url_value,
+				function(json){
+				$("#search_site_id_in").html('');
+				$.each(json, function(){
+					value = this[1];
+					text = this[0];
+					$("#search_site_id_in").append($('<option value="' + value + '">' + text + '</option>'));
+				});
+
+				$("#search_site_id_in").multiselect("refresh");
+				});
+			}
+		}
+	});
+	$(".publishList").multiselect().multiselectfilter().bind("multiselectclick multiselectcheckall multiselectuncheckall", function(){
+        $("input[id^=ui-multiselect-search_promotion_id_in-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-search_site_id_in-option]").removeClass('bigCol');
+        $("input[id^=ui-multiselect-search_promotion_id_in-option]:checked").addClass('bigCol');
+        $("input[id^=ui-multiselect-search_site_id_in-option]:checked").addClass('bigCol');
+    });
+});
+</script>
+<div class="headline">
+	<h2>提携一覧</h2>
+</div>
+<%= simple_form_for [:partner, @search] do |f| %>
+<div class="multi" id="publish_search_multi">
+	<div class="input text optional">
+		<ul>
+			<li>プロモーション名
+				<%= select("search", "promotion_id_in",
+				options_from_collection_for_select(@promotions, :id, :name,:selected => @selected_promotions),
+					{},
+					{:class => "publishList", :multiple => true}
+				) %>
+			</li>
+			<li>サイト名
+				<%= select("search", "site_id_in", 
+					@sites.nil? ? [] : options_from_collection_for_select(@sites, :id, :name, :selected => @selected_sites),
+					{},
+					{:class => "publishList", :multiple => true}
+				) %>
+			</li>
+			<li><%= f.submit "検索",:onclick => "document.getElementById('publish_search').action = 'publishes'" %></li>
+		</ul>
+	</div>
+	</div>
+	<script>
+	jQuery(function($){	
+		$("select#search_approval_status_eq").jQselectable({
+			out: "fadeOut",
+			outDuration: 150,
+			height: 150,
+		});	
+	});
+	</script>
+	<div id="publish_search">
+		<%= f.label :approval_status, "承認状態" %>
+		<%= f.select :approval_status_eq, Publish::SEARCH_APPROVAL_STATUSES.collect.with_index{|s,i| s} %>
+		<%= f.submit "検索",:onclick => "document.getElementById('publish_search').action = 'publishes'" %>
+	</div>
+<%= f.submit "csvダウンロード",:onclick => "document.getElementById('publish_search').action = 'publishes/csv'",:id => "csv_download" %>
+<% end %>
+
+
+<%= paginate @publishes %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th><%= sort_link @search, :promotion_name %></th>
+		<th><%= sort_link @search, :site_name %></th>
+		<th><%= sort_link @search, :approval_status %></th>
+		<th colspan="2" class="dammy">&nbsp;</th>
+	</tr>
+</thead>
+<tbody>
+<%= render :partial => @publishes %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @publishes %>
+</div>

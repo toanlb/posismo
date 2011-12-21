@@ -1,0 +1,53 @@
+<% if params[:action] == "new" || params[:action] == "create" %>
+	<% actiontext = "登録" %>
+	<% else %>
+	<% actiontext = "更新" %>
+<% end %>
+<%= simple_form_for @partner, {:url => partner_account_update_path,
+:method => :put} do |f| %>
+	<% if @partner.errors.any? %>
+	<div id="error_explanation">
+		<h2></h2>
+		<ul>
+			<% @partner.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :login_id, :input_html => {:autocomplete => "off" } %>
+		<%= f.input :email, :as => :email, :placeholder => "example@example.com", :input_html => {:autocomplete => "off" } %>
+		<%= f.input :password, :required => false, :input_html => {:autocomplete => "off" } %>
+		<%= f.input :password_confirmation, :required => false %>
+		<%= f.input :contract_type, 
+			:collection => Partner::CONTRACT_TYPES.collect.with_index{|s,i|[s,i]}, 
+			:as => :radio %>
+		<%= f.input :company_name %>
+		<%= f.input :company_name_kana %>
+		<%= f.input :contractor_department %>
+		<%= f.input :contractor_position %>
+		<%= f.input :contractor_name %>
+		<%= f.input :contractor_name_kana %>
+		<%= f.input :manager_department %>
+		<%= f.input :manager_position %>
+		<%= f.input :manager_name, :required => true %>
+		<%= f.input :manager_name_kana, :required => true %>
+		<%= f.input :postal_code %>
+		<%= f.input :address %>
+		<%= f.input :tel, :as => :tel %>
+		<%= f.input :payment_type, 
+			:collection => Partner::PAYMENT_TYPES.collect.with_index{|s,i|[s,i]},
+			:as => :radio %>
+		<%= f.input :bank_name %>
+		<%= f.input :bank_code %>
+		<%= f.input :branch_name %>
+		<%= f.input :branch_code %>
+		<%= f.input :account_type %>
+		<%= f.input :account_number %>
+		<%= f.input :account_name %>
+		<%= f.input :jpbank_account_number %>
+		<%= f.input :jpbank_account_name %>
+		<%= f.submit actiontext %>
+	</div>
+<% end %>

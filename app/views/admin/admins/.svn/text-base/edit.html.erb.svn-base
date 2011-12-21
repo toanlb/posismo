@@ -1,0 +1,11 @@
+<h1>管理者情報変更</h1>
+<canvas id="canvas"><!-- 管理者情報変更 --></canvas>
+<div class="naviBar head">
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:admin, @admin]) %></span>
+	<span class="list"><%= link_to "一覧", polymorphic_path([:admin, :admins]) %></span>
+</div>
+<%= render 'form' %>
+<div class="naviBar">
+	<span class="todetail"><%= link_to "詳細", polymorphic_path([:admin, @admin]) %></span>
+	<span class="list"><%= link_to "一覧", polymorphic_path([:admin, :admins]) %></span>
+</div>

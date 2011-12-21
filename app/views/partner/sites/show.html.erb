@@ -1,0 +1,32 @@
+<h2>サイト詳細</h2>
+<canvas id="canvas"><!-- サイト詳細 --></canvas>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :sites]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:partner, @site]) %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :site, :name %></dt>
+		<dd><%= @site.name %></dd>
+		<dt><%= label :site,  :url %></dt>
+		<dd><%= @site.url %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :site, :description %></dt>
+		<dd><%= @site.description %></dd>
+	</dl>
+	<dl>
+		<dt><%= label :site, :keywords %></dt>
+		<dd><%= @site.keywords %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :site, :category_name %></dt>
+		<% @categories.each do |cat| %>
+		<dd><%= cat.category.category_name %>&nbsp;</dd>
+		<% end %>
+	</dl>
+</div>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :sites]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:partner, @site]) %></span>
+</div>

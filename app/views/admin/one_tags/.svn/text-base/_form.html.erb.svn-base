@@ -1,0 +1,15 @@
+<%= form_tag polymorphic_path([:admin, @client, @promotion, :one_tags]), :method => :put do %>
+	<div id="attributes">
+		<div class="input string required">
+			<h3><%= label_tag "提携ASPを選択" %></h3>
+			<% @asps.each do |item| %>
+			<dl class="aspName">
+				<dt><%= check_box_tag "asp_ids[]", item.id, item.associated_promotion?(params[:promotion_id].to_i) %></dt>
+				<dd><%= item.name %></dd>
+			</dl><% end %>
+		</div>
+		<div class="actions">
+			<span class="save"><%= submit_tag "登録" %></span>
+		</div>
+	</div>
+<% end %>

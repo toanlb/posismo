@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: "&lt;&lt;先頭"
+      previous: "&lt;前"
+      truncate: "…"
+      next: "次&gt;"
+      last: "末尾&gt;&gt;"

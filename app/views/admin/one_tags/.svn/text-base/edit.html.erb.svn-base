@@ -1,0 +1,9 @@
+<h1>ワンタグ情報編集</h1>
+<canvas id="canvas"><!-- ワンタグ情報編集 --></canvas>
+<p class="actions one head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, @promotion, :one_tags]) %></span>
+</p>
+<%= render 'form' %>
+<p class="actions one">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, @promotion, :one_tags]) %></span>
+</p>

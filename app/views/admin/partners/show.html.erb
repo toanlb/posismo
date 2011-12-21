@@ -1,0 +1,116 @@
+<h2>パートナー詳細</h2>
+<canvas id="canvas"><!-- パートナー詳細 --></canvas>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :partners]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @partner]) %></span>
+</div>
+<div class="board">
+	<div id="attributes">
+		<dl>
+			<dt><%= label :partner, :id %></dt>
+			<dd><%= @partner.id %></dd>
+			<dt><%= label :partner, :login_id %></dt>
+			<dd><%= @partner.login_id %></dd>
+			<dt><%= label :partner, :email %></dt>
+			<dd><%= @partner.email %></dd>
+			<dt><%= label :partner, :contract_type %></dt>
+			<dd><%= Partner::CONTRACT_TYPES[@partner.contract_type] %></dd>
+		</dl>
+		<dl class="aspName">
+			<% if @partner.contract_type == Partner::CONTRACT_TYPES.index("法人") %>
+			<dt><%= label :partner, :company_name %></dt>
+			<dd><%= @partner.company_name %>(<%= @partner.company_name_kana %>)</dd>
+		</dl>
+		<dl>
+			<dt><%= label :partner, :contractor_department %></dt>
+			<dd><%= @partner.contractor_department %></dd>
+			<dt><%= label :partner, :contractor_position %></dt>
+			<dd><%= @partner.contractor_position %></dd>
+			<dt><%= label :partner, :contractor_name %></dt>
+			<dd><%= @partner.contractor_name %>(<%= @partner.contractor_name_kana %>)</dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :partner, :manager_department %></dt>
+			<dd><%= @partner.manager_department %>(<%= @partner.manager_department %>)</dd>
+		</dl>
+		<dl>
+			<dt><%= label :partner, :manager_position %></dt>
+			<dd><%= @partner.manager_position %>(<%= @partner.manager_position %>)</dd>
+		</dl>
+			<% end %>
+		<dl class="aspName">
+			<dt><%= label :partner, :manager_name %></dt>
+			<dd><%= @partner.manager_name %>(<%= @partner.manager_name_kana %>)</dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :partner, :address %></dt>
+			<dd><%= @partner.postal_code %> <%= @partner.address %>&nbsp;</dd>
+		</dl>
+		<dl>
+			<dt><%= label :partner, :tel %></dt>
+			<dd><%= @partner.tel %></dd>
+			<dt><%= label :partner, :payment_type %></dt>
+			<dd><%= Partner::PAYMENT_TYPES[@partner.payment_type] %></dd>
+			<dt><%= label :partner, :bank_name %></dt>
+			<dd><%= @partner.bank_name %></dd>
+			<dt><%= label :partner, :bank_code %></dt>
+			<dd><%= @partner.bank_code %></dd>
+			<dt><%= label :partner, :branch_name %></dt>
+			<dd><%= @partner.branch_name %></dd>
+			<dt><%= label :partner, :branch_code %></dt>
+			<dd><%= @partner.branch_code %></dd>
+			<dt><%= label :partner, :account_type %></dt>
+			<dd><%= @partner.account_type %></dd>
+			<dt><%= label :partner, :account_name %></dt>
+			<dd><%= @partner.account_name %></dd>
+			<dt><%= label :partner, :jpbank_account_number %></dt>
+			<dd><%= @partner.jpbank_account_number %></dd>
+			<dt><%= label :partner, :jpbank_account_name %></dt>
+			<dd><%= @partner.jpbank_account_name %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :partner, :memo %></dt>
+			<dd><%= @partner.memo %>&nbsp;</dd>
+		</dl>
+		<dl>
+			<dt><%= label :partner, :registration_status %></dt>
+			<dd><%= Partner::REGISTRATION_STATUSES[@partner.registration_status] %></dd>
+			<% if current_admin.super_user? -%>
+			<dt><%= label :partner, :deleted %></dt>
+			<dd><%= @partner.deleted ? "はい" : "いいえ" %></dd>
+			<% end %>
+		</dl>
+	</div>
+	<h3>登録サイト情報</h3>
+	<script>
+	$(document).ready(function(){
+		$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+		$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+		$("#myTable").tablesorter();
+	});
+	</script>
+	<table class="autopagerize_page_element tablesorter inTab" id="myTable">
+	<thead>
+		<tr>
+			<th><a href="#" class="sort_link"><%= label :site, :name %></a></th>
+			<th><a href="#" class="sort_link"><%= label :site, :url %></a></th>
+			<th><a href="#" class="sort_link"><%= label :site, :description %></a></th>
+			<th><a href="#" class="sort_link"><%= label :site, :keywords %></a></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @partner.sites.each do |site| %>
+		<tr>
+			<td><%= site.name %></td>
+			<td><%= link_to truncate(site.url,{:length => 100}), site.url, { :target => "_blank" } %></td>
+			<td><%= site.description %></td>
+			<td><%= site.keywords %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	</table>
+</div>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:admin, :partners]) %></span>
+	<span class="edit"><%= link_to "編集", edit_polymorphic_path([:admin, @partner]) %></span>
+</div>

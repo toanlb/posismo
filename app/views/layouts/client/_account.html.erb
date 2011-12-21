@@ -1,0 +1,5 @@
+<% unless ["/client/login","/client/unlock/new","/client/password/new"].include? request.fullpath || !client_signed_in? -%><ul class="account">
+	<li class="accountName"><span><%= current_client.company_name %></span></li>
+	<li class="accountLink"><%= link_to client_account_path do %>アカウント情報<% end %></li>
+	<li class="status"><%= link_to destroy_client_session_path do %>ログアウト<% end %></li>
+</ul><% end -%>

@@ -1,0 +1,8 @@
+<%= content_tag_for :tr,publish do %>
+<% if publish.promotion.present? %>
+	<td><%= link_to publish.promotion.name, polymorphic_path([:admin, @client, publish.promotion]) %></td>
+	<td><% unless publish.site.nil? %><%= publish.site.name %><% end %></td>
+	<td><%= publish.approval_status %></td>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:admin, @client, publish]) %></span></td>
+<% end %>
+<% end %>

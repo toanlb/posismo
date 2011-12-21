@@ -1,0 +1,24 @@
+<h2>サイト削除確認</h2>
+<canvas id="canvas"><!-- サイト削除確認 --></canvas>
+<div class="actions head">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :sites]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:partner, @site]), :method => :delete %></span>
+</div>
+
+<div id="attributes">
+	<dl>
+		<dt><%= label :site, :name %></dt>
+		<dd><%= @site.name %></dd>
+		<dt><%= label :site,  :url %></dt>
+		<dd><%= @site.url %></dd>
+		<dt><%= label :site, :description %></dt>
+		<dd><%= @site.description %></dd>
+		<dt><%= label :site, :keywords %></dt>
+		<dd><%= @site.keywords %></dd>
+	</dl>
+</div>
+<p class="naviBar">本当に削除してもよろしいですか？</p>
+<div class="actions">
+	<span class="back"><%= link_to "戻る", polymorphic_path([:partner, :sites]) %></span>
+	<span class="delete"><%= button_to "削除", polymorphic_path([:partner, @site]), :method => :delete %></span>
+</div>

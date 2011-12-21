@@ -1,0 +1,11 @@
+<tr id="admin_<%= admin.id %>">
+	<td class="ids"><%= admin.id %></td>
+	<td><%= admin.login_id %></td>
+	<td><%= admin.name %></td>
+	<td><%= admin.email %></td>
+	<td><%= admin.super_user? ? "はい" : "いいえ" %></td>
+	<td><%= admin.deleted? ? "はい" : "いいえ" %></td>
+	<td><span class="details"><%= link_to "詳細", polymorphic_path([:admin, admin]) %></span></td>
+	<td><span class="edit"><%= link_to "変更", edit_polymorphic_path([:admin, admin]) %></span></td>
+	<td><span class="del"><%= link_to "削除", polymorphic_path([:admin, admin], :action => :delete ) %></span></td>
+</tr>

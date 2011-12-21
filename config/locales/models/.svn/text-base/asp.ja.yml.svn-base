@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      asp: "集計"
+    attributes:
+      asp:
+        name: "タグ名"
+        tag: "コンバージョンタグ"
+        always_extract: "常にタグを表示"
+        click_url: "クリックURL"

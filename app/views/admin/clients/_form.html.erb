@@ -1,0 +1,56 @@
+<%= simple_form_for [:admin, @client] do |f| %>
+	<% if @client.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @client.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<% if params[:action] == "new" || params[:action] == "create" %>
+		<% actiontext = "登録" %>
+		<% else %>
+		<% actiontext = "更新" %>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :login_id, :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}, :placeholder => t('hints.too_short', :count => 6) %>
+		<%= f.input :email, :as => :email, :required => true, :placeholder => "example@example.com", :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"} %>
+		<%= f.input :password, :required => false, :placeholder => t('hints.between', :small => 8, :big => 20) %>
+		<%= f.input :password_confirmation, :required => false %>
+		<%= f.input :site_name, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"} %>
+		<%= f.input :site_url, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :company_name, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :company_name_kana, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :contractor_department, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :contractor_position, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :contractor_name, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :contractor_name_kana, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :manager_department, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :manager_position, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :manager_name, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :manager_name_kana, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :postal_code, :placeholder => "例：100-0000（ハイフンを入力して下さい。）", :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :address, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :tel, :as => :tel, :placeholder => "例：080-0000-0000（ハイフンを入力して下さい。）", :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<%= f.input :consigned, :input_html => {:onkeyup => "document.getElementById('client_submit').disabled=false;document.getElementById('client_submit').value='"+actiontext+"'"}  %>
+		<link href="/javascripts/jqselectable/skin/selectable/style.css" media="screen" rel="stylesheet">
+		<script src="/javascripts/jQselectable.js"></script>
+		<script>
+			jQuery(function($){	
+				$("select#client_registration_status").jQselectable({
+				out: "fadeOut",
+				outDuration: 150,
+				height: 150,
+				});	
+			});
+		</script>
+		<%= f.input :registration_status, 
+		:collection => Client::REGISTRATION_STATUSES.collect.with_index{|s,i|[s,i]}, 
+		:include_blank => false %>
+		<% if current_admin.super_user? -%>
+		<%= f.input :deleted %>
+		<% end -%>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

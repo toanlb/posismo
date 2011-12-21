@@ -1,0 +1,16 @@
+<div id="attributes">
+	<%= render 'client' %>
+	<%= form_tag polymorphic_path([:admin, @client, :account_managements]), :method => :put do %>
+	<dl class="aspName">
+		<dt>担当者を選んでください。</dt>
+		<dd><%= select("account_management", "admin_ids",
+			@admins.collect{|admin| [admin.login_id.to_s + '(' + admin.name.to_s + ')',admin.id ]},
+			{:selected => @select_admins},
+			{:class => "publishList", :multiple => true}
+		) %></dd>
+	</dl>
+	<div class="actions">
+		<span class="save"><%= submit_tag '担当者設定', :onclick => "this.value='処理中...';this.form.submit();"%></span>
+	</div>
+<% end %>
+</div>

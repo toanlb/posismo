@@ -1,0 +1,5 @@
+<%= content_tag_for :tr, notice do %>
+		<td><%= notice.title %></td>
+		<td><%= notice.description %></td>
+		<td><span class="details"><%= link_to "詳細", polymorphic_path([:partner, notice]) %></span></td>
+<% end %>

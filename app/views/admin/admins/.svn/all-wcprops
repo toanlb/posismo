@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/edit.html.erb
+END
+_admin.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/_admin.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/_form.html.erb
+END
+delete.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/delete.html.erb
+END
+create.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/posismo-2pm/!svn/ver/1/2pm/app/views/admin/admins/create.html.erb
+END

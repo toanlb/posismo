@@ -1,0 +1,41 @@
+<% if params[:action] == "new" || params[:action] == "create" %>
+	<% actiontext = "登録" %>
+	<% else %>
+	<% actiontext = "更新" %>
+<% end %>
+<%= simple_form_for @client, {:url => client_account_path} do |f| %>
+	<% if @client.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+			<% @client.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="attributes">
+		<div class="input string login_id ">
+			<%= label :client, :login_id, :html_options => { :class => "login_id", :for => "client_login_id" } %>
+			<%= @client.login_id %>
+		</div>
+		<%= f.input :email, :as => :email %>
+		<%= f.input :password, :required => false %>
+		<%= f.input :password_confirmation, :required => false %>
+		<%= f.input :site_name %>
+		<%= f.input :site_url %>
+		<%= f.input :company_name %>
+		<%= f.input :company_name_kana %>
+		<%= f.input :contractor_department %>
+		<%= f.input :contractor_position %>
+		<%= f.input :contractor_name %>
+		<%= f.input :contractor_name_kana %>
+		<%= f.input :manager_department %>
+		<%= f.input :manager_position %>
+		<%= f.input :manager_name %>
+		<%= f.input :manager_name_kana %>
+		<%= f.input :postal_code %>
+		<%= f.input :address %>
+		<%= f.input :tel, :as => :tel %>
+		<%= f.submit actiontext %>
+	</div>
+<% end %>

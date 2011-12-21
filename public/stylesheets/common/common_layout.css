@@ -1,0 +1,76 @@
+@charset "utf-8";
+/********************************************************** ■client style■ */
+body.mark {
+	background:url(/images/client/bg_side.jpg) left top repeat-x;
+	text-align:center;
+}
+body.subNavi {
+	background:url(/images/admin/bg_header_subNavi.jpg) left top repeat-x;
+}
+/********************************************************** ■header style■ */
+#header {
+	color:#0000ff;
+	font-size:93%;
+	height:50px;
+	min-width:940px;
+	*min-width:98.1%;
+	padding:0 10px;
+	width:auto!important;
+	width:940px;
+	*width:100%;
+}
+/***************************************************** ■global navigation■ */
+#globalNavigation,
+#globalnavigation {
+	clear:both;
+	left:0;
+	position:absolute;
+	top:0;
+	width:980px;
+	*width:981px;
+	z-index:12000;
+}
+.partner #globalNavigation {
+	width:1000px;
+}
+/*************************************************************** ■subNavi■ */
+#subNavi {
+	height:74px;
+	overflow:visibie;
+	position:absolute;
+	top:0px;;
+	width:100%;
+	z-index:0;
+}
+/********************************************************** ■riquid style■ */
+#contentsLayout {
+	background:url(/images/common/bg_content.jpg) 3px top no-repeat;
+	font-size:93%;
+	height:540px;
+	height:auto!important;
+	margin-bottom:30px;
+	min-height:540px;
+	min-width:940px;
+	*min-width:100%;
+	overflow:auto;
+	padding:55px 10px 30px;
+	text-align:left;
+	width:auto!important;
+	width:940px;
+	*width:100%;
+}
+/**************************************************************** ■footer■ */
+#footer {
+	background:url(/images/common/bg_footer.jpg) left top repeat-x;
+	color:#d7d7d7;
+	font-size:80%;
+	clear:both;
+	height:60px;
+	min-width:960px;
+	*min-width:100%;
+	position:relative;
+	width:auto!important;
+	width:960px;
+	*width:100%;
+	z-index:0;
+}

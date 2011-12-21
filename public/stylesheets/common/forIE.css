@@ -1,0 +1,496 @@
+@charset "utf-8";
+/* for IE6 japanese */
+* html body {
+    font-size: 75%;
+}
+table {
+	font-size:100%;
+}
+*html table {
+	font-size:106%;
+}
+/* for IE7 japanese */
+body {
+    font-size: 82%;
+}
+fieldset {
+	border:1px solid #6A6A6A!important;
+	display:block;
+	margin:20px 10px 40px!important;
+}
+fieldset legend {
+	margin-top:-25px;
+}
+#contentsLayout {
+	/min-width:90%;
+}
+*html #contentsLayout {
+	background:url(../../images/common/bg_content.jpg) left -10px no-repeat;
+}
+*html #contentsLayout {
+	background:url(../../images/common/bg_content.jpg) 4px top no-repeat;
+}
+#contentsLayout table.autopagerize_page_element {
+	width:100%!important;
+	/width:98.75%;
+	*width:98.75%;
+}
+#contentsLayout textarea {
+	/width:59.55%;
+	/border-bottom:none;
+}
+.devise #contentsLayout h2, .devise #contentsLayout canvas {
+	*display:none!important;
+}
+/** PIE.htcの指定は不要inset の記述によって生じるバグ対策 **/
+select,
+dl#loginBox input#admin_email,
+dl#loginBox input#admin_password,
+dl#loginBox input#admin_password_confirmation,
+dl#loginBox input#client_email,
+dl#loginBox input#client_password,
+dl#loginBox input#client_password_confirmation,
+dl#loginBox input#partner_email,
+dl#loginBox input#partner_password,
+dl#loginBox input#partner_password_confirmation,
+textarea#admin_memo,
+textarea#client_memo,
+textarea#partner_memo,
+textarea#partner_description,
+textarea#client_description,
+textarea#admin_description,
+textarea#promotion_description,
+textarea#site_description,
+textarea#asp_tag,
+textarea#partner_sites_attributes_description,
+textarea#partner_sites_attributes_0_description,
+textarea#client_sites_attributes_description,
+textarea#admin_sites_attributes_description,
+select#search_promotion_id_eq,
+select#search_approval_status_eq,
+input#search_login_id_contains,
+input#search_company_name_contains,
+.simple_form.search input[type="text"] {
+	padding:3px 3px 3px!important;
+	border-top:1px solid #efefef;
+	border-right:1px solid #e4e4e4;
+	border-bottom:1px dotted #efefef;
+	border-left:1px solid #e4e4e4;
+	background:#ffffff url(../../images/common/form_bg.jpg) left top repeat-x!important;
+	behavior:none;
+	line-height:1.31;
+}
+.optional input,
+.required input,
+input#from,
+input#to,
+input#reward_starts_at,
+input#reword_ends_at,
+input#partner_name,
+input#client_name,
+input#admin_name,
+input#partner_email,
+input#client_email,
+input#admin_email,
+input#partner_password,
+input#client_password,
+input#admin_password,
+input#partner_login_id,
+input#client_login_id,
+input#admin_login_id,
+input#partner_password_confirmation,
+input#client_password_confirmation,
+input#admin_password_confirmation,
+input#search_site_name_contains,
+input#search_promotion_name_contains,
+input#search_name_contains {
+	line-height:1.31;
+	border-top:1px solid #efefef;
+	border-right:1px solid #e4e4e4;
+	border-bottom:1px solid #efefef;
+	border-left:1px solid #e4e4e4;
+	background:url(../../images/common/form_bg.jpg) left top repeat-x;
+	position:relative;
+	width:60.1%;
+	z-index:2;
+	behavior:none;
+}
+div#publish_search,
+div#promotion_search,
+div#site_search,
+div#admin_search,
+div#client_search,
+div#partner_search,
+div#daily_search,
+div#order_search,
+ul.subTit {
+	box-shadow:0 0 0 #d7d7d7;
+	behavior:url(/stylesheets/common/PIE.htc);
+}
+#contentsLayout .input.radio input {
+	*float:left;
+	*cursor:pointer;
+	*cursor:hand;
+	/width:11px!importantt;
+	border:none!important;
+	background:none!important;
+	behavior:none;
+}
+#contentsLayout .simple_form input#admin_super_user,
+#contentsLayout .simple_form input#admin_deleted,
+#contentsLayout .simple_form input#admin_consigned,
+#contentsLayout .simple_form input#partner_super_user,
+#contentsLayout .simple_form input#partner_deleted,
+#contentsLayout .simple_form input#partner_consigned,
+#contentsLayout .simple_form input#client_super_user,
+#contentsLayout .simple_form input#client_deleted,
+#contentsLayout .simple_form input#client_consigned {
+	*position:relative;
+	*top:4px;
+	*left:-59%;
+	*cursor:pointer;
+	*cursor:hand;
+}
+#contentsLayout .partner_new#partner_new .field_with_errors {
+	background:none!important;
+}
+.devise.unlocksCl form#admin_new.admin_new input#admin_email,
+.devise.unlocks form#partner_new.partner_new input#partner_email {
+	margin-top:0!important;
+	/margin-top:24px!important;
+}
+p.tit.mix {
+	/font-size:82%;
+}
+div#publish_search form#publish_search label,
+div#promotion_search form#promotion_search label,
+div#site_search form#site_search label,
+div#admin_search form#admin_search label,
+div#client_search form#client_search label,
+div#partner_search form#partenr_search label {
+	/top:3px!important;
+}
+div#publish_search form#publish_search input,
+div#promotion_search form#promotion_search input,
+div#site_search form#site_search input,
+div#admin_search form#admin_search input,
+div#client_search form#client_search input,
+div#partner_search form#partner_search input {
+	/top:-1px!important;
+}
+/************************************************************ ■pagination■ */
+nav.pagination {
+	/position:relative;
+	/bottom:3px;
+	/vertical-align:bottom;
+}
+nav.pagination .first a,
+nav.pagination .prev a,
+nav.pagination .next a,
+nav.pagination .last a {
+	/position:relative;
+	/top:5px;
+}
+nav.pagination span.current {
+	background:none!important;
+}
+nav.pagination span {
+}
+nav.pagination {
+	_height:1%;
+}
+/************************************************************ ■datepicker■ */
+/* shodow表示時のバグ */
+div#ui-datepicker-div,
+div#datepicker .ui-widget-content {
+	background:-moz-linear-gradient(top, white 50%, #ECECEC 99%);
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(25%, #fcfcfc), color-stop(50%, #f0f0f0), color-stop(75%, white), to(#ECECEC));
+	-pie-background:linear-gradient(top, white 50%, #ECECEC 99%);
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	box-shadow:0;
+	behavior:url(/stylesheets/common/PIE.htc;
+	position:relative;
+	z-index:1000;
+}
+div#timepicker {
+	background:-moz-linear-gradient(top, #ffffff 30%, #f4f4f7 50%, #e7e7e7 99%);
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(30%, #ffffff), color-stop(50%, #f4f4f7), color-stop(75%, #ececec), to(#e7e7e7));
+	-pie-background:linear-gradient(top, #ffffff 30%, #f4f4f7 50%, #e7e7e7 99%);
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	box-shadow:0;
+	behavior:url(/stylesheets/common/PIE.htc);
+	margin-left:1px;
+	position:relative;
+	top:2px;
+	z-index:1000;
+}
+button#text_close {
+	background:-moz-linear-gradient(center bottom, #e8e8e8 20%, white 99%)!important;
+	background-image:-webkit-gradient(linear, left bottom, left top, from(#f7f7f7), color-stop(20%, #e8e8e8), color-stop(50%, #e8e8e8), color-stop(75%, #fcfcfc), to(white))!important;
+	-pie-background:linear-gradient(center bottom, #e8e8e8 20%, white 99%)!important;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	box-shadow:0;
+	behavior:url(/stylesheets/common/PIE.htc);
+	color:#3c3c3c!important;
+	left:-32px;
+	padding:0 3px 1.4em;
+	position:relative;
+	z-index:10000;
+	top:0px;
+}
+button#text_close:hover {
+	background:-moz-linear-gradient(center top, #e8e8e8 30%, white 99%)!important;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#f7f7f7), color-stop(25%, #e8e8e8), color-stop(50%, #e8e8e8), color-stop(75%, #fcfcfc), to(white))!important;
+	-pie-background:linear-gradient(center top, #e8e8e8 30%, white 99%)!important;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	color:#3c3c3c!important;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	box-shadow:0;
+	behavior:url(/stylesheets/common/PIE.htc);
+	left:-32px;
+	padding:0 3px 1.4em;
+	position:relative;
+	z-index:10000;
+	top:0px;
+}
+/***************************************************************** ■timepicker■ */
+.ui-state-default.ui-corner-top a span {
+	display:block;
+	font-size:116%;
+	padding-top:2px;
+	padding-right:2px;
+}
+/**************************************************************** ■footer■ */
+#footer ul.copy {
+	width:172px;
+}
+div.demo label#tolabel {
+	width:40px!important;
+}
+/*********************************************************** ■sidecontent■ */
+.subNavi #globalNavigation {
+	position:absolute;
+}
+.subNavi #globalNavigation ul#navigationMenu li a {
+	behavior:none!important;
+}
+.subNavi .sidecontentpullout {
+	position:relative;
+	top:0!important;
+}
+/*************************************************************** ■subNavi■ */
+.subNavi #subNavi ul li a {
+	z-index:10000!important;
+}
+/**************************************************************** ■submit■ */
+#contentsLayout .simple_form input#partner_submit,
+#contentsLayout .simple_form input#client_submit,
+#contentsLayout .simple_form input#admin_submit,
+#contentsLayout .simple_form input#promotion_submit,
+#contentsLayout .simple_form input#site_submit,
+#contentsLayout #admin_new input#promotion_submit,
+.actions.show dl dd.oneTag a,
+#contentsLayout .simple_form input#conversiontag_submit,
+form#new_publish input#publish_submit,
+form#new_asp.simple_form input#asp_submit,
+form#new_reward.simple_form input#reward_submit,
+#contentsLayout .simple_form input#reward_submit,
+#contentsLayout .simple_form input#order_submit{
+	clear:both;
+	color:white;
+	cursor:pointer;
+	cursor:hand;
+	font-weight:bold;
+	font-size:138.5%;
+	height:45px;
+	margin:0 auto 30px;
+	padding:10px 0;
+	position:relative;
+	top:20px;
+	width:220px;
+	background:-moz-linear-gradient(top, #00adee, #015A90);
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#00adee), to(#015A90));
+	-pie-background:linear-gradient(top, #00adee, #015A90);
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	-moz-box-shadow:5px 5px 7px #f6f6f6;
+	-webkit-box-shadow:5px 5px 7px #f6f6f6;
+	box-shadow:5px 5px 7px #f6f6f6;
+	behavior:url(/stylesheets/common/PIE.htc);
+}
+#contentsLayout input#partner_submit:hover,
+#contentsLayout input#client_submit:hover,
+#contentsLayout input#admin_submit:hover,
+#contentsLayout input#promotion_submit:hover,
+#contentsLayout input#site_submit:hover,
+.actions.show dl dd form.button_to input:hover,
+.actions.show dl dd.oneTag a:hover,
+#contentsLayout .simple_form input#conversiontag_submit:hover,
+form#new_publish input#publish_submit:hover,
+form#new_asp.simple_form input#asp_submit:hover,
+form#new_reward.simple_form input#reward_submit:hover,
+#contentsLayout .simple_form input#reward_submit:hover,
+#contentsLayout .simple_form input#order_submit:hover {
+	color:white;
+	cursor:pointer;
+	cursor:hand;
+	font-weight:bold;
+	font-size:138.5%;
+	height:45px;
+	outline:none;
+	overflow:hidden;
+	padding:10px 0;
+	margin:0 auto 30px;
+	background:-moz-linear-gradient(top, #015A90, #00adee);
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#015A90), to(#00adee));
+	-pie-background:linear-gradient(top, #015A90, #00adee);
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	-moz-box-shadow:8px 8px 15px #d4d4d4;
+	-webkit-box-shadow:8px 8px 15px #d4d4d4;
+	box-shadow:8px 8x 15px #d4d4d4;
+	behavior:url(/stylesheets/common/PIE.htc);
+	width:220px;
+}
+#contentsLayout .simple_form input#partner_submit,
+#contentsLayout .simple_form input#promotions_submit,
+#contentsLayout .simple_form input#publishes_submit,
+#contentsLayout .simple_form input#client_submit,
+#contentsLayout .simple_form input#admin_submit,
+#contentsLayout .simple_form input#promotion_submit,
+#contentsLayout .simple_form input#order_submit {
+	float:none!important;
+	display:block;
+}
+/**************************************************************** ■multiselect■ */
+div.ui-widget-header {
+	font-size:77%!important;
+}
+.ui-multiselect-filter,
+.ui-helper-reset {
+	font-size:77%!important;
+}
+ul.ui-multiselect-checkboxes {
+	height:200px!important;
+	overflow:auto!important;
+	padding:0 0 10px!important;
+	width:auto!important;
+}
+#contentsLayout .simple_form input[type="checkbox"] {
+	padding:0!important;
+	behavior:none;
+	border:none!important;
+	width:12px!important;
+}
+#contentsLayout .simple_form .ui-widget-content input[type="checkbox"] {
+	padding:0!important;
+	behavior:none;
+	border:none!important;
+	top:5px!important;
+	width:12px!important;
+}
+button.ui-widget.ui-state-default.ui-multiselect.ui-corner-all span {
+	position:relative;
+	/top:3px;
+	margin:2px 0 0 5px!important;
+	left:5px;
+}
+button.ui-multiselect span.ui-icon {
+	position:relative;
+	top:-1px!important;
+	left:-5px!important;
+	margin:0;
+}
+label.ui-corner-all span {
+	margin-top:5px!important;
+}
+.multi ul li {
+	display:inline;
+	font-weight:bold;
+	font-size:100%;
+	color:#00586A;
+}
+div.ui-multiselect-menu {
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	box-shadow:0;
+	behavior:url(/stylesheets/common/PIE.htc);
+	position:absolute;
+	z-index:10000;
+	width:auto!important;
+}
+/**************************************************************** ■ .simple_form input ■ */
+#contentsLayout .simple_form input[type="submit"] {
+	behavior:none!important;
+}
+/**************************************************************** ■ multiselect ■ */
+.multi .ui-multiselect {
+	background-color:#F1F1F5;
+	vertical-align:-13px!important;
+	/vertical-align:-5px!important;
+}
+/***************************************************************************** ■ p.csv ■ */p.csv,
+#contentsLayout .simple_form input#csv_download[type="submit"],
+#contentsLayout .simple_form input#csv_download_test[type="submit"] {
+	/left:-70%!important;
+	/margin-left:30px!important;
+}
+p.csv a,
+#contentsLayout .simple_form input#csv_download[type="submit"],
+#contentsLayout .simple_form input#csv_download_test[type="submit"] {
+	background-color:transparent!important;
+	behavior:none;
+}
+/************************************* ■ cv for/admin/clients/promotions/ ■ */
+.ui-tabs-panel {
+	margin:0 auto;
+	width:96%;
+}
+/*********************************************** ■ ui-multiselect-filter ■ */
+#contentsLayout .simple_form .ui-multiselect-filter input {
+	border-color:#073F56!important;
+	float:none!important;
+	line-height:2!important;
+	/width:120px!important;
+	vertical-align:middle!important;
+}
+/**************************************************************** ■ jQTabs ■ */
+.client.promotions.mark #jQTabs {
+	overflow:hidden!important;
+}
+/**************************************************************** ■ td span.edit a ■ */
+td span.edit a {
+	behavior:none!important;
+	width:25px!important;
+}
+/**************************************************************** ■ formBox edit ■ */
+.formcontainer .text#date dd input[type="radio"] {
+	background:none;
+	border:none;
+	position:relative;
+	top:-23px;
+	right:10px;
+}
+.formcontainer .text {
+	width:218px;
+}

@@ -1,0 +1,30 @@
+<%= content_tag_for :tr, order do %>
+	<% unless current_client.consigned %>
+	<td class="sel"><%= check_box_tag "check_ids[]", order.id %></td>
+	<% end %>
+	<td class="ids"><%= order.id %></td>
+	<td><%= order.promotion_name %></td>
+	<td><%= order.name %></td>
+	<td><%= order.banner_name %></td>
+	<% if order.click_updated_at.nil? %>
+	  <td>なし</td>
+	<% else %>
+	  <td><%= order.click_updated_at.strftime("%Y年%m月%d日:%X")%></td>
+	<% end %>
+	<td><%= order.created_at.strftime("%Y年%m月%d日:%X") %></td>
+	<td><%= order.decide_date.strftime "%Y年%m月%d日" if !order.decide_date.nil? %></td>
+	<td><%= order.status_flag %></td>
+	<td><%= number_to_currency(order.price, :precision => 0) %></td>
+	<% unless current_client.consigned %>
+	<td><%= number_to_currency(order.gross_price, :precision => 0) %></td>
+	<td><%= number_with_precision(order.gross_rate, :precision => 2) %></td>
+	<% end %>
+	<td><%= order.remote_address %></td>
+	<td><%= order.referer %></td>
+	<td><%= order.metadata %></td>
+	<td><%= order.add_data %></td>
+	<% if order.adjusted? %>
+		<td><span class="edit"><%= link_to "編集", edit_polymorphic_path([:client, order]) %></span></td>
+		<td><span class="del"><%= link_to "削除", delete_admin_client_order_path(@client, order) %></span></td>
+	<% end %>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="headline">
+	<h2>お知らせ一覧</h2>
+</div>
+<p class="tit new"><%= link_to "新規登録", new_polymorphic_path([:admin, :notice]) %></p>
+<%= paginate @notices %>
+<script>
+$(document).ready(function(){
+	$(".autopagerize_page_element > tbody > tr:odd").addClass("odd");
+	$('.autopagerize_page_element').tableHover({colClass: 'hover'});
+	$("#myTable").tablesorter();
+});
+</script>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids"><%= sort_link @search, :id %></th>
+		<th><%= sort_link @search, :title %></th>
+		<th><%= sort_link @search, :description %></th>
+		<th><%= sort_link @search, :target %></th>
+		<th colspan="3"></th>
+	</tr>
+</thead>
+<tbody>
+	<%= render :partial => @notices %>
+</tbody>
+</table>
+<div class="paginationFot">
+	<%= paginate @notices %>
+</div>

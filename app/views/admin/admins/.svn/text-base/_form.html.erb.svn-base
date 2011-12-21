@@ -1,0 +1,26 @@
+<%= simple_form_for [:admin, @admin] do |f| %>
+	<% if @admin.errors.any? %>
+	<div id="error_explanation">
+		<ul>
+		<% @admin.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<% if params[:action] == "new" || params[:action] == "create" %>
+	<% actiontext = "登録"%>
+	<% else %>
+	<% actiontext = "更新" %>
+	<% end %>
+	<div id="attributes">
+		<%= f.input :login_id, :placeholder => t('hints.too_short', :count => 6), :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('admin_submit').disabled=false;document.getElementById('admin_submit').value='"+actiontext+"'" } %>
+		<%= f.input :name, :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('admin_submit').disabled=false;document.getElementById('admin_submit').value='"+actiontext+"'" } %>
+		<%= f.input :email, :input_html => {:autocomplete => "off", :onkeyup => "document.getElementById('admin_submit').disabled=false;document.getElementById('admin_submit').value='"+actiontext+"'" } %>
+		<%= f.input :password, :required => false, :placeholder => t('hints.between', :small => 8, :big => 20), :input_html => {:autocomplete => "off" } %>
+		<%= f.input :password_confirmation, :required => false %>
+		<%= f.input :super_user %>
+		<%= f.input :deleted %>
+		<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+	</div>
+<% end %>

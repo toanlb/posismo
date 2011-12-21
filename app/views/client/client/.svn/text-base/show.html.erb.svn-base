@@ -1,0 +1,58 @@
+<h2>アカウント情報</h2>
+<canvas id="canvas"><!-- アカウント情報 --></canvas>
+<div class="actions one head">
+	<span class="back"><%= link_to "戻る", 'javascript:history.back()' %></span>
+</div>
+<div id="attributes">
+	<dl>
+		<dt><%= label :client, :login_id %></dt>
+		<dd><%= @client.login_id %></dd>
+		<dt><%= label :client, :email %></dt>
+		<dd><%= @client.email %></dd>
+		<dt><%= label :client, :site_name %></dt>
+		<dd><%= @client.site_name %></dd>
+		<dt><%= label :client, :site_url %></dt>
+		<dd><%= @client.site_url %></dd>
+		<dt><%= label :client, :company_name %></dt>
+		<dd><%= @client.company_name %></dd>
+		<dt><%= label :client, :company_name_kana %></dt>
+		<dd><%= @client.company_name_kana %></dd>
+		<dt><%= label :client, :contractor_department %></dt>
+		<dd><%= @client.contractor_department %></dd>
+		<dt><%= label :client, :contractor_position %></dt>
+		<dd><%= @client.contractor_position %></dd>
+		<dt><%= label :client, :contractor_name %></dt>
+		<dd><%= @client.contractor_name %></dd>
+		<dt><%= label :client, :contractor_name_kana %></dt>
+		<dd><%= @client.contractor_name_kana %></dd>
+		<dt><%= label :client, :manager_department %></dt>
+		<dd><%= @client.manager_department %></dd>
+		<dt><%= label :client, :manager_position %></dt>
+		<dd><%= @client.manager_position %></dd>
+		<dt><%= label :client, :manager_name %></dt>
+		<dd><%= @client.manager_name %></dd>
+		<dt><%= label :client, :manager_name_kana %></dt>
+		<dd><%= @client.manager_name_kana %></dd>
+		<dt><%= label :client, :postal_code %></dt>
+		<dd><%= @client.postal_code %></dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :client, :address %></dt>
+		<dd><%= @client.address %>&nbsp;</dd>
+	</dl>
+	<dl class="aspName">
+		<dt><%= label :client, :tel %></dt>
+		<dd><%= @client.tel %>&nbsp;</dd>
+	</dl>
+	<dl class="conversionTag">
+		<dt>コンバージョンタグ</dt>
+		<dd>&lt;script type="text/javascript" src="http://<%= BACKEND_HOST %>/order?clid=<%= @client.id %>"&gt;&lt;/script&gt;<br />
+			&lt;script type="text/javascript"&gt;<br />
+			var asp = new getAspUrl<%= @client.id %>();<br />
+			document.write(asp.tag);<br />
+			&lt;/script&gt;<br />&nbsp;</dd>	
+	</dl>
+</div>
+<div class="actions one">
+	<span class="back"><%= link_to "戻る", 'javascript:history.back()' %></span>
+</div>

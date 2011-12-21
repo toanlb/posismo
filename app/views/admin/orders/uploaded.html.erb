@@ -1,0 +1,56 @@
+<h2>注文アップロード</h2>
+<canvas id="canvas"><!-- 提携アップロード --></canvas>
+<% if @error_orders.any? %>
+<span>下記データは正しく保存されませんでした。</span>
+<span class="back"><%= link_to "戻る", admin_client_orders_path %></span>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids">ID</th>
+		<th>価格</th>
+		<th>作成日</th>
+	</tr>
+</thead>
+<tbody>
+	<% @error_orders.each do |order| %>
+	<% if order.errors.any? %>
+	<% order.errors.full_messages.each do |msg| %>
+	<tr>
+		<td colspan="3"><%= msg %></td>
+	</tr>
+	<% end %>
+	<% end %>
+	<tr>
+		<td class="ids" <%= raw('style="background-color:#cc0000; font-weight: bold"') if order.errors.has_key?(:id) %>>
+			<%= order.id %>
+		</td>
+		<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if order.errors.has_key?(:price) %>>
+			<%= order.price %>
+		</td>
+		<td <%= raw('style="background-color:#cc0000; font-weight: bold"') if order.errors.has_key?(:created_on) %>>
+		<%= order.created_on %>
+		</td>
+	</tr>
+	<% end %>
+</tbody>
+</table><% end %>
+<% if @orders.any? %>
+<span>下記データは正しく保存されました</span>
+<span class="back"><%= link_to "戻る", admin_client_orders_path %></span>
+<table class="autopagerize_page_element tablesorter" id="myTable">
+<thead>
+	<tr>
+		<th class="ids">ID</th>
+		<th>価格</th>
+	</tr>
+</thead>
+<tbody>
+  <% @orders.each do |order| %>
+	<tr>
+		<td class="ids"><%= order.id %></td>
+		<td><%= order.status_flag %></td>
+	</tr>
+  <% end %>
+</tbody>
+</table>
+<% end %>

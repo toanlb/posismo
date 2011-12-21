@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/routing/admin
+END
+partners_routing_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/routing/admin/partners_routing_spec.rb
+END
+clients_routing_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/routing/admin/clients_routing_spec.rb
+END
+admin_routing_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/routing/admin/admin_routing_spec.rb
+END
+admins_routing_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/posismo-2pm/!svn/ver/1/2pm/spec/routing/admin/admins_routing_spec.rb
+END

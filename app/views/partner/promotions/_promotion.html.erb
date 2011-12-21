@@ -1,0 +1,16 @@
+<%= content_tag_for :tr, promotion do %>
+	<td><%= link_to promotion.name, polymorphic_path([:partner, promotion]) %></td>
+	<td><%= link_to truncate(promotion.url,{:length => 50}), promotion.url, { :target => "_blank" } %></td>
+	<td><%= truncate(promotion.description,{:length => 30}) %></td>
+	<% unless promotion.click_reward.blank? %>
+		<td><%= promotion.click_reward.price %></td>
+	<% else %>
+		<td>0</td>
+	<% end %>
+	<% unless promotion.client.blank? %>
+	<td><%= promotion.client.company_name %></td>
+	<% else %>
+	<td>クライアントなし</td>
+	<% end %>
+	<td><span class="tieUp"><%= link_to "提携申込", polymorphic_path([:partner, promotion], :action => :affiliate) %></span></td>
+<% end %>

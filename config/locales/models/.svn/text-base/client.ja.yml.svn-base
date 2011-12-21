@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      client: "広告主"
+    attributes: 
+      client:
+        admin_login_id: "担当管理者"
+  client:
+    sessions:
+      new:
+        sign_in: "ログイン"
+    

@@ -1,0 +1,21 @@
+<%= simple_form_for [:admin, @client, @asp] do |f| %>
+	<%# if @client.errors.any? %>
+<!--
+	<div id="error_explanation">
+		<ul>
+			<%# @client.errors.full_messages.each do |msg| %>
+			<li><%#= msg %></li><%# end %>
+		</ul>
+	</div>
+-->
+<%# end %>
+<% if params[:action] == "new" || params[:action] == "create" %>
+<% actiontext = "登録" %>
+<% else actiontext = "更新" %>
+<% end %>
+<div id="attributes">
+	<%= f.input :name, :required => true, :input_html => {:onkeyup => "document.getElementById('asp_submit').disabled=false;document.getElementById('asp_submit').value='"+actiontext+"'"} %>
+	<%= f.input :tag, :input_html => {:onkeyup => "document.getElementById('asp_submit').disabled=false;document.getElementById('asp_submit').value='"+actiontext+"'"} %>
+	<%= f.input :always_extract %>
+	<%= f.submit actiontext,:onclick => "this.disabled=true;this.value='処理中...';this.form.submit();"%>
+</div><% end %>

@@ -1,0 +1,11 @@
+<h2>広告主情報編集</h2>
+<canvas id="canvas"><!-- 広告主情報編集 --></canvas>
+<div class="naviBar one head">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+	<span class="edit"><%= link_to "詳細", admin_client_path(@client) %></span>
+</div>
+<%= render 'form' %>
+<div class="naviBar one">
+	<span class="back"><%= link_to "戻る", admin_clients_path %></span>
+	<span class="edit"><%= link_to "詳細", admin_client_path(@client) %></span>
+</div>

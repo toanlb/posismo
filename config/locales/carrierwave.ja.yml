@@ -1,0 +1,5 @@
+ja:
+  errors:
+    messages:
+      carrierwave_processing_error: "処理が失敗しました"
+      carrierwave_integrity_error: "ファイル種類が正しくありません"

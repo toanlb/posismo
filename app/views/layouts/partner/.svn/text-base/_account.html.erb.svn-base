@@ -1,0 +1,7 @@
+<% if partner_signed_in? %>
+<ul class="account">
+	<li class="accountName"><span><%= current_partner.manager_name %></span></li>
+	<li class="accountLink"><%= link_to partner_account_path do %>アカウント情報<% end %></li>
+	<li class="status"><%= link_to destroy_partner_session_path do %>ログアウト<% end %></li>
+</ul>
+<% end %>

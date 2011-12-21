@@ -1,0 +1,87 @@
+<h2>提携詳細</h2>
+<canvas id="canvas"><!-- 提携詳細 --></canvas>
+<div class="actions show head">
+	<dl>
+		<dd><span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :publishes]) %></span></dd>
+		<dd class="approve"><%= button_to "承認", polymorphic_path([:admin, @client, @publish], :action => :approve) %></dd>
+		<dd class="disapp"><%= button_to "非承認", polymorphic_path([:admin, @client, @publish], :action => :reject) %></dd>
+		<dd class="stay"><%= button_to "保留", polymorphic_path([:admin, @client, @publish]), :disabled => true %></dd>
+	</dl>
+</div>
+<div class="board">
+	<h3>承認状態</h3>
+	<div id="approve_attributes">
+		<dl>
+			<dt><%= label :publish, :id %></dt>
+			<dd><%= @publish.id %></dd>
+			<dt><%= label :publish, :approval_status %></dt>
+			<dd><%= @publish.approval_status %></dd>
+		</dl>
+	</div>
+	<% if @publish.approved? %>
+	<h3>タグ情報</h3>
+	<div id="tag_attributes">
+		<div>
+			<pre><%= publish_tag(@publish) %></pre>
+		</div>
+	</div>
+	<h3>クリックURL</h3>
+	<div id="click_attributes">
+		<div>
+			<%= publish_click_url(@publish) %>
+		</div>
+	</div>
+	<% end %>
+	<h3>プロモーション詳細</h3>
+	<div id="promotion_attributes">
+		<dl>
+			<dt><%= label :promotion, :name %></dt>
+			<dd><%= @publish.promotion.name %></dd>
+			<dt><%= label :promotion,  :url %></dt>
+			<dd><%= @publish.promotion.url %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :promotion, :description %></dt>
+			<dd><%= @publish.promotion.description %>&nbsp;</dd>
+		</dl>
+		<dl>
+			<% if @promotion.click_reward %>
+			<dt><%= label :promotion, :click_reward %></dt>
+			<dd><%= @promotion.click_reward.price %>円</dd>
+			<% end %>
+			<% if false %>
+			<% if @promotion.reward %>
+			<dt><%= label :promotion, :reward %></dt>
+			<dd><%= @promotion.reward.price %>円</dd>
+			<% end %>
+			<% end %>
+		</dl>
+	</div>
+	<% unless @publish.site.nil? %>
+	<h3>サイト詳細</h3>
+	<div id="site_attributes">
+		<dl>
+			<dt><%= label :site, :name %></dt>
+			<dd><%= @publish.site.name %></dd>
+			<dt><%= label :site,  :url %></dt>
+			<dd><%= @publish.site.url %></dd>
+		</dl>
+		<dl class="aspName">
+			<dt><%= label :site, :description %></dt>
+			<dd><%= @publish.site.description %>&nbsp;</dd>
+		</dl>
+		<dl>
+			<dt><%= label :site, :keywords %></dt>
+			<dd><%= @publish.site.keywords %></dd>
+		</dl>
+	</div>
+	<% end %>
+</div>
+<div class="actions show fot">
+	<dl>
+		<dd><span class="back"><%= link_to "戻る", polymorphic_path([:admin, @client, :publishes]) %></span></dd>
+		<dd class="approve"><%= button_to "承認", polymorphic_path([:admin, @client, @publish], :action => :approve) %></dd>
+		<dd class="disapp"><%= button_to "非承認", polymorphic_path([:admin, @client, @publish], :action => :reject) %></dd>
+		<dd class="stay"><%= button_to "保留", polymorphic_path([:admin, @client, @publish]), :disabled => true %></dd>
+	</dl>
+</div>

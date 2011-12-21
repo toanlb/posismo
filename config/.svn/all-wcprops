@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/posismo-2pm/!svn/ver/1/2pm/config
+END
+routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/posismo-2pm/!svn/ver/1/2pm/config/routes.rb
+END
+database.yml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/config/database.yml
+END
+application.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/posismo-2pm/!svn/ver/1/2pm/config/application.rb
+END
+boot.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/posismo-2pm/!svn/ver/1/2pm/config/boot.rb
+END
+cucumber.yml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/posismo-2pm/!svn/ver/1/2pm/config/cucumber.yml
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/posismo-2pm/!svn/ver/1/2pm/config/environment.rb
+END
+deploy.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/posismo-2pm/!svn/ver/1/2pm/config/deploy.rb
+END

@@ -1,0 +1,10 @@
+<%#= content_tag_for :tr, asp do %>
+<%= content_tag :tr do %>
+	<td class="ids"><%= asp[:id] %></td>
+	<td><%= asp[:name] %></td>
+	<td><%= asp[:tag] %></td>
+	<td><%= asp.always_extract? ? "する" : "しない" %></td>
+	<td><span class="details"><%= link_to "詳細", :action => "show", :id => asp[:id] %></span></td>
+	<td><span class="edit"><%= link_to "変更", :action => "edit", :id => asp[:id] %></span></td>
+	<td><span class="del"><%= link_to "削除", :action => "delete", :id => asp[:id] %></span></td>
+<% end %>
